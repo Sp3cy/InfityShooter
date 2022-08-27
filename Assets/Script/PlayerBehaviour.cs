@@ -34,6 +34,7 @@ public class PlayerBehaviour : MonoBehaviour
     {
         Vector2 lookDir;
 
+        // If an enemy is found
         if (FindClosestEnemy() != null)
         {
             lookDir = FindClosestEnemy().transform.position - player.transform.position;
@@ -41,7 +42,9 @@ public class PlayerBehaviour : MonoBehaviour
             if (!isShooting) StartCoroutine(shooting);
             
 
-        } else
+        } 
+        // Enemy not found
+        else
         {
             lookDir = new Vector2(joystick.Horizontal, joystick.Vertical);
 
@@ -53,11 +56,15 @@ public class PlayerBehaviour : MonoBehaviour
             }
         }
 
-        float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90f;
-
-        player.rotation = Mathf.Lerp(player.rotation, angle, lerpT);
+        // If joystick is moving
+        if (!lookDir.Equals(new Vector2(0,0)))
+        {
+            float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90f;
+            player.rotation = Mathf.LerpAngle(player.rotation, angle, lerpT);
+        }
     }
 
+    // Find nearest object with Enemy Tag
     public GameObject FindClosestEnemy()
     {
         GameObject[] gos;
@@ -78,6 +85,7 @@ public class PlayerBehaviour : MonoBehaviour
         return closest;
     }
 
+    // Shoot a bullet every fireGap(seconds)
     private IEnumerator Shooting(GameObject bulletPrefab, Transform firePoint, float bulletForce, float fireGap)
     {
         isShooting = true;
