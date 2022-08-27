@@ -5,16 +5,18 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
     public GameObject enemyPrefab;
-    public GameObject player;
 
     public float rangeX;
     public float rangeY;
 
     public float spawnDelay = 2f;
 
+    private GameObject player;
+
     // Start is called before the first frame update
     void Start()
     {
+        player = GameObject.FindGameObjectWithTag("Player");
         StartCoroutine(SpawnWithDealy(enemyPrefab, spawnDelay));
     }
 

@@ -4,10 +4,17 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    public float damage = 5f;
+    private float damage = 0f;
+
+    public void setDamage(float newDamage)
+    {
+        damage = newDamage;
+    }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        if (damage == 0f) Debug.LogError("- Damage not setted");
+
         if (collision.gameObject.tag == "Enemy")
         {
             collision.gameObject.GetComponent<Enemy>().Hitted(damage);

@@ -4,29 +4,28 @@ using UnityEngine;
 
 public class PlayerBehaviour : MonoBehaviour
 {
-    public Joystick joystick;
-
+    [Header("- Objects")]
     public Rigidbody2D player;
+    public Transform firePoint;
+    public Weapon weapon;
+
+    [Space(1)]
+    [Header("- Rotation Time")]
     public float lerpT = 0.5f;
 
-    public Transform firePoint;
-    public GameObject bulletPrefab;
-
-    public float bulletForce = 20f;
-    public float fireGap = 0.5f;
-
+    [Space(1)]
+    [Header("- Shot Behaviour")]
     public float maxEnemyDistance = 20f;
 
-    private IEnumerator shooting;
     private bool isShooting;
+    private Joystick joystick;
+    private IEnumerator shooting;
 
     // Start is called before the first frame update
     void Start()
     {
-        // Get selcted weapon data --- TO DO
-
-        shooting = Shooting(bulletPrefab, firePoint, bulletForce, fireGap);
-        isShooting = false;
+        shooting = weapon.Shooting(firePoint);
+        joystick = GameObject.FindGameObjectWithTag("Joystick").GetComponent<Joystick>();
     }
 
     // Update is called once per frame
@@ -39,7 +38,7 @@ public class PlayerBehaviour : MonoBehaviour
         {
             lookDir = FindClosestEnemy().transform.position - player.transform.position;
 
-            if (!isShooting) StartCoroutine(shooting);
+            if (!weapon.getIsShooting()) StartCoroutine(shooting);
             
 
         } 
@@ -48,11 +47,12 @@ public class PlayerBehaviour : MonoBehaviour
         {
             lookDir = new Vector2(joystick.Horizontal, joystick.Vertical);
 
-            if (isShooting)
+            if (weapon.getIsShooting())
             {
                 StopCoroutine(shooting);
-                shooting = Shooting(bulletPrefab, firePoint, bulletForce, fireGap);
-                isShooting = false;
+                weapon.setIsShooting(false);
+
+                shooting = weapon.Shooting(firePoint);
             }
         }
 
@@ -83,19 +83,6 @@ public class PlayerBehaviour : MonoBehaviour
             }
         }
         return closest;
-    }
-
-    // Shoot a bullet every fireGap(seconds)
-    private IEnumerator Shooting(GameObject bulletPrefab, Transform firePoint, float bulletForce, float fireGap)
-    {
-        isShooting = true;
-        yield return new WaitForSeconds(fireGap);
-
-        GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
-        Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
-        rb.AddForce(firePoint.up * bulletForce, ForceMode2D.Impulse);
-
-        yield return Shooting(bulletPrefab, firePoint, bulletForce, fireGap);
     }
 
 }
