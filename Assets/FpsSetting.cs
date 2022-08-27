@@ -4,23 +4,13 @@ using UnityEngine;
 
 public class FpsSetting : MonoBehaviour
 {
-    // Start is called before the first frame update
+    //Fps Cap
 
     private void Awake()
     {
 
-        QualitySettings.vSyncCount = 0;
-        Application.targetFrameRate = 120;
+        QualitySettings.vSyncCount = 0; //V-Sync Off
+        Application.targetFrameRate = 120; //FPS
 
-    }
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
