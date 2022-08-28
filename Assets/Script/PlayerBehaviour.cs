@@ -14,6 +14,7 @@ public class PlayerBehaviour : MonoBehaviour
     [Space(1)]
     [Header("- Rotation Time")]
     public float lerpT = 0.5f;
+    public float angleFix = 10f;
 
     [Space(1)]
     [Header("- Shot Behaviour")]
@@ -63,6 +64,8 @@ public class PlayerBehaviour : MonoBehaviour
         if (!lookDir.Equals(new Vector2(0,0)))
         {
             float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90f;
+            angle += angleFix;
+
             player.rotation = Mathf.LerpAngle(player.rotation, angle, lerpT);
         }
     }
