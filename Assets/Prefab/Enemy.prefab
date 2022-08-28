@@ -132,7 +132,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   life: 100
   attack: 20
-  speed: 4
+  speed: 3
   lerpT: 0.5
 --- !u!50 &8489877846852209201
 Rigidbody2D:
