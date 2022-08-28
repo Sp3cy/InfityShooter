@@ -6,7 +6,7 @@ public class PlayerBehaviour : MonoBehaviour
 {
     [Header("- Objects")]
     public Rigidbody2D player;
-    public Transform firePoint;
+    private Transform firePoint;
     public Weapon weapon;
 
     [Space(1)]
@@ -26,6 +26,8 @@ public class PlayerBehaviour : MonoBehaviour
     {
         shooting = weapon.Shooting(firePoint);
         joystick = GameObject.FindGameObjectWithTag("Joystick").GetComponent<Joystick>();
+
+        firePoint = GameObject.FindGameObjectWithTag("Firepoint").GetComponent<Transform>();
     }
 
     // Update is called once per frame
