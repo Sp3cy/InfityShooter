@@ -17,9 +17,13 @@ public class Weapon : MonoBehaviour
     private bool isShooting;
     private Transform firePos;
 
+    private IEnumerator coroShooting;
+
     // Start is called before the first frame update
     void Start()
     {
+        coroShooting = Shooting();
+
         selected = false;
         isShooting = false;
     }
@@ -30,11 +34,23 @@ public class Weapon : MonoBehaviour
         
     }
 
+    public void StartShooting()
+    {
+        StartCoroutine(coroShooting);
+    }
+    public void StopShooting()
+    {
+        StopCoroutine(coroShooting);
+
+        // Bug Handler
+        isShooting = false;
+        coroShooting = Shooting();
+    }
+
     // Spara a ripetizione ogni tot s finchè non viene stoppata la coroutine
     public IEnumerator Shooting()
     {
         isShooting = true;
-        yield return new WaitForSeconds(fireGap);
 
         // Crea l'oggetto bulletPrefab e gli assegna il damage
         GameObject bullet = Instantiate(bulletPrefab, firePos.position, firePos.rotation);
@@ -43,6 +59,8 @@ public class Weapon : MonoBehaviour
         // Aggiunge la forza per far andare avanti il colpo
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
         rb.AddForce(firePos.up * bulletForce, ForceMode2D.Impulse);
+
+        yield return new WaitForSeconds(fireGap);
 
         // Fa ripartire questa coroutine
         yield return Shooting();
@@ -58,12 +76,6 @@ public class Weapon : MonoBehaviour
     public bool getIsShooting()
     {
         return isShooting;
-    }
-
-    // Set shooting to handle bugs -- PlayerBehaviour
-    public void setIsShooting(bool newBool)
-    {
-        isShooting = newBool;
     }
 
     // Set FirePos to handle bugs -- PlayerBehaviour

@@ -23,7 +23,6 @@ public class PlayerBehaviour : MonoBehaviour
     private Transform firePos;
 
     private Joystick joystick;
-    private IEnumerator shooting;
 
     // Start is called before the first frame update
     void Start()
@@ -33,9 +32,6 @@ public class PlayerBehaviour : MonoBehaviour
 
         // Handle firePos bug
         weapon.setFirePos(firePos);
-
-        // Set the coroutine to Shooting
-        shooting = weapon.Shooting();
     }
 
     private void Update()
@@ -58,7 +54,7 @@ public class PlayerBehaviour : MonoBehaviour
             lookDir = FindClosestEnemy().transform.position - player.transform.position;
 
             // Se non sta sparando, inizia a sparare
-            if (!weapon.getIsShooting()) StartCoroutine(shooting);
+           // if (!weapon.getIsShooting()) weapon.StartShooting();
         } 
         // Enemy not found
         else
@@ -66,13 +62,10 @@ public class PlayerBehaviour : MonoBehaviour
             lookDir = new Vector2(joystick.Horizontal, joystick.Vertical);
 
             // Se sta sparando, smette e reset variabili
-            if (weapon.getIsShooting())
+           /* if (weapon.getIsShooting())
             {
-                StopCoroutine(shooting);
-                weapon.setIsShooting(false);
-
-                shooting = weapon.Shooting();
-            }
+                weapon.StopShooting();
+            }*/
         }
 
         // If joystick is moving or an enemy is found
@@ -92,7 +85,6 @@ public class PlayerBehaviour : MonoBehaviour
     public void HittedByEnemy(float damage)
     {
         life -= damage;
-        Debug.Log("Vita: " + life);
     }
 
     // Find nearest object with Enemy Tag
