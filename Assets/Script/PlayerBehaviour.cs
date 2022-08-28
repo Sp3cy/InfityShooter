@@ -6,7 +6,6 @@ public class PlayerBehaviour : MonoBehaviour
 {
     [Header("- Objects")]
     public Rigidbody2D player;
-    private Transform firePoint;
     public Weapon weapon;
 
     [Space(1)]
@@ -17,17 +16,23 @@ public class PlayerBehaviour : MonoBehaviour
     [Header("- Shot Behaviour")]
     public float maxEnemyDistance = 20f;
 
-    private bool isShooting;
+    // Se viene preso direttamente da weapon non funziona
+    private Transform firePos;
+
     private Joystick joystick;
     private IEnumerator shooting;
 
     // Start is called before the first frame update
     void Start()
     {
-        shooting = weapon.Shooting(firePoint);
         joystick = GameObject.FindGameObjectWithTag("Joystick").GetComponent<Joystick>();
+        firePos = GameObject.FindGameObjectWithTag("Firepoint").GetComponent<Transform>();
 
-        firePoint = GameObject.FindGameObjectWithTag("Firepoint").GetComponent<Transform>();
+        // Handle firePos bug
+        weapon.setFirePos(firePos);
+
+        // Set the coroutine to Shooting
+        shooting = weapon.Shooting();
     }
 
     // Update is called once per frame
@@ -40,25 +45,25 @@ public class PlayerBehaviour : MonoBehaviour
         {
             lookDir = FindClosestEnemy().transform.position - player.transform.position;
 
+            // Se non sta sparando, inizia a sparare
             if (!weapon.getIsShooting()) StartCoroutine(shooting);
-            
-
         } 
         // Enemy not found
         else
         {
             lookDir = new Vector2(joystick.Horizontal, joystick.Vertical);
 
+            // Se sta sparando, smette e reset variabili
             if (weapon.getIsShooting())
             {
                 StopCoroutine(shooting);
                 weapon.setIsShooting(false);
 
-                shooting = weapon.Shooting(firePoint);
+                shooting = weapon.Shooting();
             }
         }
 
-        // If joystick is moving
+        // If joystick is moving or an enemy is found
         if (!lookDir.Equals(new Vector2(0,0)))
         {
             float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90f;
