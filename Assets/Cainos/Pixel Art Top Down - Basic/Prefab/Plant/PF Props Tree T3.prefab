@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2055102311959635375}
   - component: {fileID: 2055102311959635374}
+  - component: {fileID: 6554453334654636241}
   m_Layer: 20
   m_Name: PF Props Tree T3
   m_TagString: Untagged
@@ -59,6 +60,34 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.34558892, y: 0.24378252}
   m_EdgeRadius: 0
+--- !u!114 &6554453334654636241
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2055102311959635369}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShadowGroup: 0
+  m_HasRenderer: 0
+  m_UseRendererSilhouette: 1
+  m_CastsShadows: 1
+  m_SelfShadows: 0
+  m_ApplyToSortingLayers: 00000000657db531
+  m_ShapePath:
+  - {x: -0.20178449, y: 0, z: 0}
+  - {x: 0.14380443, y: 0, z: 0}
+  - {x: 0.11806965, y: 1.8200448, z: 0}
+  - {x: -0.23920655, y: 1.7619808, z: 0}
+  - {x: -0.20719552, y: 1.5231715, z: 0}
+  - {x: -0.21566725, y: 1.0111575, z: 0}
+  m_ShapePathHash: -965944111
+  m_Mesh: {fileID: 0}
+  m_InstanceId: 58038
 --- !u!1 &7508116785346154267
 GameObject:
   m_ObjectHideFlags: 0
@@ -109,7 +138,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a9f84881abde25b48904c0ff67bca145, type: 2}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -191,7 +220,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a9f84881abde25b48904c0ff67bca145, type: 2}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
