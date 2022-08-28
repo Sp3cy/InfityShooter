@@ -5,8 +5,9 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     [Header("- Enemy Stats")]
-    public float life = 10f; 
-    public float speed = 1f;
+    public float life = 50f;
+    public float attack = 10f;
+    public float speed = 2f;
 
     [Space(1)]
     [Header("- Rotation Time")]
@@ -30,6 +31,15 @@ public class Enemy : MonoBehaviour
         if (life <= 0)
         {
             Dead();
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        // Quando entra in collisione col player
+        if (collision.gameObject.tag == "Player")
+        {
+            collision.gameObject.GetComponent<PlayerBehaviour>().HittedByEnemy(attack);
         }
     }
 

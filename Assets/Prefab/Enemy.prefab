@@ -131,6 +131,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   life: 50
+  attack: 10
   speed: 2
   lerpT: 0.5
 --- !u!50 &8489877846852209201

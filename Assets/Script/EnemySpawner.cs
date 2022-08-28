@@ -4,14 +4,16 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
+    [Header("- Object")]
     public GameObject enemyPrefab;
 
+    [Header("- Spawner Related")]
     public float minRangeX;
-    public float minRangeY;
-
     public float maxRangeX;
+    [Space(5)]
+    public float minRangeY;
     public float maxRangeY;
-
+    [Space(5)]
     public float spawnDelay = 2f;
 
     private Vector2 playerPos;

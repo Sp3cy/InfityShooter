@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class PlayerBehaviour : MonoBehaviour
 {
+    [Header("- Player Stats")]
+    public float life = 100f;
+
     [Header("- Objects")]
     public Rigidbody2D player;
     public Weapon weapon;
@@ -33,6 +36,16 @@ public class PlayerBehaviour : MonoBehaviour
 
         // Set the coroutine to Shooting
         shooting = weapon.Shooting();
+    }
+
+    private void Update()
+    {
+        // Se il player muore
+        if (life <= 0)
+        {
+            Debug.Log("Sei Morto\nRipristino vita");
+            life = 100f;
+        }
     }
 
     // Update is called once per frame
@@ -69,6 +82,12 @@ public class PlayerBehaviour : MonoBehaviour
             float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90f;
             player.rotation = Mathf.LerpAngle(player.rotation, angle, lerpT);
         }
+    }
+
+    public void HittedByEnemy(float damage)
+    {
+        life -= damage;
+        Debug.Log("Vita: " + life);
     }
 
     // Find nearest object with Enemy Tag

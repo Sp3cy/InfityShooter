@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
+    [Header("- Bullet Stats")]
     public float bulletDuration = 2f;
+
     private float damage = 0f;
 
     private void Start()

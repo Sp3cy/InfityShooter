@@ -5,8 +5,8 @@ using UnityEngine;
 public class Weapon : MonoBehaviour
 {
     [Header("- Weapon Stats")]
-    public float bulletDmg = 10f;
-    public float bulletForce = 20f;
+    public float bulletDmg = 20f;
+    public float bulletForce = 30f;
     public float fireGap = 0.5f;
 
     [Space(1)]
