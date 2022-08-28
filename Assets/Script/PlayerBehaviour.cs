@@ -49,26 +49,15 @@ public class PlayerBehaviour : MonoBehaviour
         Vector2 lookDir;
 
         // If an enemy is found
-        /* if (FindClosestEnemy() != null)
-         {
+        if (weapon.getIsShooting() & FindClosestEnemy() != null)
+        {
             lookDir = FindClosestEnemy().transform.position - player.transform.position;
-
-             // Se non sta sparando, inizia a sparare
-            // if (!weapon.getIsShooting()) weapon.StartShooting();
-         } 
-         // Enemy not found
-         else
-         {
-             lookDir = new Vector2(joystick.Horizontal, joystick.Vertical);
-
-             // Se sta sparando, smette e reset variabili
-            /* if (weapon.getIsShooting())
-             {
-                 weapon.StopShooting();
-             }*/
-        //}
-
-        lookDir = new Vector2(joystick.Horizontal, joystick.Vertical);
+        } 
+        // Enemy not found
+        else
+        {
+            lookDir = new Vector2(joystick.Horizontal, joystick.Vertical);
+        }
 
         // If joystick is moving or an enemy is found
         if (!lookDir.Equals(new Vector2(0,0)))
