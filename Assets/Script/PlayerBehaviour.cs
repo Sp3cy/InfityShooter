@@ -43,8 +43,7 @@ public class PlayerBehaviour : MonoBehaviour
         // Se il player muore
         if (life <= 0)
         {
-            Debug.Log("Sei Morto\nRipristino vita");
-            life = 100f;
+            Dead();
         }
     }
 
@@ -82,6 +81,12 @@ public class PlayerBehaviour : MonoBehaviour
             float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90f;
             player.rotation = Mathf.LerpAngle(player.rotation, angle, lerpT);
         }
+    }
+
+    public void Dead()
+    {
+        transform.position = new Vector2(0, 0);
+        life = 100f;
     }
 
     public void HittedByEnemy(float damage)
