@@ -9,10 +9,10 @@ public class Weapon : MonoBehaviour
     public float fireGap = 0.5f;
 
     public GameObject bulletPrefab;
-    public Transform firePoint;
 
     private bool selected;
     private bool isShooting;
+    private Transform firePoint;
 
     // Start is called before the first frame update
     void Start()
