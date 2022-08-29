@@ -2,10 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class PlayerJoystick : MonoBehaviour
 {
-    public float speed;
+    public float NormalSpeed;
+    public float ShootingSpeed;
     public Rigidbody2D rb;
+
+    public Weapon weapon;
 
     private VariableJoystick variableJoystick;
 
@@ -16,7 +20,15 @@ public class PlayerJoystick : MonoBehaviour
 
     public void FixedUpdate()
     {
-        Vector2 direction = Vector2.up * variableJoystick.Vertical + Vector2.right * variableJoystick.Horizontal;
-        rb.AddForce(direction * speed * Time.fixedDeltaTime, ForceMode2D.Force);
+        if (weapon.isShooting == false)
+        {
+            Vector2 direction = Vector2.up * variableJoystick.Vertical + Vector2.right * variableJoystick.Horizontal;
+            rb.AddForce(direction * NormalSpeed * Time.fixedDeltaTime, ForceMode2D.Force);
+        }
+        else
+        {
+            Vector2 direction = Vector2.up * variableJoystick.Vertical + Vector2.right * variableJoystick.Horizontal;
+            rb.AddForce(direction * ShootingSpeed * Time.fixedDeltaTime, ForceMode2D.Force);
+        }
     }
 }

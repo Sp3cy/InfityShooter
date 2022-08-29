@@ -14,7 +14,7 @@ public class Weapon : MonoBehaviour
     public GameObject bulletPrefab;
 
     private bool selected;
-    private bool isShooting;
+    public bool isShooting;
     private Transform firePos;
 
     private IEnumerator coroShooting;
