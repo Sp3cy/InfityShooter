@@ -16,6 +16,7 @@ public class Weapon : MonoBehaviour
     private bool selected;
     private bool isShooting;
     private Transform firePos;
+    private AudioSource fireSound;
 
     private IEnumerator coroShooting;
 
@@ -26,6 +27,8 @@ public class Weapon : MonoBehaviour
 
         selected = false;
         isShooting = false;
+
+        fireSound = gameObject.GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -59,6 +62,8 @@ public class Weapon : MonoBehaviour
         // Aggiunge la forza per far andare avanti il colpo
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
         rb.AddForce(firePos.up * bulletForce, ForceMode2D.Impulse);
+
+        fireSound.Play();
 
         yield return new WaitForSeconds(fireGap);
 

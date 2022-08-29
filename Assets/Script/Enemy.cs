@@ -15,6 +15,9 @@ public class Enemy : MonoBehaviour
     [Header("- Rotation Time")]
     public float lerpT = 0.5f;
 
+    [Space(1)]
+    [Header("- Anim Time")]
+    public float waitAfetrAtkAnim;
 
     private float animAtkTime;
 
@@ -32,7 +35,7 @@ public class Enemy : MonoBehaviour
         animator = gameObject.GetComponent<Animator>();
 
         SetAnimationTime();
-        atkEachSec = AttackEachSecond(animAtkTime);
+        atkEachSec = AttackEachSecond(animAtkTime, waitAfetrAtkAnim);
     }
 
     // Update is called once per frame
@@ -51,7 +54,7 @@ public class Enemy : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             StartCoroutine(atkEachSec);
-            animator.SetBool("Attacca", true);
+            
         }
     }
 
@@ -61,17 +64,22 @@ public class Enemy : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             StopCoroutine(atkEachSec);
-            atkEachSec = AttackEachSecond(1);
+            atkEachSec = AttackEachSecond(animAtkTime, waitAfetrAtkAnim);
             animator.SetBool("Attacca", false);
         }
     }
 
-    private IEnumerator AttackEachSecond(float sec)
+    private IEnumerator AttackEachSecond(float sec, float waitAfterAnim)
     {
+        animator.SetBool("Attacca", true);
         player.gameObject.GetComponent<PlayerBehaviour>().HittedByEnemy(attack);
-        yield return new WaitForSeconds(sec);
 
-        yield return AttackEachSecond(sec);
+        yield return new WaitForSeconds(sec);
+        animator.SetBool("Attacca", false);
+
+        yield return new WaitForSeconds(waitAfterAnim);
+
+        yield return AttackEachSecond(sec, waitAfterAnim);
     }
 
     public void Hitted(float damage)
@@ -87,8 +95,6 @@ public class Enemy : MonoBehaviour
 
     private void MoveToPlayer()
     {
-        Vector2 lookDir;
-
         // Sposta i nemici verso il player
         transform.position = Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
 
