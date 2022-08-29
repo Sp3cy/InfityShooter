@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 9208124488670249304}
   - component: {fileID: 8489877846852209201}
   - component: {fileID: 2723035014901619358}
+  - component: {fileID: 4705241890765372852}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -29,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 2665966712921770188}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.66, y: 1.18, z: -2}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 4, y: 4, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -74,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 10
-  m_Sprite: {fileID: 21300000, guid: 54c30ffd8dcd3294499c68905fa3d3ca, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 386a9311c06cd3647b47714e63ea19bd, type: 3}
   m_Color: {r: 0.53541636, g: 1, b: 0.504717, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -97,9 +98,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39e75ad4fc237b04f97783ca9a0df172, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  life: 100
+  life: 10
   attack: 20
-  speed: 0.1
+  speed: 1
   lerpT: 0.1
 --- !u!50 &8489877846852209201
 Rigidbody2D:
@@ -135,6 +136,25 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.008394957, y: 0.05}
+  m_Offset: {x: -0.027727067, y: -0.06719428}
   serializedVersion: 2
-  m_Radius: 0.31192413
+  m_Radius: 0.11681494
+--- !u!95 &4705241890765372852
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2665966712921770188}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 85b15ef49e66a8e4db378545662ed48d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
