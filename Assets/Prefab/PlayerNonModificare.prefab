@@ -84,8 +84,8 @@ GameObject:
   - component: {fileID: 8448212412545100611}
   - component: {fileID: 2749385503348596312}
   - component: {fileID: 7636861930510042473}
-  - component: {fileID: 2832388108643086090}
   - component: {fileID: 2749385503348596314}
+  - component: {fileID: 8667215625037979035}
   m_Layer: 0
   m_Name: PlayerNonModificare
   m_TagString: Player
@@ -121,8 +121,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7382cfccd1df09842bb41ef713811fac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2000
+  NormalSpeed: 0
+  ShootingSpeed: 0
   rb: {fileID: 7636861930510042473}
+  weapon: {fileID: 0}
 --- !u!114 &2749385503348596312
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -162,32 +164,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!61 &2832388108643086090
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2749385503348596318}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.64, y: 0.64}
-    newSize: {x: 0.64, y: 0.64}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.32, y: 0.32}
-  m_EdgeRadius: 0
 --- !u!212 &2749385503348596314
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -239,6 +215,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!58 &8667215625037979035
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2749385503348596318}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.06056228}
+  serializedVersion: 2
+  m_Radius: 0.08156583
 --- !u!1 &5901171553542015262
 GameObject:
   m_ObjectHideFlags: 0

@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 2665966712921770190}
   - component: {fileID: 2665966712921770189}
-  - component: {fileID: 2665966712921770191}
   - component: {fileID: 9208124488670249304}
   - component: {fileID: 8489877846852209201}
+  - component: {fileID: 2723035014901619358}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -85,40 +85,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!60 &2665966712921770191
-PolygonCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2665966712921770188}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0.32999998, y: 0.35, z: 0.44, w: 0.32999998}
-    pivot: {x: 0.46657383, y: 0.29840004}
-    oldSize: {x: 1.46, y: 1.7}
-    newSize: {x: 1, y: 0.5}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: -0.014736891, y: 0.41599}
-      - {x: -0.26887465, y: 0.40765}
-      - {x: -0.42015696, y: -0.00091707706}
-      - {x: -0.19007742, y: -0.1554488}
-      - {x: 0.014736891, y: -0.22268516}
-      - {x: 0.260347, y: -0.232027}
-      - {x: 0.36762834, y: -0.09458029}
-      - {x: 0.52941597, y: 0.18371606}
-      - {x: 0.37077546, y: 0.37816954}
 --- !u!114 &9208124488670249304
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -156,3 +122,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!58 &2723035014901619358
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2665966712921770188}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.008394957, y: 0.05}
+  serializedVersion: 2
+  m_Radius: 0.31192413
