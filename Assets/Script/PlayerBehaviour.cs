@@ -53,7 +53,7 @@ public class PlayerBehaviour : MonoBehaviour
         Vector2 lookDir = new Vector2(0,0);
 
         // If an enemy is found
-        if (weapon.getIsShooting() & DoesEnemyExist())
+        if (weapon.getIsShooting() & FindClosestEnemy())
         {
             lookDir = FindClosestEnemy().transform.position - player.transform.position;
         } 
@@ -98,6 +98,8 @@ public class PlayerBehaviour : MonoBehaviour
     {
         // Array di Enemy attuali
         GameObject[] gos = GameObject.FindGameObjectsWithTag("Enemy");
+
+        if (gos.Length == 0) return null;
 
         var nearest = gos
           .OrderBy(t => Vector3.Distance(player.transform.position, t.transform.position))
