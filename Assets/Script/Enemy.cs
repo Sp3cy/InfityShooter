@@ -62,9 +62,7 @@ public class Enemy : MonoBehaviour
         // Sposta i nemici verso il player
         transform.position = Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
 
-        // Gira il rigidbody dei nemici
-        lookDir = player.transform.position - transform.position;
-        float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90f;
-        rbEnemy.rotation = Mathf.LerpAngle(rbEnemy.rotation, angle, lerpT);
+        if (transform.position.x > player.transform.position.x) gameObject.GetComponent<SpriteRenderer>().flipX = true;
+        else gameObject.GetComponent<SpriteRenderer>().flipX = false;
     }
 }
