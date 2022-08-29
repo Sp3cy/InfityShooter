@@ -75,7 +75,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d60b370359748746b5e4241c7aa7da7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletDmg: 10
+  bulletDmg: 1
   bulletForce: 20
   fireGap: 0.1
   bulletPrefab: {fileID: 1304352845726487513, guid: b602888ad4dde0a42a7d896218f34034,

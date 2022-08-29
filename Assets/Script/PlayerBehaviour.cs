@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+using System.Linq;
+
 public class PlayerBehaviour : MonoBehaviour
 {
     [Header("- Player Stats")]
@@ -19,6 +21,7 @@ public class PlayerBehaviour : MonoBehaviour
     [Space(1)]
     [Header("- Shot Behaviour")]
     public float maxEnemyDistance = 20f;
+    public int maxEnemy = 4;
 
     // Se viene preso direttamente da weapon non funziona
     private Transform firePos;
@@ -47,10 +50,10 @@ public class PlayerBehaviour : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        Vector2 lookDir;
+        Vector2 lookDir = new Vector2(0,0);
 
         // If an enemy is found
-        if (weapon.getIsShooting() & FindClosestEnemy() != null)
+        if (weapon.getIsShooting() & DoesEnemyExist())
         {
             lookDir = FindClosestEnemy().transform.position - player.transform.position;
         } 
@@ -81,25 +84,36 @@ public class PlayerBehaviour : MonoBehaviour
         life -= damage;
     }
 
+    public bool DoesEnemyExist()
+    {
+        GameObject[] gos = GameObject.FindGameObjectsWithTag("Enemy");
+
+        if (gos.Length == 0) return false;
+
+        return true;
+    }
+
     // Find nearest object with Enemy Tag
     public GameObject FindClosestEnemy()
     {
-        GameObject[] gos;
-        gos = GameObject.FindGameObjectsWithTag("Enemy");
-        GameObject closest = null;
-        float distance = maxEnemyDistance;
-        Vector3 position = transform.position;
-        foreach (GameObject go in gos)
-        {
-            Vector3 diff = go.transform.position - position;
-            float curDistance = diff.sqrMagnitude;
-            if (curDistance < distance)
-            {
-                closest = go;
-                distance = curDistance;
-            }
-        }
-        return closest;
+        // Array di Enemy attuali
+        GameObject[] gos = GameObject.FindGameObjectsWithTag("Enemy");
+
+        var nearest = gos
+          .OrderBy(t => Vector3.Distance(player.transform.position, t.transform.position))
+          .Take(maxEnemy)
+          .OrderBy(t => t.GetComponent<Enemy>().life)
+          .FirstOrDefault();
+
+        return nearest;
     }
 
 }
+
+public class EnemyTest
+{
+    public float distance = 0;
+    public int arrayPos = 0;
+}
+
+

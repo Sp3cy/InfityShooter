@@ -9,18 +9,18 @@ public class PlayerJoystick : MonoBehaviour
     public float ShootingSpeed;
     public Rigidbody2D rb;
 
-    public Weapon weapon;
-
+    private Weapon weapon;
     private VariableJoystick variableJoystick;
 
     private void Start()
     {
+        weapon = GameObject.FindGameObjectWithTag("Weapon").GetComponent<Weapon>();
         variableJoystick = GameObject.FindGameObjectWithTag("Joystick").GetComponent<VariableJoystick>();
     }
 
     public void FixedUpdate()
     {
-        if (weapon.isShooting == false)
+        if (!weapon.getIsShooting())
         {
             Vector2 direction = Vector2.up * variableJoystick.Vertical + Vector2.right * variableJoystick.Horizontal;
             rb.AddForce(direction * NormalSpeed * Time.fixedDeltaTime, ForceMode2D.Force);
