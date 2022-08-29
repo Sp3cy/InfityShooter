@@ -20,6 +20,7 @@ public class Enemy : MonoBehaviour
     public float waitAfetrAtkAnim;
 
     private float animAtkTime;
+    private float animHitTime;
 
     private GameObject player;
     private Rigidbody2D rbEnemy;
@@ -85,7 +86,21 @@ public class Enemy : MonoBehaviour
     public void Hitted(float damage)
     {
         life -= damage;
-       
+
+        if (!animator.GetBool("Colpito"))
+        {
+            StartCoroutine(HitAnim(animHitTime));
+        }
+        
+    }
+
+    private IEnumerator HitAnim(float sec)
+    {
+        animator.SetBool("Colpito", true);
+        yield return new WaitForSeconds(sec);
+        animator.SetBool("Colpito", false);
+
+        
     }
 
     private void Dead()
@@ -113,6 +128,10 @@ public class Enemy : MonoBehaviour
             {
                 case "LittleMonster_Attacca":
                     animAtkTime = clip.length;
+                    break;
+
+                case "LittleMonster_Colpito":
+                    animHitTime = clip.length;
                     break;
 
                 case null:
