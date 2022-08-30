@@ -20,22 +20,25 @@ public class Enemy : MonoBehaviour
     [Header("- Anim Time")]
     public float waitAfetrAtkAnim;
 
+    [Space(1)]
+    [Header("- Objects")]
+    public GameObject healtBar;
+
     private float animAtkTime;
     private float animHitTime;
 
     private bool startCoro;
+    private float keepLife;
 
     private GameObject player;
     private Rigidbody2D rbEnemy;
     private Animator animator;
     private AudioSource biteFx;
-
-    private IEnumerator atkEachSec;
-
     // Start is called before the first frame update
     void Start()
     {
         startCoro = false;
+        keepLife = life;
 
         player = GameObject.FindGameObjectWithTag("Player");
         rbEnemy = gameObject.GetComponent<Rigidbody2D>();
@@ -95,6 +98,9 @@ public class Enemy : MonoBehaviour
     public void Hitted(float damage)
     {
         life -= damage;
+
+        healtBar.transform.localScale = healtBar.transform.localScale + new Vector3(-damage/keepLife, 0, 0);
+        healtBar.transform.position = healtBar.transform.position + new Vector3((-damage/keepLife)/2, 0, 0);
 
         if (!animator.GetBool("Colpito"))
         {

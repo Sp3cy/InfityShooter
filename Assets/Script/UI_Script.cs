@@ -13,8 +13,6 @@ public class UI_Script : MonoBehaviour
     {
         hpBar = GameObject.FindGameObjectWithTag("PlayerHpBar").GetComponent<Slider>();
 
-
-
         hpBar.maxValue = GameData.PlayerLife;
         hpBar.minValue = 0;
     }
