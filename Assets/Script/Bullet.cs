@@ -11,11 +11,15 @@ public class Bullet : MonoBehaviour
     private float BulletAnimDurata;
 
     private Animator animator;
+    private Rigidbody2D rb;
+    private Collider2D collider;
 
 
     private void Start()
     {
         animator = gameObject.GetComponent<Animator>();
+        rb = gameObject.GetComponent<Rigidbody2D>();
+        collider = gameObject.GetComponent<Collider2D>();
 
         SetAnimationTime();
         StartCoroutine(DestroyAfterSec(bulletDuration));
@@ -28,6 +32,8 @@ public class Bullet : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+
+
         if (damage == 0f) Debug.LogError("- Damage not setted");
 
         // if enemy is been hitted
@@ -53,6 +59,11 @@ public class Bullet : MonoBehaviour
 
     private IEnumerator AnimazioneBulletEsplode(float seconds)
     {
+      //roba mia gius POI TI SPIEGO
+        rb.constraints = RigidbodyConstraints2D.FreezeAll;
+        collider.isTrigger = true;
+      //roba mia gius POI TI SPIEGO
+
         animator.SetBool("Hit", true);
         yield return new WaitForSeconds(seconds);
         animator.SetBool("Hit", false);
