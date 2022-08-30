@@ -550,6 +550,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8255408946828145525, guid: 8f8a7c0e03b33a04889ea68323768cb7,
+        type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: b43075e4dbfed5242bdd6719b30915c9, type: 3}
     - target: {fileID: 8511663574762140042, guid: 8f8a7c0e03b33a04889ea68323768cb7,
         type: 3}
       propertyPath: firePoint

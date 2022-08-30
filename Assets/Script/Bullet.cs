@@ -8,9 +8,16 @@ public class Bullet : MonoBehaviour
     public float bulletDuration = 2f;
 
     private float damage = 0f;
+    private float BulletAnimDurata;
+
+    private Animator animator;
+
 
     private void Start()
     {
+        animator = gameObject.GetComponent<Animator>();
+
+        SetAnimationTime();
         StartCoroutine(DestroyAfterSec(bulletDuration));
     }
 
@@ -28,8 +35,9 @@ public class Bullet : MonoBehaviour
         {
             collision.gameObject.GetComponent<Enemy>().Hitted(damage);
         }
+        StartCoroutine(AnimazioneBulletEsplode(BulletAnimDurata));
 
-        Destroy(gameObject);
+
     }
 
     // Disrugge il gameobject dopo tot secondi
@@ -40,4 +48,35 @@ public class Bullet : MonoBehaviour
         // Handle bug
         if (gameObject.Equals(gameObject)) Destroy(gameObject);
     }
+
+    // Animazione Bullet Contatto
+
+    private IEnumerator AnimazioneBulletEsplode(float seconds)
+    {
+        animator.SetBool("Hit", true);
+        yield return new WaitForSeconds(seconds);
+        animator.SetBool("Hit", false);
+        Destroy(gameObject);
+
+    }
+
+    private void SetAnimationTime()
+    {
+        // Get Animation duration
+        AnimationClip[] clips = animator.runtimeAnimatorController.animationClips;
+
+        foreach (AnimationClip clip in clips)
+        {
+            switch (clip.name)
+            {
+                case "BulletHit":
+                    BulletAnimDurata = clip.length;
+                    break;
+
+                case null:
+                    break;
+            }
+        }
+    }
 }
+

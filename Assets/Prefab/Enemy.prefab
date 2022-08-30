@@ -98,10 +98,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39e75ad4fc237b04f97783ca9a0df172, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  life: 10
+  life: 12
   attack: 20
   speed: 1
   lerpT: 0.1
+  waitAfetrAtkAnim: 1
 --- !u!50 &8489877846852209201
 Rigidbody2D:
   serializedVersion: 4
@@ -136,9 +137,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.027727067, y: -0.06719428}
+  m_Offset: {x: -0.022820562, y: -0.07069896}
   serializedVersion: 2
-  m_Radius: 0.11681494
+  m_Radius: 0.0810674
 --- !u!95 &4705241890765372852
 Animator:
   serializedVersion: 3
