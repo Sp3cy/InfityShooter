@@ -103,7 +103,7 @@ public class Weapon : MonoBehaviour
 
     public void ReloadWeapon()
     {
-        if (GameData.AmmoCount > 0) GameData.AmmoCount = 0;
+        if (GameData.AmmoCount > 0 & GameData.AmmoCount < ammoMax) GameData.AmmoCount = 0;
     }
 
     // Get if player is shooting
