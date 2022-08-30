@@ -24,7 +24,6 @@ public class Enemy : MonoBehaviour
     private float animHitTime;
 
     private bool startCoro;
-    private bool isPassedT;
 
     private GameObject player;
     private Rigidbody2D rbEnemy;
@@ -36,12 +35,11 @@ public class Enemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        startCoro = false;
+
         player = GameObject.FindGameObjectWithTag("Player");
         rbEnemy = gameObject.GetComponent<Rigidbody2D>();
         animator = gameObject.GetComponent<Animator>();
-
-        startCoro = false;
-        isPassedT = false;
 
         biteFx = gameObject.GetComponent<AudioSource>();
 

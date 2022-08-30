@@ -15,12 +15,12 @@ public class AdminCheat : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) & !weapon.getIsShooting())
+        if (Input.GetKey(KeyCode.Space))
         {
             weapon.StartShooting();
         }
 
-        if (Input.GetKeyUp(KeyCode.Space) & weapon.getIsShooting())
+        if (Input.GetKeyUp(KeyCode.Space))
         {
             weapon.StopShooting();
         }

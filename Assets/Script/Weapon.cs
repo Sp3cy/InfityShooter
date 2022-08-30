@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Weapon : MonoBehaviour
@@ -8,25 +7,27 @@ public class Weapon : MonoBehaviour
     public float bulletDmg = 20f;
     public float bulletForce = 30f;
     public float fireGap = 0.5f;
+    public int ammoMax = 30;
+    public float reloadT = 1f;
 
     [Space(1)]
     [Header("- Bullet Prefab")]
     public GameObject bulletPrefab;
 
-    private bool selected;
     private bool isShooting;
     private Transform firePos;
     private AudioSource fireSound;
 
-    private IEnumerator coroShooting;
-
     // Start is called before the first frame update
     void Start()
     {
-        coroShooting = Shooting();
+        GameData.AmmoCount = ammoMax;
 
-        selected = false;
         isShooting = false;
+        StartCoroutine(Shooting());
+
+        // Reload every time ammocount = 0
+        StartCoroutine(Reload(reloadT));
 
         fireSound = gameObject.GetComponent<AudioSource>();
     }
@@ -34,26 +35,21 @@ public class Weapon : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
     }
 
     public void StartShooting()
     {
-        StartCoroutine(coroShooting);
+        isShooting = true;
     }
     public void StopShooting()
     {
-        StopCoroutine(coroShooting);
-
-        // Bug Handler
         isShooting = false;
-        coroShooting = Shooting();
     }
 
     // Spara a ripetizione ogni tot s finchè non viene stoppata la coroutine
     public IEnumerator Shooting()
     {
-        isShooting = true;
+        yield return new WaitUntil(() => isShooting == true & GameData.AmmoCount > 0);
 
         // Crea l'oggetto bulletPrefab e gli assegna il damage
         GameObject bullet = Instantiate(bulletPrefab, firePos.position, firePos.rotation);
@@ -63,6 +59,7 @@ public class Weapon : MonoBehaviour
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
         rb.AddForce(firePos.up * bulletForce, ForceMode2D.Impulse);
 
+        GameData.AmmoCount--;
         fireSound.Play();
 
         yield return new WaitForSeconds(fireGap);
@@ -71,14 +68,28 @@ public class Weapon : MonoBehaviour
         yield return Shooting();
     }
 
-    // 
-    public void setSelected(bool newBool)
+    private IEnumerator Reload(float reloadT)
     {
-        selected = newBool;
+        yield return new WaitUntil(() => GameData.AmmoCount <= 0);
+
+        isShooting = false;
+
+        Debug.Log("reloading");
+        yield return new WaitForSeconds(reloadT);
+
+        GameData.AmmoCount = ammoMax;
+
+        // Fa ripartire questa coroutine
+        yield return Reload(reloadT);
+    }
+
+    public void ReloadWeapon()
+    {
+        if (GameData.AmmoCount > 0) GameData.AmmoCount = 0;
     }
 
     // Get if player is shooting
-    public bool getIsShooting()
+    public bool IsShooting()
     {
         return isShooting;
     }

@@ -55,7 +55,7 @@ public class PlayerBehaviour : MonoBehaviour
         Vector2 lookDir = new Vector2(0,0);
 
         // If an enemy is found
-        if (weapon.getIsShooting() & FindClosestEnemy())
+        if (weapon.IsShooting() & FindClosestEnemy())
         {
             lookDir = FindClosestEnemy().transform.position - player.transform.position;
         } 
