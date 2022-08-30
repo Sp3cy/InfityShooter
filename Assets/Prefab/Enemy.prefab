@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 2723035014901619358}
   - component: {fileID: 4705241890765372852}
   - component: {fileID: 131357629422406261}
+  - component: {fileID: 2516134684209535288}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -102,7 +103,7 @@ MonoBehaviour:
   life: 12
   attack: 20
   speed: 1
-  knockback: 75
+  knockback: 60
   lerpT: 0.1
   waitAfetrAtkAnim: 1
 --- !u!50 &8489877846852209201
@@ -257,3 +258,29 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &2516134684209535288
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2665966712921770188}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShadowGroup: 0
+  m_HasRenderer: 1
+  m_UseRendererSilhouette: 1
+  m_CastsShadows: 1
+  m_SelfShadows: 0
+  m_ApplyToSortingLayers: 00000000657db531
+  m_ShapePath:
+  - {x: -0.029203057, y: -0.16024993, z: 0}
+  - {x: 0.030608714, y: -0.160679, z: 0}
+  - {x: 0.030899525, y: 0.030637443, z: 0}
+  - {x: -0.030176878, y: 0.030142158, z: 0}
+  m_ShapePathHash: 251370597
+  m_Mesh: {fileID: 0}
+  m_InstanceId: 301090
