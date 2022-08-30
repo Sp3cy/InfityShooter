@@ -54,7 +54,7 @@ MonoBehaviour:
   m_UseNormalMap: 0
   m_LightOrder: 0
   m_AlphaBlendOnOverlap: 0
-  m_ShadowIntensity: 0.198
+  m_ShadowIntensity: 0.018
   m_ShadowVolumeIntensity: 0
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
@@ -86,6 +86,7 @@ GameObject:
   - component: {fileID: 7636861930510042473}
   - component: {fileID: 2749385503348596314}
   - component: {fileID: 8667215625037979035}
+  - component: {fileID: 4156179886566131468}
   m_Layer: 0
   m_Name: PlayerNonModificare
   m_TagString: Player
@@ -144,6 +145,7 @@ MonoBehaviour:
   angleFix: 10
   maxEnemyDistance: 50
   maxEnemy: 4
+  knockbackT: 0.5
 --- !u!50 &7636861930510042473
 Rigidbody2D:
   serializedVersion: 4
@@ -232,6 +234,32 @@ CircleCollider2D:
   m_Offset: {x: 0, y: -0.06056228}
   serializedVersion: 2
   m_Radius: 0.08156583
+--- !u!114 &4156179886566131468
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2749385503348596318}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShadowGroup: 0
+  m_HasRenderer: 1
+  m_UseRendererSilhouette: 1
+  m_CastsShadows: 1
+  m_SelfShadows: 0
+  m_ApplyToSortingLayers: 00000000657db531
+  m_ShapePath:
+  - {x: -0.17274344, y: -0.08384568, z: 0}
+  - {x: 0.16359806, y: -0.07961287, z: 0}
+  - {x: 0.20552464, y: -0.013733908, z: 0}
+  - {x: -0.21585791, y: -0.008497405, z: 0}
+  m_ShapePathHash: 1848685277
+  m_Mesh: {fileID: 0}
+  m_InstanceId: 235332
 --- !u!1 &5085144132390062903
 GameObject:
   m_ObjectHideFlags: 0

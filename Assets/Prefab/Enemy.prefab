@@ -101,7 +101,7 @@ MonoBehaviour:
   life: 12
   attack: 20
   speed: 1
-  knockback: 50
+  knockback: 75
   lerpT: 0.1
   waitAfetrAtkAnim: 1
 --- !u!50 &8489877846852209201
