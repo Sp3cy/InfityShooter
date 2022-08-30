@@ -77,7 +77,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletDmg: 1
-  bulletForce: 20
+  bulletForce: 30
   fireGap: 0.1
   bulletPrefab: {fileID: 1304352845726487513, guid: b602888ad4dde0a42a7d896218f34034,
     type: 3}
@@ -145,7 +145,7 @@ AudioSource:
   m_audioClip: {fileID: 8300000, guid: b43075e4dbfed5242bdd6719b30915c9, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
-  m_Pitch: 1
+  m_Pitch: 1.77
   Loop: 0
   Mute: 0
   Spatialize: 0
