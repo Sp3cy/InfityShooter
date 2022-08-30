@@ -10,6 +10,7 @@ public class Enemy : MonoBehaviour
     public float life = 50f;
     public float attack = 10f;
     public float speed = 2f;
+    public float knockback = 100f;
 
     [Space(1)]
     [Header("- Rotation Time")]
@@ -21,6 +22,9 @@ public class Enemy : MonoBehaviour
 
     private float animAtkTime;
     private float animHitTime;
+
+    private bool startCoro;
+    private bool isPassedT;
 
     private GameObject player;
     private Rigidbody2D rbEnemy;
@@ -35,8 +39,11 @@ public class Enemy : MonoBehaviour
         rbEnemy = gameObject.GetComponent<Rigidbody2D>();
         animator = gameObject.GetComponent<Animator>();
 
+        startCoro = false;
+        isPassedT = false;
+
         SetAnimationTime();
-        atkEachSec = AttackEachSecond(animAtkTime, waitAfetrAtkAnim);
+        StartCoroutine(AttackEachSecond(animAtkTime, waitAfetrAtkAnim));
     }
 
     // Update is called once per frame
@@ -54,8 +61,7 @@ public class Enemy : MonoBehaviour
         // Quando entra in collisione col player
         if (collision.gameObject.tag == "Player")
         {
-            StartCoroutine(atkEachSec);
-            
+            startCoro = true;
         }
     }
 
@@ -64,17 +70,17 @@ public class Enemy : MonoBehaviour
         // Quando entra in collisione col player
         if (collision.gameObject.tag == "Player")
         {
-            StopCoroutine(atkEachSec);
-            atkEachSec = AttackEachSecond(animAtkTime, waitAfetrAtkAnim);
-            animator.SetBool("Attacca", false);
+            startCoro = false;
         }
     }
 
     private IEnumerator AttackEachSecond(float sec, float waitAfterAnim)
     {
-        animator.SetBool("Attacca", true);
-        player.gameObject.GetComponent<PlayerBehaviour>().HittedByEnemy(attack);
+        yield return new WaitUntil(() => startCoro == true);
 
+        animator.SetBool("Attacca", true);
+        player.gameObject.GetComponent<PlayerBehaviour>().HittedByEnemy(attack, knockback, gameObject.transform);
+        
         yield return new WaitForSeconds(sec);
         animator.SetBool("Attacca", false);
 
@@ -99,8 +105,6 @@ public class Enemy : MonoBehaviour
         animator.SetBool("Colpito", true);
         yield return new WaitForSeconds(sec);
         animator.SetBool("Colpito", false);
-
-        
     }
 
     private void Dead()

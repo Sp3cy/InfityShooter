@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 using System.Linq;
+using UnityEngine.SceneManagement;
 
 public class PlayerBehaviour : MonoBehaviour
 {
@@ -22,6 +23,7 @@ public class PlayerBehaviour : MonoBehaviour
     [Header("- Shot Behaviour")]
     public float maxEnemyDistance = 20f;
     public int maxEnemy = 4;
+    public float knockbackT = 0.5f;
 
     // Se viene preso direttamente da weapon non funziona
     private Transform firePos;
@@ -75,13 +77,21 @@ public class PlayerBehaviour : MonoBehaviour
 
     public void Dead()
     {
-        transform.position = new Vector2(0, 0);
-        life = 100f;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
-    public void HittedByEnemy(float damage)
+    public void HittedByEnemy(float damage, float knockback, Transform enemy)
     {
         life -= damage;
+
+        StartCoroutine(DoKnockback(knockbackT, knockback, enemy));
+    }
+
+    private IEnumerator DoKnockback(float knockbackT, float knockback, Transform enemy)
+    {
+        player.gameObject.GetComponent<Rigidbody2D>().AddForce((player.transform.position - enemy.transform.position).normalized * knockback, ForceMode2D.Impulse);
+        yield return new WaitForSeconds(knockbackT);
+        player.gameObject.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
     }
 
     public bool DoesEnemyExist()
@@ -110,12 +120,6 @@ public class PlayerBehaviour : MonoBehaviour
         return nearest;
     }
 
-}
-
-public class EnemyTest
-{
-    public float distance = 0;
-    public int arrayPos = 0;
 }
 
 
