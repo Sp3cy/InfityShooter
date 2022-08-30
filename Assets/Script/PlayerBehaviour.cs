@@ -30,9 +30,15 @@ public class PlayerBehaviour : MonoBehaviour
 
     private Joystick joystick;
 
+    private void Awake()
+    {
+        GameData.PlayerLife = life;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
+
         joystick = GameObject.FindGameObjectWithTag("Joystick").GetComponent<Joystick>();
         firePos = GameObject.FindGameObjectWithTag("Firepoint").GetComponent<Transform>();
 
@@ -43,7 +49,7 @@ public class PlayerBehaviour : MonoBehaviour
     private void Update()
     {
         // Se il player muore
-        if (life <= 0)
+        if (GameData.PlayerLife <= 0)
         {
             Dead();
         }
@@ -82,7 +88,7 @@ public class PlayerBehaviour : MonoBehaviour
 
     public void HittedByEnemy(float damage, float knockback, Transform enemy)
     {
-        life -= damage;
+        GameData.PlayerLife -= damage;
 
         StartCoroutine(DoKnockback(knockbackT, knockback, enemy));
     }
