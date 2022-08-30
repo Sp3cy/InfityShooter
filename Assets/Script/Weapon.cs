@@ -6,14 +6,22 @@ public class Weapon : MonoBehaviour
     [Header("- Weapon Stats")]
     public float bulletDmg = 20f;
     public float bulletForce = 30f;
-    public float fireGap = 0.5f;
+    [Space(2)]
+    public float fireRate = 0.5f;
+    public float fireRateTarget = 0.1f;
+    [Tooltip("MUST BE: VALUE < 1")]
+    public float coeffRPS = 0.6f;
+    [Space(2)]
     public int ammoMax = 30;
     public float reloadT = 1f;
+    
 
     [Space(1)]
     [Header("- Bullet Prefab")]
     public GameObject bulletPrefab;
 
+    private float RowBullets;
+    private float keepFireRate;
     private bool isShooting;
     private Transform firePos;
     private AudioSource fireSound;
@@ -22,6 +30,8 @@ public class Weapon : MonoBehaviour
     void Start()
     {
         GameData.AmmoCount = ammoMax;
+        RowBullets = 0;
+        keepFireRate = fireRate;
 
         isShooting = false;
         StartCoroutine(Shooting());
@@ -44,11 +54,15 @@ public class Weapon : MonoBehaviour
     public void StopShooting()
     {
         isShooting = false;
+        RowBullets = 0;
+        fireRate = keepFireRate;
     }
 
     // Spara a ripetizione ogni tot s finchè non viene stoppata la coroutine
     public IEnumerator Shooting()
     {
+        if (GameData.AmmoCount <= 0) fireRate = keepFireRate; 
+
         yield return new WaitUntil(() => isShooting == true & GameData.AmmoCount > 0);
 
         // Crea l'oggetto bulletPrefab e gli assegna il damage
@@ -59,11 +73,14 @@ public class Weapon : MonoBehaviour
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
         rb.AddForce(firePos.up * bulletForce, ForceMode2D.Impulse);
 
+        RowBullets++;
         GameData.AmmoCount--;
         fireSound.Play();
 
-        yield return new WaitForSeconds(fireGap);
+        yield return new WaitForSeconds(fireRate);
 
+        if (fireRateTarget < fireRate) fireRate = Mathf.Pow(coeffRPS, RowBullets) * keepFireRate;
+        else fireRate = fireRateTarget;
         // Fa ripartire questa coroutine
         yield return Shooting();
     }
@@ -73,6 +90,7 @@ public class Weapon : MonoBehaviour
         yield return new WaitUntil(() => GameData.AmmoCount <= 0);
 
         isShooting = false;
+        RowBullets = 0;
 
         Debug.Log("reloading");
         yield return new WaitForSeconds(reloadT);
