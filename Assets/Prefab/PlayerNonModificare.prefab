@@ -145,7 +145,7 @@ MonoBehaviour:
   angleFix: 10
   maxEnemyDistance: 50
   maxEnemy: 4
-  knockbackT: 0.5
+  knockbackT: 0.2
 --- !u!50 &7636861930510042473
 Rigidbody2D:
   serializedVersion: 4

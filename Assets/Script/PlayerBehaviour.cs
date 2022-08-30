@@ -22,8 +22,8 @@ public class PlayerBehaviour : MonoBehaviour
     [Space(1)]
     [Header("- Shot Behaviour")]
     public float maxEnemyDistance = 20f;
-    public int maxEnemy = 4;
-    public float knockbackT = 0.5f;
+    public int maxEnemy = 3;
+    public float knockbackT = 0.2f;
 
     // Se viene preso direttamente da weapon non funziona
     private Transform firePos;

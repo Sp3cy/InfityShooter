@@ -7,6 +7,8 @@ public class EnemySpawner : MonoBehaviour
     [Header("- Object")]
     public GameObject enemyPrefab;
 
+    public int maxEnemy = 20;
+
     [Header("- Spawner Related")]
     public float minRangeX;
     public float maxRangeX;
@@ -22,6 +24,8 @@ public class EnemySpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        GameData.ActualEnemy = 0;
+
         player = GameObject.FindGameObjectWithTag("Player");
         StartCoroutine(EntitySpawner(enemyPrefab, spawnDelay));
 
@@ -38,6 +42,7 @@ public class EnemySpawner : MonoBehaviour
     private IEnumerator EntitySpawner(GameObject enemy, float delay)
     {
         yield return new WaitForSeconds(delay);
+        yield return new WaitUntil(() => GameData.ActualEnemy < maxEnemy);
 
         // Posizione player attuale
         float posX = player.transform.position.x;
@@ -52,6 +57,7 @@ public class EnemySpawner : MonoBehaviour
         
         // Non so se serva più di tanto creare un gameobject
         GameObject newEnemy = Instantiate(enemy, pos, Quaternion.identity);
+        GameData.ActualEnemy++;
 
         // Restart this coroutine
         StartCoroutine(EntitySpawner(enemy, delay));

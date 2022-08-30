@@ -29,6 +29,7 @@ public class Enemy : MonoBehaviour
     private GameObject player;
     private Rigidbody2D rbEnemy;
     private Animator animator;
+    private AudioSource biteFx;
 
     private IEnumerator atkEachSec;
 
@@ -41,6 +42,8 @@ public class Enemy : MonoBehaviour
 
         startCoro = false;
         isPassedT = false;
+
+        biteFx = gameObject.GetComponent<AudioSource>();
 
         SetAnimationTime();
         StartCoroutine(AttackEachSecond(animAtkTime, waitAfetrAtkAnim));
@@ -80,6 +83,8 @@ public class Enemy : MonoBehaviour
 
         animator.SetBool("Attacca", true);
         player.gameObject.GetComponent<PlayerBehaviour>().HittedByEnemy(attack, knockback, gameObject.transform);
+
+        biteFx.Play();
         
         yield return new WaitForSeconds(sec);
         animator.SetBool("Attacca", false);
@@ -109,6 +114,7 @@ public class Enemy : MonoBehaviour
 
     private void Dead()
     {
+        GameData.ActualEnemy--;
         Destroy(gameObject);
     }
 
