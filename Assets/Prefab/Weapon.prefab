@@ -78,7 +78,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletDmg: 1
   bulletForce: 30
-  fireGap: 0.1
+  fireRate: 0.3
+  fireRateTarget: 0.09
+  coeffRPS: 0.5
+  ammoMax: 50
+  reloadT: 1
   bulletPrefab: {fileID: 1304352845726487513, guid: b602888ad4dde0a42a7d896218f34034,
     type: 3}
 --- !u!212 &7273377210991617940

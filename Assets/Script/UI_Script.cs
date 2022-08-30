@@ -22,7 +22,7 @@ public class UI_Script : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        ammoTxt.text = GameData.AmmoCount.ToString();
+        ammoTxt.text = "x" + GameData.AmmoCount.ToString();
 
         hpBar.value = GameData.PlayerLife;
     }
