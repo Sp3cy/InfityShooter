@@ -16,11 +16,11 @@ public class Bullet : MonoBehaviour
 
 
     private void Start()
-    {
-        animator = gameObject.GetComponent<Animator>();
-        rb = gameObject.GetComponent<Rigidbody2D>();
-        collider = gameObject.GetComponent<Collider2D>();
-
+    {
+        animator = gameObject.GetComponent<Animator>();
+        rb = gameObject.GetComponent<Rigidbody2D>();
+        collider = gameObject.GetComponent<Collider2D>();
+
         SetAnimationTime();
         StartCoroutine(DestroyAfterSec(bulletDuration));
     }
@@ -31,7 +31,7 @@ public class Bullet : MonoBehaviour
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
-    {
+    {
 
 
         if (damage == 0f) Debug.LogError("- Damage not setted");
@@ -58,12 +58,12 @@ public class Bullet : MonoBehaviour
     // Animazione Bullet Contatto
 
     private IEnumerator AnimazioneBulletEsplode(float seconds)
-    {
-      //roba mia gius POI TI SPIEGO
-        rb.constraints = RigidbodyConstraints2D.FreezeAll;
-        collider.isTrigger = true;
-      //roba mia gius POI TI SPIEGO
-
+    {
+      //roba mia gius POI TI SPIEGO
+        rb.constraints = RigidbodyConstraints2D.FreezeAll;
+        collider.isTrigger = true;
+      //roba mia gius POI TI SPIEGO
+
         animator.SetBool("Hit", true);
         yield return new WaitForSeconds(seconds);
         animator.SetBool("Hit", false);
