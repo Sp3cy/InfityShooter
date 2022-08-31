@@ -10,12 +10,12 @@ public class PlayerJoystick : MonoBehaviour
     public Rigidbody2D rb;
 
     private Weapon weapon;
-    private VariableJoystick variableJoystick;
+    private FloatingJoystick variableJoystick;
 
     private void Start()
     {
         weapon = GameObject.FindGameObjectWithTag("Weapon").GetComponent<Weapon>();
-        variableJoystick = GameObject.FindGameObjectWithTag("Joystick").GetComponent<VariableJoystick>();
+        variableJoystick = GameObject.FindGameObjectWithTag("Joystick").GetComponent<FloatingJoystick>();
     }
 
     public void FixedUpdate()
