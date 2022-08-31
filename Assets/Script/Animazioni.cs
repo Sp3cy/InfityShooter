@@ -5,7 +5,7 @@ using UnityEngine;
 public class Animazioni : MonoBehaviour
 {
 
-    public void BounceText(float potenzaAnimazione, float durataAnimazione, GameObject oggetto) //Animazione bouncing.
+    public static void BounceText(float potenzaAnimazione, float durataAnimazione, GameObject oggetto) //Animazione bouncing.
     {
         LeanTween.cancel(oggetto);
 
@@ -13,5 +13,8 @@ public class Animazioni : MonoBehaviour
 
         LeanTween.scale(oggetto, Vector3.one * potenzaAnimazione, durataAnimazione).setEasePunch();
     }
-
+    public static void LoopScaleText(float potenzaAnimazione, float durataAnimazione, GameObject oggetto)
+    {
+        LeanTween.scale(oggetto, Vector3.one * potenzaAnimazione, durataAnimazione).setEaseInOutQuad().setLoopPingPong();
+    }
 }

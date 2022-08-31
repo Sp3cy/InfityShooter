@@ -83,7 +83,7 @@ public class PlayerBehaviour : MonoBehaviour
 
     public void Dead()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        ScenaManagement.CaricaScena("MainMenu");
     }
 
     public void HittedByEnemy(float damage, float knockback, Transform enemy)
