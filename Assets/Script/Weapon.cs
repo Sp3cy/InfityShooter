@@ -23,6 +23,7 @@ public class Weapon : MonoBehaviour
     private float RowBullets;
     private float keepFireRate;
     private bool isShooting;
+    private bool btnFirePressed;
     private Transform firePos;
     private AudioSource fireSound;
 
@@ -33,6 +34,7 @@ public class Weapon : MonoBehaviour
         RowBullets = 0;
         keepFireRate = fireRate;
 
+        btnFirePressed = false;
         isShooting = false;
         StartCoroutine(Shooting());
 
@@ -43,8 +45,10 @@ public class Weapon : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
+        if (btnFirePressed) StartShooting();
+        else StopShooting();
     }
 
     public void StartShooting()
@@ -104,6 +108,11 @@ public class Weapon : MonoBehaviour
     public void ReloadWeapon()
     {
         if (GameData.AmmoCount > 0 & GameData.AmmoCount < ammoMax) GameData.AmmoCount = 0;
+    }
+
+    public void SetBtnFirePressed(bool value)
+    {
+        btnFirePressed = value;
     }
 
     // Get if player is shooting
