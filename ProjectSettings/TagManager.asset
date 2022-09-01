@@ -9,6 +9,7 @@ TagManager:
   - Weapon
   - Firepoint
   - PlayerHpBar
+  - PlayerAmmoBar
   layers:
   - Default
   - TransparentFX

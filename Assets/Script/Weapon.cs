@@ -12,7 +12,7 @@ public class Weapon : MonoBehaviour
     [Tooltip("MUST BE: VALUE < 1")]
     public float coeffRPS = 0.6f;
     [Space(2)]
-    public int ammoMax = 30;
+    public int ammoMax;
     public float reloadT = 1f;
     
 
@@ -26,6 +26,7 @@ public class Weapon : MonoBehaviour
     private bool btnFirePressed;
     private Transform firePos;
     private AudioSource fireSound;
+    public AudioSource reloadSound;
 
     // Start is called before the first frame update
     void Start()
@@ -96,6 +97,8 @@ public class Weapon : MonoBehaviour
         isShooting = false;
         RowBullets = 0;
 
+        reloadSound.Play();
+
         Debug.Log("reloading");
         yield return new WaitForSeconds(reloadT);
 
@@ -126,5 +129,11 @@ public class Weapon : MonoBehaviour
     {
         firePos = newFirePos;
     }
+
+    public int GetAmmoMax ()
+    {
+        return ammoMax;
+    }
+
 
 }
