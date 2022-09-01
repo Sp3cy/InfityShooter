@@ -14,8 +14,6 @@ public class UI_Script : MonoBehaviour
     private Slider hpBar;
     private Slider ammoBar;
 
-    public Weapon weapon;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -24,7 +22,7 @@ public class UI_Script : MonoBehaviour
         hpBar = GameObject.FindGameObjectWithTag("PlayerHpBar").GetComponent<Slider>();
         ammoBar = GameObject.FindGameObjectWithTag("PlayerAmmoBar").GetComponent<Slider>();
 
-        ammoBar.maxValue = weapon.GetAmmoMax();
+        ammoBar.maxValue = GameData.AmmoCount;
         ammoBar.minValue = 0;
 
         hpBar.maxValue = GameData.PlayerLife;

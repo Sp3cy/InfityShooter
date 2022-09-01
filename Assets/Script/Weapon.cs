@@ -28,10 +28,15 @@ public class Weapon : MonoBehaviour
     private AudioSource fireSound;
     public AudioSource reloadSound;
 
+    private void Awake()
+    {
+        GameData.AmmoCount = ammoMax;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
-        GameData.AmmoCount = ammoMax;
+        
         RowBullets = 0;
         keepFireRate = fireRate;
 

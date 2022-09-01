@@ -34,6 +34,8 @@ public class Enemy : MonoBehaviour
     private Rigidbody2D rbEnemy;
     private Animator animator;
     private AudioSource biteFx;
+    private AudioSource deathFx;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -45,6 +47,7 @@ public class Enemy : MonoBehaviour
         animator = gameObject.GetComponent<Animator>();
 
         biteFx = gameObject.GetComponent<AudioSource>();
+        deathFx = GameObject.Find("LittleMonesterDeathSound").GetComponent<AudioSource>();
 
         SetAnimationTime();
         StartCoroutine(AttackEachSecond(animAtkTime, waitAfetrAtkAnim));
@@ -118,6 +121,7 @@ public class Enemy : MonoBehaviour
 
     private void Dead()
     {
+        deathFx.PlayOneShot(deathFx.clip);
         GameData.ActualEnemy--;
         Destroy(gameObject);
     }

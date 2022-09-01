@@ -156,7 +156,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 4
+  m_SortingOrder: 50
   m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7,
     type: 3}
   m_Color: {r: 0, g: 0.85173607, b: 1, a: 0.54509807}
@@ -325,7 +325,6 @@ MonoBehaviour:
   attack: 20
   speed: 1
   knockback: 60
-  healtBarFix: 0
   lerpT: 0.1
   waitAfetrAtkAnim: 1
   healtBar: {fileID: 767141691921310498}
@@ -506,7 +505,7 @@ MonoBehaviour:
   - {x: -0.030176878, y: 0.030142158, z: 0}
   m_ShapePathHash: 251370597
   m_Mesh: {fileID: 0}
-  m_InstanceId: 126712
+  m_InstanceId: 79202
 --- !u!1 &4457955499157566761
 GameObject:
   m_ObjectHideFlags: 0
