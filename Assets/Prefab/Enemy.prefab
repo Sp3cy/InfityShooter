@@ -251,7 +251,7 @@ Transform:
   m_GameObject: {fileID: 2665966712921770188}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.66, y: 1.18, z: -2}
-  m_LocalScale: {x: 4, y: 4, z: 1}
+  m_LocalScale: {x: 3, y: 3, z: 1}
   m_Children:
   - {fileID: 8347864194208291914}
   - {fileID: 4674042555126503794}
@@ -322,11 +322,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   life: 20
-  attack: 20
-  speed: 1
-  knockback: 60
+  attack: 34
+  speed: 1.6
+  knockback: 30
   lerpT: 0.1
-  waitAfetrAtkAnim: 1
+  waitAfetrAtkAnim: 0.7
   healtBar: {fileID: 767141691921310498}
 --- !u!50 &8489877846852209201
 Rigidbody2D:
@@ -505,7 +505,7 @@ MonoBehaviour:
   - {x: -0.030176878, y: 0.030142158, z: 0}
   m_ShapePathHash: 251370597
   m_Mesh: {fileID: 0}
-  m_InstanceId: 79202
+  m_InstanceId: 275858
 --- !u!1 &4457955499157566761
 GameObject:
   m_ObjectHideFlags: 0
