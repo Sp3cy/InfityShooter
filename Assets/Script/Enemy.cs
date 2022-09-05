@@ -123,6 +123,7 @@ public class Enemy : MonoBehaviour
     {
         deathFx.PlayOneShot(deathFx.clip);
         GameData.ActualEnemy--;
+        GameData.EnemyDead++;
         Destroy(gameObject);
     }
 

@@ -6,11 +6,13 @@ using UnityEngine.UI;
 public class UI_Script : MonoBehaviour
 {
     public GameObject ammoTxtHolder;
+    public Text killedEnemyesTXT;
     public Text ammoTxt;
     public float animAmmoPow = 1.6f;
     public float animAmmoTime = 1;
 
     private int tempAmmoCount;
+    private int tempKilledEnemyes;
     private Slider hpBar;
     private Slider ammoBar;
 
@@ -37,12 +39,18 @@ public class UI_Script : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (GameData.isAmmoCountChanged(tempAmmoCount))
+        if (GameData.isCountChanged(GameData.AmmoCount,tempAmmoCount))
         {
             tempAmmoCount = GameData.AmmoCount;
             ammoBar.value = GameData.AmmoCount;
             ammoTxt.text = "x" + GameData.AmmoCount.ToString();
             Animazioni.BounceText(animAmmoPow, animAmmoTime, ammoTxtHolder);
+        }
+
+        if (GameData.isCountChanged(GameData.EnemyDead,tempKilledEnemyes))
+        {
+            tempKilledEnemyes = GameData.EnemyDead;
+            killedEnemyesTXT.text = GameData.EnemyDead.ToString();
         }
 
         hpBar.value = GameData.PlayerLife;
