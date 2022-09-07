@@ -63,6 +63,16 @@ public class Enemy : MonoBehaviour
             Dead();
         }
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Grenade")
+        {
+            Debug.Log("negro");
+            Hitted(30);
+        }
+    }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         // Quando entra in collisione col player

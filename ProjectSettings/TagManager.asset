@@ -11,6 +11,7 @@ TagManager:
   - PlayerHpBar
   - PlayerAmmoBar
   - MapHolder
+  - Grenade
   layers:
   - Default
   - TransparentFX
