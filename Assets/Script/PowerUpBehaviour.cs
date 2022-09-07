@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class PowerUpBehaviour : MonoBehaviour
 {
-    public static float grenadeDamage = 10f;
-
+    public static float grenadeDamage = 20f;
+    [Header("- Granata")]
+    public AudioSource grenadeExplosionSound;
     public GameObject grenadePrefab;
+    public GameObject grenadeParticleExplosion;
     public float grenadeForce = 10f;
     public float grenadeExplosionT = 1f;
     public float grenadeWaitT = 10f;
@@ -30,7 +32,7 @@ public class PowerUpBehaviour : MonoBehaviour
 
         grenadeCol.enabled = false;
 
-        grenadeRb.AddForce(player.transform.up * grenadeForce, ForceMode2D.Force);
+        grenadeRb.AddForce(new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f)) * grenadeForce, ForceMode2D.Force);
 
         // Wait for grenade explosion
         yield return new WaitForSeconds(grenadeExplosionT);
@@ -38,13 +40,18 @@ public class PowerUpBehaviour : MonoBehaviour
         grenadeCol.enabled = true;
 
         // Wait fix for collider function
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForFixedUpdate();
         grenadeCol.enabled = false;
+        var grenadeExplodeEffect = Instantiate(grenadeParticleExplosion, grenade.transform.position, Quaternion.identity);
 
-        // Wait for animT
-        yield return new WaitForSeconds(1f);
+        grenadeExplosionSound.pitch = Random.Range(1,1.2f);
 
+        grenadeExplosionSound.Play();
         Destroy(grenade);
+
+        // Wait for particles anim
+        yield return new WaitForSeconds(grenadeExplodeEffect.GetComponent<ParticleSystem>().main.duration);
+        Destroy(grenadeExplodeEffect);
 
         // Wait for next grenade
         yield return new WaitForSeconds(grenadeWaitT);

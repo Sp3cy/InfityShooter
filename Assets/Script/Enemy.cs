@@ -46,7 +46,7 @@ public class Enemy : MonoBehaviour
         rbEnemy = gameObject.GetComponent<Rigidbody2D>();
         animator = gameObject.GetComponent<Animator>();
 
-        biteFx = gameObject.GetComponent<AudioSource>();
+        biteFx = GameObject.Find("LittleMonsterAttackSound").GetComponent<AudioSource>();
         deathFx = GameObject.Find("LittleMonesterDeathSound").GetComponent<AudioSource>();
 
         SetAnimationTime();
@@ -68,8 +68,7 @@ public class Enemy : MonoBehaviour
     {
         if (collision.gameObject.tag == "Grenade")
         {
-            Debug.Log("negro");
-            Hitted(30);
+            Hitted(PowerUpBehaviour.grenadeDamage);
         }
     }
 
@@ -98,8 +97,8 @@ public class Enemy : MonoBehaviour
         animator.SetBool("Attacca", true);
         player.gameObject.GetComponent<PlayerBehaviour>().HittedByEnemy(attack, knockback, gameObject.transform);
 
-        biteFx.Play();
-        
+        biteFx.PlayOneShot(biteFx.clip);
+
         yield return new WaitForSeconds(sec);
         animator.SetBool("Attacca", false);
 
@@ -131,7 +130,8 @@ public class Enemy : MonoBehaviour
 
     private void Dead()
     {
-        deathFx.PlayOneShot(deathFx.clip);
+        deathFx.pitch = Random.Range(1, 2);
+        deathFx.Play();
         GameData.ActualEnemy--;
         GameData.EnemyDead++;
         Destroy(gameObject);

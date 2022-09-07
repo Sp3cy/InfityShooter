@@ -7,16 +7,26 @@ public class UI_Script : MonoBehaviour
 {
     public GameObject ammoTxtHolder;
     public Text killedEnemyesTXT;
+    public Text gameSessionCurrentTimeTXT;
     public Text ammoTxt;
     public float animAmmoPow = 1.6f;
     public float animAmmoTime = 1;
 
+    int minuti = 0;
     private int tempAmmoCount;
     private int tempKilledEnemyes;
     private Slider hpBar;
     private Slider ammoBar;
 
     public Weapon weapon;
+    private void Awake()
+    {
+        ammoBar.maxValue = weapon.GetAmmoMax();
+        ammoBar.minValue = 0;
+
+        hpBar.maxValue = GameData.PlayerLife;
+        hpBar.minValue = 0;
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -32,20 +42,11 @@ public class UI_Script : MonoBehaviour
         hpBar.maxValue = GameData.PlayerLife;
         hpBar.minValue = 0;
         
-
-        ammoTxt.text = GameData.AmmoCount.ToString();
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (GameData.isCountChanged(GameData.AmmoCount,tempAmmoCount))
-        {
-            tempAmmoCount = GameData.AmmoCount;
-            ammoBar.value = GameData.AmmoCount;
-            ammoTxt.text = "x" + GameData.AmmoCount.ToString();
-            Animazioni.BounceText(animAmmoPow, animAmmoTime, ammoTxtHolder);
-        }
 
         if (GameData.isCountChanged(GameData.EnemyDead,tempKilledEnemyes))
         {
@@ -55,5 +56,9 @@ public class UI_Script : MonoBehaviour
 
         hpBar.value = GameData.PlayerLife;
         
+    }
+    private void Update()
+    {
+        gameSessionCurrentTimeTXT.text = GameData.CurrentPlayT.ToString("0") + "s";
     }
 }

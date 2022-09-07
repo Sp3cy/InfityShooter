@@ -8,6 +8,9 @@ public class EnemySpawner : MonoBehaviour
     public GameObject enemyPrefab;
 
     public int maxEnemy = 20;
+    public int enemyIncrease = 10;
+    public float enemyIncreaseT = 1f;
+    private float tempEnemyIncreaseT;
 
     [Header("- Spawner Related")]
     public float minRangeX;
@@ -24,6 +27,7 @@ public class EnemySpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        tempEnemyIncreaseT = enemyIncreaseT;
         GameData.ActualEnemy = 0;
 
         player = GameObject.FindGameObjectWithTag("Player");
@@ -36,7 +40,11 @@ public class EnemySpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (GameData.CurrentPlayT > tempEnemyIncreaseT)
+        {
+            maxEnemy += enemyIncrease;
+            tempEnemyIncreaseT = GameData.CurrentPlayT + enemyIncreaseT;
+        }
     }
 
     private IEnumerator EntitySpawner(GameObject enemy, float delay)

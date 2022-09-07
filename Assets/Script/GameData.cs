@@ -8,11 +8,13 @@ public class GameData : MonoBehaviour
     private static int actualEnemy;
     private static int ammoCount;
     private static float playerLife;
+    private static float currentPlayT;
 
     public static int EnemyDead { get => enemyDead; set => enemyDead = value; }
     public static int ActualEnemy { get => actualEnemy; set => actualEnemy = value; }
     public static int AmmoCount { get => ammoCount; set => ammoCount = value; }
     public static float PlayerLife { get => playerLife; set => playerLife = value; }
+    public static float CurrentPlayT { get => currentPlayT; set => currentPlayT = value; }
 
     public static bool isCountChanged(int Count,int tempCount)
     {
