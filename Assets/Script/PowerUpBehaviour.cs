@@ -7,9 +7,10 @@ public class PowerUpBehaviour : MonoBehaviour
     public static float grenadeDamage = 10f;
 
     public GameObject grenadePrefab;
+    public GameObject grenadeParticlesPrefab;
     public float grenadeForce = 10f;
-    public float grenadeExplosionT = 1f;
-    public float grenadeWaitT = 10f;
+    public float grenadeTimer = 1f;
+    public float grenadeRechargeT = 10f;
     public float offsetGrenade = 1f;
 
     private GameObject player;
@@ -32,22 +33,23 @@ public class PowerUpBehaviour : MonoBehaviour
 
         grenadeRb.AddForce(player.transform.up * grenadeForce, ForceMode2D.Force);
 
-        // Wait for grenade explosion
-        yield return new WaitForSeconds(grenadeExplosionT);
+        // Wait for grenade timer
+        yield return new WaitForSeconds(grenadeTimer);
+
         // Set the collider active
         grenadeCol.enabled = true;
 
         // Wait fix for collider function
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForFixedUpdate();
         grenadeCol.enabled = false;
 
-        // Wait for animT
-        yield return new WaitForSeconds(1f);
+        // Instantiate particles
+        var grenadeParticles = Instantiate(grenadeParticlesPrefab, grenade.transform.position, Quaternion.identity);
 
         Destroy(grenade);
 
         // Wait for next grenade
-        yield return new WaitForSeconds(grenadeWaitT);
+        yield return new WaitForSeconds(grenadeRechargeT);
 
         StartCoroutine(Grenades());
     }
