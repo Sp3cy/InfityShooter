@@ -4942,7 +4942,7 @@ ParticleSystemRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 11
+  m_SortingOrder: 9
   m_RenderMode: 0
   m_SortMode: 0
   m_MinParticleSize: 0
@@ -4988,7 +4988,7 @@ PrefabInstance:
     - target: {fileID: 7310477816737461265, guid: 204258f1bfc9b27408c45ffd565f8d23,
         type: 3}
       propertyPath: InitialModule.startSize.scalar
-      value: 0.5
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 7310477816737461265, guid: 204258f1bfc9b27408c45ffd565f8d23,
         type: 3}

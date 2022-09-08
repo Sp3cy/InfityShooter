@@ -54,7 +54,7 @@ public class UI_Script : MonoBehaviour
     }
     private void Update()
     {
-        gameSessionCurrentTimeTXT.text = GameData.CurrentPlayT.ToString("0") + "s";
+        gameSessionCurrentTimeTXT.text = GameData.CurrentPlayT.ToString("0") + " s";
     }
 
     public void GeneratePwMenu()
