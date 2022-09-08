@@ -11,6 +11,7 @@ public class Enemy : MonoBehaviour
     public float attack = 10f;
     public float speed = 2f;
     public float knockback = 100f;
+    public float expDrop = 10f;
 
     [Space(1)]
     [Header("- Rotation Time")]
@@ -72,7 +73,7 @@ public class Enemy : MonoBehaviour
         }
         if (collision.gameObject.tag == "Bolt")
         {
-           // Hitted(Powers. boltDamage);
+            Hitted(Powers.boltDamage);
         }
     }
 
@@ -138,6 +139,7 @@ public class Enemy : MonoBehaviour
         deathFx.Play();
         GameData.ActualEnemy--;
         GameData.EnemyDead++;
+        GameData.ActualExp += expDrop;
         Destroy(gameObject);
     }
 

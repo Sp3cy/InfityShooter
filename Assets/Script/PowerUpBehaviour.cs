@@ -4,16 +4,8 @@ using UnityEngine;
 
 public class PowerUpBehaviour : Powers
 {
-    private int grenadePwLevel;
-    private int boltPwLevel;
-
-   // public Powers powers;
-
     private void Start()
     {
-        grenadePwLevel = 2;
-        boltPwLevel = 0;
-
         player = GameObject.FindGameObjectWithTag("Player");
 
         // Momentaneo
@@ -23,9 +15,9 @@ public class PowerUpBehaviour : Powers
 
     public IEnumerator GrenadePowerUp()
     {
-        yield return new WaitUntil(() => grenadePwLevel > 0);
+        yield return new WaitUntil(() => powers[0].level > 0);
 
-        switch (grenadePwLevel)
+        switch (powers[0].level)
         {
             default:
                 Debug.LogError("PowerUp fail");
@@ -47,10 +39,9 @@ public class PowerUpBehaviour : Powers
 
     public IEnumerator BoltPowerUp()
     {
-        yield return new WaitUntil(() => boltPwLevel > 0);
+        yield return new WaitUntil(() => powers[1].level > 0);
 
-        Debug.Log("Yo");
-        switch (boltPwLevel)
+        switch (powers[1].level)
         {
             default:
                 Debug.LogError("PowerUp fail");

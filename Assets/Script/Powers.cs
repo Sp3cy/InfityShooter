@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class Powers : MonoBehaviour
 {
@@ -29,6 +30,17 @@ public class Powers : MonoBehaviour
 
     [System.NonSerialized]
     public GameObject player;
+
+    public PowersStruct GetRandPowerUp()
+    {
+        int randomIndex = Random.Range(0, powers.Length);
+
+        var pw = powers
+            .Where(powerUp => powerUp.id == randomIndex)
+            .FirstOrDefault();
+
+        return pw;
+    }
 
     public IEnumerator Grenade()
     {
@@ -79,8 +91,8 @@ public class Powers : MonoBehaviour
 [System.Serializable]
 public class PowersStruct
 {
-    public int id;
     public string name;
+    public int id;
     public string[] descLevel;
     public int level = 0;
 }

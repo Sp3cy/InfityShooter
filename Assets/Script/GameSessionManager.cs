@@ -14,7 +14,7 @@ public class GameSessionManager : MonoBehaviour
     {
         GameData.CurrentPlayT = 0;
         GameData.EnemyDead = 0;
-        GameData.ActualExp = 0;
+        GameData.ActualExp = 0f;
     }
 
     // Update is called once per frame
@@ -26,13 +26,19 @@ public class GameSessionManager : MonoBehaviour
         if (GameData.ActualExp > expToUnlock)
         {
             expToUnlock *= expToUnlcokMul;
+            GameData.ActualExp = 0;
 
             // Open powerups menu and stop the game
             Pause();
             ui_Script.GeneratePwMenu();
         }
 
-        if (Input.GetKeyDown(KeyCode.A)) Pause();
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            // Open powerups menu and stop the game
+            Pause();
+            ui_Script.GeneratePwMenu();
+        }
 
         if (Input.GetKeyDown(KeyCode.P)) Resume();
     }
