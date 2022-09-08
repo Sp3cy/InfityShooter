@@ -8,10 +8,14 @@ public class PowerUpBehaviour : MonoBehaviour
     [Header("- Granata")]
     public AudioSource grenadeExplosionSound;
     public GameObject grenadePrefab;
+<<<<<<< HEAD
     public GameObject grenadeParticleExplosion;
+=======
+    public GameObject grenadeParticlesPrefab;
+>>>>>>> testing
     public float grenadeForce = 10f;
-    public float grenadeExplosionT = 1f;
-    public float grenadeWaitT = 10f;
+    public float grenadeTimer = 1f;
+    public float grenadeRechargeT = 10f;
     public float offsetGrenade = 1f;
 
     public static float grenadeDamage = 20f;
@@ -50,8 +54,9 @@ public class PowerUpBehaviour : MonoBehaviour
 
         grenadeRb.AddForce(new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f)) * grenadeForce, ForceMode2D.Force);
 
-        // Wait for grenade explosion
-        yield return new WaitForSeconds(grenadeExplosionT);
+        // Wait for grenade timer
+        yield return new WaitForSeconds(grenadeTimer);
+
         // Set the collider active
         grenadeCol.enabled = true;
 
@@ -60,7 +65,12 @@ public class PowerUpBehaviour : MonoBehaviour
         grenadeCol.enabled = false;
         var grenadeExplodeEffect = Instantiate(grenadeParticleExplosion, grenade.transform.position, Quaternion.identity);
 
+<<<<<<< HEAD
         grenadeExplosionSound.pitch = Random.Range(1f,1.3f);
+=======
+        // Instantiate particles
+        var grenadeParticles = Instantiate(grenadeParticlesPrefab, grenade.transform.position, Quaternion.identity);
+>>>>>>> testing
 
         grenadeExplosionSound.Play();
         Destroy(grenade);
@@ -70,7 +80,7 @@ public class PowerUpBehaviour : MonoBehaviour
         Destroy(grenadeExplodeEffect);
 
         // Wait for next grenade
-        yield return new WaitForSeconds(grenadeWaitT);
+        yield return new WaitForSeconds(grenadeRechargeT);
 
         StartCoroutine(Grenades());
     }
