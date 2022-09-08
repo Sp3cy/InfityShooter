@@ -2,100 +2,71 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PowerUpBehaviour : MonoBehaviour
+public class PowerUpBehaviour : Powers
 {
+    private int grenadePwLevel;
+    private int boltPwLevel;
 
-    [Header("- Granata")]
-    public AudioSource grenadeExplosionSound;
-    public GameObject grenadePrefab;
-<<<<<<< HEAD
-    public GameObject grenadeParticleExplosion;
-=======
-    public GameObject grenadeParticlesPrefab;
->>>>>>> testing
-    public float grenadeForce = 10f;
-    public float grenadeTimer = 1f;
-    public float grenadeRechargeT = 10f;
-    public float offsetGrenade = 1f;
-
-    public static float grenadeDamage = 20f;
-
-
-    [Header("- Bolt")]
-    public AudioSource boltSoundfx;
-    public GameObject boltPrefab;
-    public GameObject boltHitZone;
-    public GameObject particleBruciatura;
-
-    public static float boltDamage = 20f;
-
-
-
-    private GameObject player;
+   // public Powers powers;
 
     private void Start()
     {
+        grenadePwLevel = 2;
+        boltPwLevel = 0;
+
         player = GameObject.FindGameObjectWithTag("Player");
 
         // Momentaneo
-        StartCoroutine(Grenades());
-        StartCoroutine(Bolts());
-        StartCoroutine(Bolts());
-        StartCoroutine(Bolts());
-    }
+        StartCoroutine(GrenadePowerUp());
+        StartCoroutine(BoltPowerUp());
+    }  
 
-    public IEnumerator Grenades()
+    public IEnumerator GrenadePowerUp()
     {
-        var grenade = Instantiate(grenadePrefab, player.transform.position, player.transform.rotation);
-        Rigidbody2D grenadeRb = grenade.GetComponent<Rigidbody2D>();
-        Collider2D grenadeCol = grenade.GetComponent<Collider2D>();
+        yield return new WaitUntil(() => grenadePwLevel > 0);
 
-        grenadeCol.enabled = false;
+        switch (grenadePwLevel)
+        {
+            default:
+                Debug.LogError("PowerUp fail");
+                break;
 
-        grenadeRb.AddForce(new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f)) * grenadeForce, ForceMode2D.Force);
+            case 1:
+                StartCoroutine(Grenade());
+                break;
 
-        // Wait for grenade timer
-        yield return new WaitForSeconds(grenadeTimer);
+            case 2:
+                StartCoroutine(Grenade());
+                StartCoroutine(Grenade());
+                break;
+        }
 
-        // Set the collider active
-        grenadeCol.enabled = true;
-
-        // Wait fix for collider function
-        yield return new WaitForFixedUpdate();
-        grenadeCol.enabled = false;
-        var grenadeExplodeEffect = Instantiate(grenadeParticleExplosion, grenade.transform.position, Quaternion.identity);
-
-<<<<<<< HEAD
-        grenadeExplosionSound.pitch = Random.Range(1f,1.3f);
-=======
-        // Instantiate particles
-        var grenadeParticles = Instantiate(grenadeParticlesPrefab, grenade.transform.position, Quaternion.identity);
->>>>>>> testing
-
-        grenadeExplosionSound.Play();
-        Destroy(grenade);
-
-        // Wait for particles anim
-        yield return new WaitForSeconds(grenadeExplodeEffect.GetComponent<ParticleSystem>().main.duration);
-        Destroy(grenadeExplodeEffect);
-
-        // Wait for next grenade
         yield return new WaitForSeconds(grenadeRechargeT);
-
-        StartCoroutine(Grenades());
+        yield return GrenadePowerUp();
     }
 
-    public IEnumerator Bolts()
-    {         
-        var bolt = Instantiate(boltPrefab, player.transform.localPosition + new Vector3(Random.Range(-4f,4f), Random.Range(-1.5f, 20f),0), Quaternion.Euler(55,180,0));
-        var hitZone = Instantiate(boltHitZone,bolt.transform.position + new Vector3(0,-11.6f,0), Quaternion.identity);
-        boltSoundfx.Play();
-        yield return new WaitForFixedUpdate();
-        Destroy(hitZone);
-        yield return new WaitForSeconds(particleBruciatura.GetComponent<ParticleSystem>().main.duration);
-        Destroy(bolt);
+    public IEnumerator BoltPowerUp()
+    {
+        yield return new WaitUntil(() => boltPwLevel > 0);
 
-        yield return new WaitForSeconds(0f);
-        StartCoroutine(Bolts());
+        Debug.Log("Yo");
+        switch (boltPwLevel)
+        {
+            default:
+                Debug.LogError("PowerUp fail");
+                break;
+
+            case 1:
+                StartCoroutine(Bolts());
+                break;
+
+            case 2:
+                StartCoroutine(Bolts());
+                StartCoroutine(Bolts());
+                break;
+        }
+
+        yield return new WaitForSeconds(boltRechargeT);
+        yield return BoltPowerUp();
     }
 }

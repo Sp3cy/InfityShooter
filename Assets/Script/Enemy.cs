@@ -68,11 +68,11 @@ public class Enemy : MonoBehaviour
     {
         if (collision.gameObject.tag == "Grenade")
         {
-            Hitted(PowerUpBehaviour.grenadeDamage);
+            Hitted(Powers.grenadeDamage);
         }
         if (collision.gameObject.tag == "Bolt")
         {
-            Hitted(PowerUpBehaviour.boltDamage);
+           // Hitted(Powers. boltDamage);
         }
     }
 

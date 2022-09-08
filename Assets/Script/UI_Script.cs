@@ -2,9 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Linq;
 
 public class UI_Script : MonoBehaviour
 {
+    public PowerUpMenu powerUpMenu;
+    public Powers powersScript;
     public GameObject ammoTxtHolder;
     public Text killedEnemyesTXT;
     public Text gameSessionCurrentTimeTXT;
@@ -53,4 +56,21 @@ public class UI_Script : MonoBehaviour
     {
         gameSessionCurrentTimeTXT.text = GameData.CurrentPlayT.ToString("0") + "s";
     }
+
+    public void GeneratePwMenu()
+    {
+        int randomIndex = Random.Range(0, powersScript.powers.Length - 1);
+
+        var pw = powersScript.powers
+            .Where(powerUp => powerUp.id == randomIndex)
+            .FirstOrDefault();
+    }
+    
+}
+
+public class PowerUpMenu
+{
+    public GameObject powerUp0;
+    public GameObject powerUp1;
+    public GameObject powerUp2;
 }
