@@ -12,21 +12,13 @@ public class UI_Script : MonoBehaviour
     public float animAmmoPow = 1.6f;
     public float animAmmoTime = 1;
 
-    int minuti = 0;
+
     private int tempAmmoCount;
     private int tempKilledEnemyes;
     private Slider hpBar;
     private Slider ammoBar;
 
     public Weapon weapon;
-    private void Awake()
-    {
-        ammoBar.maxValue = weapon.GetAmmoMax();
-        ammoBar.minValue = 0;
-
-        hpBar.maxValue = GameData.PlayerLife;
-        hpBar.minValue = 0;
-    }
 
     // Start is called before the first frame update
     void Start()

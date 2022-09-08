@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PowerUpBehaviour : MonoBehaviour
 {
-    public static float grenadeDamage = 20f;
+
     [Header("- Granata")]
     public AudioSource grenadeExplosionSound;
     public GameObject grenadePrefab;
@@ -14,6 +14,19 @@ public class PowerUpBehaviour : MonoBehaviour
     public float grenadeWaitT = 10f;
     public float offsetGrenade = 1f;
 
+    public static float grenadeDamage = 20f;
+
+
+    [Header("- Bolt")]
+    public AudioSource boltSoundfx;
+    public GameObject boltPrefab;
+    public GameObject boltHitZone;
+    public GameObject particleBruciatura;
+
+    public static float boltDamage = 20f;
+
+
+
     private GameObject player;
 
     private void Start()
@@ -22,6 +35,9 @@ public class PowerUpBehaviour : MonoBehaviour
 
         // Momentaneo
         StartCoroutine(Grenades());
+        StartCoroutine(Bolts());
+        StartCoroutine(Bolts());
+        StartCoroutine(Bolts());
     }
 
     public IEnumerator Grenades()
@@ -44,7 +60,7 @@ public class PowerUpBehaviour : MonoBehaviour
         grenadeCol.enabled = false;
         var grenadeExplodeEffect = Instantiate(grenadeParticleExplosion, grenade.transform.position, Quaternion.identity);
 
-        grenadeExplosionSound.pitch = Random.Range(1,1.2f);
+        grenadeExplosionSound.pitch = Random.Range(1f,1.3f);
 
         grenadeExplosionSound.Play();
         Destroy(grenade);
@@ -57,5 +73,19 @@ public class PowerUpBehaviour : MonoBehaviour
         yield return new WaitForSeconds(grenadeWaitT);
 
         StartCoroutine(Grenades());
+    }
+
+    public IEnumerator Bolts()
+    {         
+        var bolt = Instantiate(boltPrefab, player.transform.localPosition + new Vector3(Random.Range(-4f,4f), Random.Range(-1.5f, 20f),0), Quaternion.Euler(55,180,0));
+        var hitZone = Instantiate(boltHitZone,bolt.transform.position + new Vector3(0,-11.6f,0), Quaternion.identity);
+        boltSoundfx.Play();
+        yield return new WaitForFixedUpdate();
+        Destroy(hitZone);
+        yield return new WaitForSeconds(particleBruciatura.GetComponent<ParticleSystem>().main.duration);
+        Destroy(bolt);
+
+        yield return new WaitForSeconds(0f);
+        StartCoroutine(Bolts());
     }
 }

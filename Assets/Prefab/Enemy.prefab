@@ -233,7 +233,7 @@ GameObject:
   - component: {fileID: 8489877846852209201}
   - component: {fileID: 2723035014901619358}
   - component: {fileID: 4705241890765372852}
-  - component: {fileID: 2516134684209535288}
+  - component: {fileID: 1143829440092054025}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -297,7 +297,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 10
-  m_Sprite: {fileID: 21300000, guid: 386a9311c06cd3647b47714e63ea19bd, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 56101334089b25347ac69fd8f7877b20, type: 3}
   m_Color: {r: 0.53541636, g: 1, b: 0.504717, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -383,7 +383,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &2516134684209535288
+--- !u!114 &1143829440092054025
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -400,15 +400,15 @@ MonoBehaviour:
   m_UseRendererSilhouette: 1
   m_CastsShadows: 1
   m_SelfShadows: 0
-  m_ApplyToSortingLayers: 00000000657db531
+  m_ApplyToSortingLayers: 00000000657db5315d85d0cd
   m_ShapePath:
-  - {x: -0.029203057, y: -0.16024993, z: 0}
-  - {x: 0.030608714, y: -0.160679, z: 0}
-  - {x: 0.030899525, y: 0.030637443, z: 0}
-  - {x: -0.030176878, y: 0.030142158, z: 0}
-  m_ShapePathHash: 251370597
+  - {x: -0.007938223, y: -0.14904328, z: 0}
+  - {x: -0.009864724, y: 0.017786236, z: 0}
+  - {x: -0.04006914, y: 0.01744184, z: 0}
+  - {x: -0.03970579, y: -0.14859295, z: 0}
+  m_ShapePathHash: -235513736
   m_Mesh: {fileID: 0}
-  m_InstanceId: 71294
+  m_InstanceId: 457422
 --- !u!1 &4457955499157566761
 GameObject:
   m_ObjectHideFlags: 0

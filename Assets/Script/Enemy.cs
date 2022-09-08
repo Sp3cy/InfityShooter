@@ -70,6 +70,10 @@ public class Enemy : MonoBehaviour
         {
             Hitted(PowerUpBehaviour.grenadeDamage);
         }
+        if (collision.gameObject.tag == "Bolt")
+        {
+            Hitted(PowerUpBehaviour.boltDamage);
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -130,7 +134,7 @@ public class Enemy : MonoBehaviour
 
     private void Dead()
     {
-        deathFx.pitch = Random.Range(1, 2);
+        deathFx.pitch = Random.Range(1.6f, 2.7f);
         deathFx.Play();
         GameData.ActualEnemy--;
         GameData.EnemyDead++;
