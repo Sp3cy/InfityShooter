@@ -254,10 +254,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5aa214186b6684a408742ab608c3bf82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  powerUpMenu:
+    obj_PwMenu: {fileID: 898386672}
+    txt_PowerUp0: {fileID: 1793919263}
+    txt_PowerUp1: {fileID: 1168686525}
+    txt_PowerUp2: {fileID: 784521181}
+  powersScript: {fileID: 1159477644}
   ammoTxtHolder: {fileID: 0}
+  expSlider: {fileID: 515333224}
   killedEnemyesTXT: {fileID: 735763685}
   gameSessionCurrentTimeTXT: {fileID: 702788318}
-  ammoTxt: {fileID: 0}
+  playerLevelTXT: {fileID: 1385030389}
   animAmmoPow: 1.08
   animAmmoTime: 0.6
   weapon: {fileID: 1488306991}
@@ -318,7 +325,7 @@ Transform:
   - {fileID: 1632530370}
   - {fileID: 1226118331}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &87009425 stripped
 Transform:
@@ -487,6 +494,7 @@ GameObject:
   - component: {fileID: 155845904}
   - component: {fileID: 155845906}
   - component: {fileID: 155845905}
+  - component: {fileID: 155845907}
   m_Layer: 5
   m_Name: Bonus3
   m_TagString: Untagged
@@ -553,6 +561,35 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 155845903}
   m_CullTransparentMesh: 1
+--- !u!114 &155845907
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 155845903}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 24813079}
+          m_TargetAssemblyTypeName: UI_Script, Assembly-CSharp
+          m_MethodName: PowerUpSelected
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 2
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &156744350
 GameObject:
   m_ObjectHideFlags: 0
@@ -973,7 +1010,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.51729727, g: 0, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1170,6 +1207,7 @@ GameObject:
   - component: {fileID: 411159078}
   - component: {fileID: 411159080}
   - component: {fileID: 411159079}
+  - component: {fileID: 411159081}
   m_Layer: 5
   m_Name: Bonus1
   m_TagString: Untagged
@@ -1236,6 +1274,35 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 411159077}
   m_CullTransparentMesh: 1
+--- !u!114 &411159081
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 411159077}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 24813079}
+          m_TargetAssemblyTypeName: UI_Script, Assembly-CSharp
+          m_MethodName: PowerUpSelected
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1001 &434718918
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2015,6 +2082,7 @@ GameObject:
   - component: {fileID: 540147801}
   - component: {fileID: 540147803}
   - component: {fileID: 540147802}
+  - component: {fileID: 540147804}
   m_Layer: 5
   m_Name: Bonus2
   m_TagString: Untagged
@@ -2081,6 +2149,35 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 540147800}
   m_CullTransparentMesh: 1
+--- !u!114 &540147804
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 540147800}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 24813079}
+          m_TargetAssemblyTypeName: UI_Script, Assembly-CSharp
+          m_MethodName: PowerUpSelected
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 1
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &572344874
 GameObject:
   m_ObjectHideFlags: 0
@@ -2971,7 +3068,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &898386673
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3002,7 +3099,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 898386672}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cfabb0440166ab443bba8876756fdfa9, type: 3}
   m_Name: 
@@ -3858,9 +3955,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyPrefab: {fileID: 2665966712921770188, guid: a96472d6e0f84bf4bb0084f156b081b4,
     type: 3}
-  maxEnemy: 500
-  enemyIncrease: 1
-  enemyIncreaseT: 2
+  maxEnemy: 10
+  enemyIncrease: 3
+  enemyIncreaseT: 1.5
   minRangeX: 5
   maxRangeX: 10
   minRangeY: 5
@@ -3904,14 +4001,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56eeb91fb65be3d49a99ae6d303892a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  powers:
+  - name: Granata
+    id: 0
+    descLevel:
+    - Unlock Grenade
+    - Grenade +1
+    - Grenade +1
+    - Grenade +1
+    - Grenade +1
+    level: 0
+  - name: Fulmine
+    id: 1
+    descLevel:
+    - Unlock Bolt
+    - Bolt +1
+    - Bolt +1
+    - Bolt +1
+    - Bolt +1
+    level: 0
   grenadeExplosionSound: {fileID: 851860846}
   grenadePrefab: {fileID: 2529332762634400003, guid: 2aa4a1936ca1b244ab3c469f10291433,
     type: 3}
   grenadeParticleExplosion: {fileID: 6637471291301729180, guid: 54870b14bfbb48441bae562e24bcf90f,
     type: 3}
   grenadeForce: 450
-  grenadeExplosionT: 1.2
-  grenadeWaitT: 0
+  grenadeTimer: 1
+  grenadeRechargeT: 10
   offsetGrenade: 1
   boltSoundfx: {fileID: 2046294953}
   boltPrefab: {fileID: 3004130976407731893, guid: 26383f48f8b12ab478161ea044614514,
@@ -3920,6 +4036,7 @@ MonoBehaviour:
     type: 3}
   particleBruciatura: {fileID: 7310477816737461270, guid: 204258f1bfc9b27408c45ffd565f8d23,
     type: 3}
+  boltRechargeT: 2
 --- !u!114 &1159477645
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3932,6 +4049,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d03346b01615d14b9cc25f86b295807, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  expToUnlock: 200
+  expToUnlcokMul: 1.5
+  ui_Script: {fileID: 24813079}
 --- !u!1 &1168686523
 GameObject:
   m_ObjectHideFlags: 0
@@ -4210,7 +4330,7 @@ Transform:
   - {fileID: 1449413543}
   - {fileID: 2046294952}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1226118331 stripped
 Transform:
@@ -4870,7 +4990,7 @@ Transform:
   - {fileID: 1051246816}
   - {fileID: 1705649526}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1709212648
 GameObject:
@@ -11009,6 +11129,21 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 44d06a25430e67448aeacb990f9a50a3,
         type: 3}
+    - target: {fileID: 2749385503348596314, guid: 525d8ed557176b044b1bb5baec578600,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0.11792451
+      objectReference: {fileID: 0}
+    - target: {fileID: 2749385503348596314, guid: 525d8ed557176b044b1bb5baec578600,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2749385503348596314, guid: 525d8ed557176b044b1bb5baec578600,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0.6025813
+      objectReference: {fileID: 0}
     - target: {fileID: 2749385503348596315, guid: 525d8ed557176b044b1bb5baec578600,
         type: 3}
       propertyPath: m_RootOrder
