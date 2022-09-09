@@ -66,15 +66,9 @@ public class Bullet : MonoBehaviour
     private IEnumerator AnimazioneBulletEsplode(float seconds)
     {
 
-      //roba mia gius POI TI SPIEGO
-
         rb.constraints = RigidbodyConstraints2D.FreezeAll;
 
         collider.isTrigger = true;
-
-      //roba mia gius POI TI SPIEGO
-
-
 
         animator.SetBool("Hit", true);
         yield return new WaitForSeconds(seconds);

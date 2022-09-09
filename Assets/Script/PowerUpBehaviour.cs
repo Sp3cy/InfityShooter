@@ -11,7 +11,8 @@ public class PowerUpBehaviour : Powers
         // Momentaneo
         StartCoroutine(GrenadePowerUp());
         StartCoroutine(BoltPowerUp());
-    }  
+        StartCoroutine(KunaiPowerUp());
+    }
 
     public IEnumerator GrenadePowerUp()
     {
@@ -102,4 +103,49 @@ public class PowerUpBehaviour : Powers
         yield return new WaitForSeconds(boltRechargeT);
         yield return BoltPowerUp();
     }
+
+    public IEnumerator KunaiPowerUp()
+    {
+        yield return new WaitUntil(() => powers[2].level > 0);
+
+        switch (powers[2].level)
+        {
+            default:
+                Debug.LogError("PowerUp fail");
+                break;
+
+            case 1:
+                StartCoroutine(Kunai());
+                kunayRechargeT = 5f;
+
+                break;
+
+            case 2:
+                StartCoroutine(Kunai());
+                kunayRechargeT = 3.5f;
+
+                break;
+
+            case 3:
+                StartCoroutine(Kunai());
+                kunayRechargeT = 2f;
+
+                break;
+
+            case 4:
+                StartCoroutine(Kunai());
+                kunayRechargeT = 1f;
+
+                break;
+
+            case 5:
+                StartCoroutine(Kunai());
+                kunayRechargeT = 0.33f;
+
+                break;
+        }
+                yield return new WaitForSeconds(kunayRechargeT);
+                yield return KunaiPowerUp();
+    }
+    
 }

@@ -203,7 +203,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 50
+  m_SortingOrder: 200
   m_TargetDisplay: 0
 --- !u!224 &24813077
 RectTransform:
@@ -267,6 +267,7 @@ MonoBehaviour:
   playerLevelTXT: {fileID: 1385030389}
   animAmmoPow: 1.08
   animAmmoTime: 0.6
+  tempLivello: 0
   weapon: {fileID: 1488306991}
 --- !u!4 &49108078 stripped
 Transform:
@@ -693,7 +694,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 145, y: 837}
+  m_AnchoredPosition: {x: 186, y: 811}
   m_SizeDelta: {x: 298.42, y: 121.45}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &180192446
@@ -2213,7 +2214,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1006, y: -350}
+  m_AnchoredPosition: {x: 1006, y: -377}
   m_SizeDelta: {x: 330.72998, y: 340.20996}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &572344876
@@ -2622,7 +2623,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &716072235
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3068,7 +3069,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &898386673
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3958,9 +3959,9 @@ MonoBehaviour:
   maxEnemy: 10
   enemyIncrease: 3
   enemyIncreaseT: 1.5
-  minRangeX: 5
+  minRangeX: 10
   maxRangeX: 10
-  minRangeY: 5
+  minRangeY: 10
   maxRangeY: 10
   spawnDelay: 0
 --- !u!4 &1159477642
@@ -4006,19 +4007,28 @@ MonoBehaviour:
     id: 0
     descLevel:
     - Unlock Grenade
-    - Grenade +1
-    - Grenade +1
-    - Grenade +1
-    - Grenade +1
+    - Grenade +1 2/5
+    - Grenade +1 3/5
+    - Grenade +1 4/5
+    - Grenade +1 5/5
     level: 0
   - name: Fulmine
     id: 1
     descLevel:
     - Unlock Bolt
-    - Bolt +1
-    - Bolt +1
-    - Bolt +1
-    - Bolt +1
+    - Bolt +1 2/5
+    - Bolt +1 3/5
+    - Bolt +1 4/5
+    - Bolt +1 5/5
+    level: 0
+  - name: Kunai
+    id: 2
+    descLevel:
+    - Unlock Kunai
+    - Kunai Level 2
+    - Kunai Level 3
+    - Kunai Level 4
+    - Kunai Level 5
     level: 0
   grenadeExplosionSound: {fileID: 851860846}
   grenadePrefab: {fileID: 2529332762634400003, guid: 2aa4a1936ca1b244ab3c469f10291433,
@@ -4027,7 +4037,7 @@ MonoBehaviour:
     type: 3}
   grenadeForce: 450
   grenadeTimer: 1
-  grenadeRechargeT: 10
+  grenadeRechargeT: 3
   offsetGrenade: 1
   boltSoundfx: {fileID: 2046294953}
   boltPrefab: {fileID: 3004130976407731893, guid: 26383f48f8b12ab478161ea044614514,
@@ -4036,7 +4046,12 @@ MonoBehaviour:
     type: 3}
   particleBruciatura: {fileID: 7310477816737461270, guid: 204258f1bfc9b27408c45ffd565f8d23,
     type: 3}
-  boltRechargeT: 2
+  boltRechargeT: 1.5
+  kunaiPrefab: {fileID: 5006237957194821110, guid: 690142ba6ea7442488399e08b218c971,
+    type: 3}
+  kunayDestroyTime: 1
+  kunayRechargeT: 3
+  kunaiForce: 500
 --- !u!114 &1159477645
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5209,7 +5224,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1726702594
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11091,7 +11106,7 @@ PrefabInstance:
     - target: {fileID: 2749385503348596312, guid: 525d8ed557176b044b1bb5baec578600,
         type: 3}
       propertyPath: life
-      value: 100
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 2749385503348596312, guid: 525d8ed557176b044b1bb5baec578600,
         type: 3}
@@ -11522,12 +11537,12 @@ PrefabInstance:
     - target: {fileID: 8448212412545100611, guid: 525d8ed557176b044b1bb5baec578600,
         type: 3}
       propertyPath: NormalSpeed
-      value: 1900
+      value: 2000
       objectReference: {fileID: 0}
     - target: {fileID: 8448212412545100611, guid: 525d8ed557176b044b1bb5baec578600,
         type: 3}
       propertyPath: ShootingSpeed
-      value: 1000
+      value: 1900
       objectReference: {fileID: 0}
     - target: {fileID: 8667215625037979035, guid: 525d8ed557176b044b1bb5baec578600,
         type: 3}

@@ -13,11 +13,12 @@ TagManager:
   - MapHolder
   - Grenade
   - Bolt
+  - Kunai
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Enemy
   - Water
   - UI
   - Junk

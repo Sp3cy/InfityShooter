@@ -28,6 +28,18 @@ public class Powers : MonoBehaviour
 
     public static float boltDamage = 20f;
 
+    [Header("- Kunai")]
+    public GameObject kunaiPrefab;
+    public int kunayDestroyTime = 3;
+
+    public float kunayRechargeT = 3f;
+    public float kunaiForce = 35f;
+
+    public static float kunaiDamage = 20f;
+
+
+
+
     [System.NonSerialized]
     public GameObject player;
 
@@ -86,6 +98,18 @@ public class Powers : MonoBehaviour
 
         yield return null;
     }
+
+    public IEnumerator Kunai()
+    {
+        var kunai = Instantiate(kunaiPrefab, player.transform.position, player.transform.rotation);
+        Rigidbody2D kunaiRb = kunai.GetComponent<Rigidbody2D>();
+        kunaiRb.AddForce(new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f)) * grenadeForce, ForceMode2D.Force);
+
+        yield return new WaitForSeconds(kunayDestroyTime);
+        Destroy(kunai);
+        yield return null;
+    }
+
 }
 
 [System.Serializable]

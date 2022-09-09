@@ -233,7 +233,7 @@ GameObject:
   - component: {fileID: 8489877846852209201}
   - component: {fileID: 2723035014901619358}
   - component: {fileID: 4705241890765372852}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -323,6 +323,7 @@ MonoBehaviour:
   attack: 10
   speed: 1.6
   knockback: 15
+  expDrop: 10
   lerpT: 0.1
   waitAfetrAtkAnim: 0.5
   healtBar: {fileID: 767141691921310498}

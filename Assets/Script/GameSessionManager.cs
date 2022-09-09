@@ -12,6 +12,8 @@ public class GameSessionManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        ui_Script.playerLevelTXT.text = "Livello " + ui_Script.tempLivello.ToString();
+
         GameData.CurrentPlayT = 0;
         GameData.EnemyDead = 0;
         GameData.ActualExp = 0f;
@@ -29,6 +31,8 @@ public class GameSessionManager : MonoBehaviour
             GameData.ActualExp = 0;
 
             ui_Script.expSlider.maxValue = expToUnlock;
+            ui_Script.tempLivello += 1;
+            ui_Script.playerLevelTXT.text ="Livello " + ui_Script.tempLivello.ToString();
 
             // Open powerups menu and stop the game
             Pause();

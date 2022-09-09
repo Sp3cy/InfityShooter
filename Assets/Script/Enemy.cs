@@ -75,6 +75,10 @@ public class Enemy : MonoBehaviour
         {
             Hitted(Powers.boltDamage);
         }
+        if (collision.gameObject.tag == "Kunai")
+        {
+            Hitted(Powers.kunaiDamage);
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
