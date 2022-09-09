@@ -28,6 +28,8 @@ public class GameSessionManager : MonoBehaviour
             expToUnlock *= expToUnlcokMul;
             GameData.ActualExp = 0;
 
+            ui_Script.expSlider.maxValue = expToUnlock;
+
             // Open powerups menu and stop the game
             Pause();
             ui_Script.GeneratePwMenu();
@@ -52,4 +54,5 @@ public class GameSessionManager : MonoBehaviour
     {
         Time.timeScale = 1f;
     }
+
 }

@@ -31,6 +31,27 @@ public class PowerUpBehaviour : Powers
                 StartCoroutine(Grenade());
                 StartCoroutine(Grenade());
                 break;
+
+            case 3:
+                StartCoroutine(Grenade());
+                StartCoroutine(Grenade());
+                StartCoroutine(Grenade());
+                break;
+
+            case 4:
+                StartCoroutine(Grenade());
+                StartCoroutine(Grenade());
+                StartCoroutine(Grenade());
+                StartCoroutine(Grenade());
+                break;
+
+            case 5:
+                StartCoroutine(Grenade());
+                StartCoroutine(Grenade());
+                StartCoroutine(Grenade());
+                StartCoroutine(Grenade());
+                StartCoroutine(Grenade());
+                break;
         }
 
         yield return new WaitForSeconds(grenadeRechargeT);
@@ -52,6 +73,27 @@ public class PowerUpBehaviour : Powers
                 break;
 
             case 2:
+                StartCoroutine(Bolts());
+                StartCoroutine(Bolts());
+                break;
+
+            case 3:
+                StartCoroutine(Bolts());
+                StartCoroutine(Bolts());
+                StartCoroutine(Bolts());
+                break;
+
+            case 4:
+                StartCoroutine(Bolts());
+                StartCoroutine(Bolts());
+                StartCoroutine(Bolts());
+                StartCoroutine(Bolts());
+                break;
+
+            case 5:
+                StartCoroutine(Bolts());
+                StartCoroutine(Bolts());
+                StartCoroutine(Bolts());
                 StartCoroutine(Bolts());
                 StartCoroutine(Bolts());
                 break;

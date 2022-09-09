@@ -12,11 +12,11 @@ public class UI_Script : MonoBehaviour
     public Slider expSlider;
     public Text killedEnemyesTXT;
     public Text gameSessionCurrentTimeTXT;
-    public Text ammoTxt;
+    public Text playerLevelTXT;
     public float animAmmoPow = 1.6f;
     public float animAmmoTime = 1;
 
-
+    private int tempLivello;
     private int tempAmmoCount;
     private int tempKilledEnemyes;
     private Slider hpBar;
@@ -30,6 +30,7 @@ public class UI_Script : MonoBehaviour
     void Start()
     {
         powerUpMenu.obj_PwMenu.SetActive(false);
+
 
         tempAmmoCount = GameData.AmmoCount;
 
@@ -59,8 +60,14 @@ public class UI_Script : MonoBehaviour
             killedEnemyesTXT.text = GameData.EnemyDead.ToString();
         }
 
+
         hpBar.value = GameData.PlayerLife;
         expSlider.value = GameData.ActualExp;
+
+        if (expSlider.value >= GameData.ActualExp)
+        {
+            playerLevelTXT.text = "Livello " + tempLivello.ToString();
+        }
         
     }
     private void Update()
