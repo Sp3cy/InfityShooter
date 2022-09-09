@@ -3,10 +3,30 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
+// Descrizione del potere per ogni livello
+[System.Serializable]
+public class PowersStruct
+{
+    public string[] descLevel;
+    public int maxLevel = 3;
+    public bool isActive = true;
+
+    private int id;
+    private int level = 0;
+
+    public int Level { get => level; set => level = value; }
+    public int Id { get => id; set => id = value; }
+}
+
 public class Powers : MonoBehaviour
 {
     [Header("- Powers")]
-    public PowersStruct[] powers;
+    public PowersStruct grenadePowerUp;
+    public PowersStruct boltPowerUp;
+
+    [System.NonSerialized]
+    public List<PowersStruct> powersData = new List<PowersStruct>();
+    protected List<int> avaiblePowerIndexes = new List<int>();
 
     [Header("- Granata")]
     public AudioSource grenadeExplosionSound;
@@ -40,21 +60,45 @@ public class Powers : MonoBehaviour
 
 
 
-    [System.NonSerialized]
-    public GameObject player;
+    protected GameObject player;
+
+    // -- NON SI USA START IN QUESTO SCRIPT
+    // -- NEMMENO UPDATE
+
+    // -- Aggiungere powerup qua
+    protected void SetupPowers()
+    {
+        powersData.Clear();
+
+        if (grenadePowerUp.isActive) powersData.Add(grenadePowerUp);
+        if (boltPowerUp.isActive) powersData.Add(boltPowerUp);
+
+        for (int i = 0; i < powersData.Count; i++) powersData[i].Id = i;
+    }
+
+    public void SetupAvaiblePowers()
+    {
+        avaiblePowerIndexes.Clear();
+
+        for (int i=0; i<powersData.Count; i++)
+        {
+            avaiblePowerIndexes.Add(i);
+        }
+    }
 
     public PowersStruct GetRandPowerUp()
     {
-        int randomIndex = Random.Range(0, powers.Length);
+        if (avaiblePowerIndexes.Count == 0) return null;
 
-        var pw = powers
-            .Where(powerUp => powerUp.id == randomIndex)
-            .FirstOrDefault();
+        int index = avaiblePowerIndexes[Random.Range(0, avaiblePowerIndexes.Count)];
+
+        PowersStruct pw = powersData[index];
+        avaiblePowerIndexes.Remove(index);
 
         return pw;
     }
 
-    public IEnumerator Grenade()
+    protected IEnumerator Grenade()
     {
         var grenade = Instantiate(grenadePrefab, player.transform.position, player.transform.rotation);
         Rigidbody2D grenadeRb = grenade.GetComponent<Rigidbody2D>();
@@ -86,7 +130,7 @@ public class Powers : MonoBehaviour
         yield return null;
     }
 
-    public IEnumerator Bolts()
+    protected IEnumerator Bolts()
     {
         var bolt = Instantiate(boltPrefab, player.transform.localPosition + new Vector3(Random.Range(-4f,4f), Random.Range(-1.5f, 20f),0), Quaternion.Euler(55,180,0));
         var hitZone = Instantiate(boltHitZone,bolt.transform.position + new Vector3(0,-11.6f,0), Quaternion.identity);
@@ -110,13 +154,4 @@ public class Powers : MonoBehaviour
         yield return null;
     }
 
-}
-
-[System.Serializable]
-public class PowersStruct
-{
-    public string name;
-    public int id;
-    public string[] descLevel;
-    public int level = 0;
 }

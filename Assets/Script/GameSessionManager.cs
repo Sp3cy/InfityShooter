@@ -9,6 +9,12 @@ public class GameSessionManager : MonoBehaviour
 
     public UI_Script ui_Script;
 
+    private void Awake()
+    {
+        GameData.ExpToLevelUp = expToUnlock;
+        GameData.ExpLevel = 0;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -25,36 +31,28 @@ public class GameSessionManager : MonoBehaviour
         GameData.CurrentPlayT += Time.deltaTime;
 
         // Se sono stati raggiunti tot exp
-        if (GameData.ActualExp > expToUnlock)
+        if (GameData.ActualExp >= GameData.ExpToLevelUp)
         {
-            expToUnlock *= expToUnlcokMul;
+            // Pause the game
+            Pause();
+
+            // Change next exp to level up
+            GameData.ExpToLevelUp *= expToUnlcokMul;
             GameData.ActualExp = 0;
 
-            ui_Script.expSlider.maxValue = expToUnlock;
-            ui_Script.tempLivello += 1;
-            ui_Script.playerLevelTXT.text ="Livello " + ui_Script.tempLivello.ToString();
-
-            // Open powerups menu and stop the game
-            Pause();
+            // Open powerups menu
             ui_Script.GeneratePwMenu();
         }
-
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            // Open powerups menu and stop the game
-            Pause();
-            ui_Script.GeneratePwMenu();
-        }
-
-        if (Input.GetKeyDown(KeyCode.P)) Resume();
     }
 
-    private void Pause()
+    // Stop everything that works with Time -- EVEN COROUTINE BUT NOT THE EMEMY SPAWNER SCRIPT
+    public void Pause()
     {
         Time.timeScale = 0f;
     }
 
-    private void Resume()
+    // Resume normal Time
+    public void Resume()
     {
         Time.timeScale = 1f;
     }
