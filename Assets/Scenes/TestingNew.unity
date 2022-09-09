@@ -254,11 +254,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5aa214186b6684a408742ab608c3bf82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameManager: {fileID: 1159477640}
   powerUpMenu:
     obj_PwMenu: {fileID: 898386672}
-    txt_PowerUp0: {fileID: 1793919263}
-    txt_PowerUp1: {fileID: 1168686525}
-    txt_PowerUp2: {fileID: 784521181}
+    txt_PowerUp:
+    - {fileID: 1793919263}
+    - {fileID: 1168686525}
+    - {fileID: 784521181}
   powersScript: {fileID: 1159477644}
   ammoTxtHolder: {fileID: 0}
   expSlider: {fileID: 515333224}
@@ -3989,6 +3991,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d03868a6c992b2f4e83ba642949de68a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameManager: {fileID: 1159477640}
 --- !u!114 &1159477644
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4001,25 +4004,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56eeb91fb65be3d49a99ae6d303892a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  powers:
-  - name: Granata
-    id: 0
+  grenadePowerUp:
     descLevel:
-    - Unlock Grenade
-    - Grenade +1
-    - Grenade +1
-    - Grenade +1
-    - Grenade +1
-    level: 0
-  - name: Fulmine
-    id: 1
+    - +1 g
+    - + a
+    maxLevel: 5
+    isActive: 1
+  boltPowerUp:
     descLevel:
-    - Unlock Bolt
-    - Bolt +1
-    - Bolt +1
-    - Bolt +1
-    - Bolt +1
-    level: 0
+    - fulmini
+    - +1 bolt
+    - +1 bolt
+    maxLevel: 5
+    isActive: 1
   grenadeExplosionSound: {fileID: 851860846}
   grenadePrefab: {fileID: 2529332762634400003, guid: 2aa4a1936ca1b244ab3c469f10291433,
     type: 3}
@@ -4049,7 +4046,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d03346b01615d14b9cc25f86b295807, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  expToUnlock: 200
+  expToUnlock: 100
   expToUnlcokMul: 1.5
   ui_Script: {fileID: 24813079}
 --- !u!1 &1168686523

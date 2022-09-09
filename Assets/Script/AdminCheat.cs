@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class AdminCheat : MonoBehaviour
 {
+    public GameObject gameManager;
+
     private Weapon weapon;
 
     // Start is called before the first frame update
@@ -24,5 +26,14 @@ public class AdminCheat : MonoBehaviour
         {
             weapon.SetBtnFirePressed(false);
         }
+
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            // Open powerups menu and stop the game
+            gameManager.GetComponent<GameSessionManager>().Pause();
+            gameManager.GetComponent<GameSessionManager>().ui_Script.GeneratePwMenu();
+        }
+
+        if (Input.GetKeyDown(KeyCode.P)) gameManager.GetComponent<GameSessionManager>().Resume();
     }
 }

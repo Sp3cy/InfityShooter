@@ -6,6 +6,10 @@ public class PowerUpBehaviour : Powers
 {
     private void Start()
     {
+        // Setup powerup lists
+        SetupPowers();
+        SetupAvaiblePowers();
+
         player = GameObject.FindGameObjectWithTag("Player");
 
         // Momentaneo
@@ -15,9 +19,9 @@ public class PowerUpBehaviour : Powers
 
     public IEnumerator GrenadePowerUp()
     {
-        yield return new WaitUntil(() => powers[0].level > 0);
+        yield return new WaitUntil(() => grenadePowerUp.Level > 0);
 
-        switch (powers[0].level)
+        switch (grenadePowerUp.Level)
         {
             default:
                 Debug.LogError("PowerUp fail");
@@ -60,9 +64,9 @@ public class PowerUpBehaviour : Powers
 
     public IEnumerator BoltPowerUp()
     {
-        yield return new WaitUntil(() => powers[1].level > 0);
+        yield return new WaitUntil(() => boltPowerUp.Level > 0);
 
-        switch (powers[1].level)
+        switch (boltPowerUp.Level)
         {
             default:
                 Debug.LogError("PowerUp fail");
