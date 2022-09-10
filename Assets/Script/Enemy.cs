@@ -23,13 +23,15 @@ public class Enemy : MonoBehaviour
 
     [Space(1)]
     [Header("- Objects")]
-    public GameObject healtBar;
+    public GameObject enemyDeathEffectPrefab;
 
     private float animAtkTime;
     private float animHitTime;
 
     private bool startCoro;
     private float keepLife;
+
+    private Collider2D deathZone;
 
     private GameObject player;
     private Rigidbody2D rbEnemy;
@@ -47,6 +49,8 @@ public class Enemy : MonoBehaviour
         rbEnemy = gameObject.GetComponent<Rigidbody2D>();
         animator = gameObject.GetComponent<Animator>();
 
+        deathZone = GameObject.FindGameObjectWithTag("DeathZone").GetComponent<Collider2D>();
+
         biteFx = GameObject.Find("LittleMonsterAttackSound").GetComponent<AudioSource>();
         deathFx = GameObject.Find("LittleMonesterDeathSound").GetComponent<AudioSource>();
 
@@ -56,12 +60,17 @@ public class Enemy : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
+    { 
         MoveToPlayer();
 
         if (life <= 0)
         {
             Dead();
+        }
+
+        if (!gameObject.GetComponent<Collider2D>().IsTouching(deathZone))
+        {
+            gameObject.transform.position = GameMethods.RespawnEnemy(player);
         }
     }
 
@@ -120,9 +129,6 @@ public class Enemy : MonoBehaviour
     {
         life -= damage;
 
-        healtBar.transform.localScale = healtBar.transform.localScale + new Vector3(-damage/keepLife, 0, 0);
-        healtBar.transform.position = healtBar.transform.position + new Vector3((-damage/keepLife)/2, 0, 0);
-
         if (!animator.GetBool("Colpito"))
         {
             StartCoroutine(HitAnim(animHitTime));
@@ -137,14 +143,25 @@ public class Enemy : MonoBehaviour
         animator.SetBool("Colpito", false);
     }
 
+    public IEnumerator EnemyDeathEffect()
+    {
+        var deathFx = Instantiate(enemyDeathEffectPrefab, gameObject.transform.position, gameObject.transform.rotation);
+        yield return new WaitForSeconds(1f);
+        Destroy(deathFx);
+    }
     private void Dead()
     {
         deathFx.pitch = Random.Range(1.6f, 2.7f);
         deathFx.Play();
-        GameData.ActualEnemy--;
+        StartCoroutine(EnemyDeathEffect());
+      //  GameData.ActualEnemy--;
         GameData.EnemyDead++;
         GameData.ActualExp += expDrop;
-        Destroy(gameObject);
+        gameObject.transform.position = GameMethods.RespawnEnemy(player);
+
+
+        life = keepLife;
+      //  Destroy(gameObject);
     }
 
     private void MoveToPlayer()

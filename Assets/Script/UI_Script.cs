@@ -40,7 +40,6 @@ public class UI_Script : MonoBehaviour
         // Powerup menu setup
         actualMenuPowers = new PowersStruct[3];
         powerUpMenu.obj_PwMenu.SetActive(false);
-        tempLivello = 0;
 
         // Hpbar Setup
         hpBar = GameObject.FindGameObjectWithTag("PlayerHpBar").GetComponent<Slider>();
@@ -121,8 +120,20 @@ public class UI_Script : MonoBehaviour
     // Serve ai bottoni per dire quale � stato cliccato 
     public void PowerUpSelected(int id)
     {
-        if (actualMenuPowers[id] == null) return;
-        if (actualMenuPowers[id].Level >= actualMenuPowers[id].maxLevel) return;
+        if (actualMenuPowers[id] == null)
+        {
+            powerUpMenu.obj_PwMenu.SetActive(false);
+            gameManager.GetComponent<GameSessionManager>().Resume();
+            return;
+        }
+
+        if (actualMenuPowers[id].Level >= actualMenuPowers[id].maxLevel)
+        {
+            powerUpMenu.obj_PwMenu.SetActive(false);
+            gameManager.GetComponent<GameSessionManager>().Resume();
+            return;
+        }
+
 
         // Se non returna
         // Aumenta di un livello il powerUp

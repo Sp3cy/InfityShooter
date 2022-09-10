@@ -18,6 +18,7 @@ public class PowerUpBehaviour : Powers
         StartCoroutine(KunaiPowerUp());
     }
 
+
     public IEnumerator GrenadePowerUp()
     {
         yield return new WaitUntil(() => grenadePowerUp.Level > 0);
@@ -29,21 +30,25 @@ public class PowerUpBehaviour : Powers
                 break;
 
             case 1:
+                grenadeRechargeT = 4;
                 StartCoroutine(Grenade());
                 break;
 
             case 2:
+                grenadeRechargeT = 4;
                 StartCoroutine(Grenade());
                 StartCoroutine(Grenade());
                 break;
 
             case 3:
+                grenadeRechargeT = 3;
                 StartCoroutine(Grenade());
                 StartCoroutine(Grenade());
                 StartCoroutine(Grenade());
                 break;
 
             case 4:
+                grenadeRechargeT = 3;
                 StartCoroutine(Grenade());
                 StartCoroutine(Grenade());
                 StartCoroutine(Grenade());
@@ -51,6 +56,7 @@ public class PowerUpBehaviour : Powers
                 break;
 
             case 5:
+                grenadeRechargeT = 2;
                 StartCoroutine(Grenade());
                 StartCoroutine(Grenade());
                 StartCoroutine(Grenade());
@@ -74,21 +80,25 @@ public class PowerUpBehaviour : Powers
                 break;
 
             case 1:
+                boltRechargeT = 5;
                 StartCoroutine(Bolts());
                 break;
 
             case 2:
+                boltRechargeT = 3;
                 StartCoroutine(Bolts());
                 StartCoroutine(Bolts());
                 break;
 
             case 3:
+                boltRechargeT = 2;
                 StartCoroutine(Bolts());
                 StartCoroutine(Bolts());
                 StartCoroutine(Bolts());
                 break;
 
             case 4:
+                boltRechargeT = 1;
                 StartCoroutine(Bolts());
                 StartCoroutine(Bolts());
                 StartCoroutine(Bolts());
@@ -96,6 +106,7 @@ public class PowerUpBehaviour : Powers
                 break;
 
             case 5:
+                boltRechargeT = 1;
                 StartCoroutine(Bolts());
                 StartCoroutine(Bolts());
                 StartCoroutine(Bolts());
@@ -110,41 +121,60 @@ public class PowerUpBehaviour : Powers
 
     public IEnumerator KunaiPowerUp()
     {
-        yield return new WaitUntil(() => powers[2].level > 0);
+        yield return new WaitUntil(() => kunaiPowerUp.Level > 0);
 
-        switch (powers[2].level)
+        switch (kunaiPowerUp.Level)
         {
             default:
                 Debug.LogError("PowerUp fail");
                 break;
 
             case 1:
+                kunayRechargeT = 3;
+                kunaiDamage = 20;
                 StartCoroutine(Kunai());
-                kunayRechargeT = 5f;
+                
 
                 break;
 
             case 2:
+                kunayRechargeT = 3;
+                kunaiDamage = 20;
                 StartCoroutine(Kunai());
-                kunayRechargeT = 3.5f;
+                StartCoroutine(Kunai());
+
 
                 break;
 
             case 3:
+                kunayRechargeT = 3;
+                kunaiDamage = 30;
                 StartCoroutine(Kunai());
-                kunayRechargeT = 2f;
+                StartCoroutine(Kunai());
+                StartCoroutine(Kunai());
+
 
                 break;
 
             case 4:
+                kunaiDamage = 40;
+                kunayRechargeT = 2;
                 StartCoroutine(Kunai());
-                kunayRechargeT = 1f;
+                StartCoroutine(Kunai());
+                StartCoroutine(Kunai());
+                StartCoroutine(Kunai());
+      
 
                 break;
 
             case 5:
+                kunaiDamage = 50;
+                kunayRechargeT = 1;
                 StartCoroutine(Kunai());
-                kunayRechargeT = 0.33f;
+                StartCoroutine(Kunai());
+                StartCoroutine(Kunai());
+                StartCoroutine(Kunai());
+                StartCoroutine(Kunai());
 
                 break;
         }

@@ -254,11 +254,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5aa214186b6684a408742ab608c3bf82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameManager: {fileID: 1159477640}
   powerUpMenu:
     obj_PwMenu: {fileID: 898386672}
-    txt_PowerUp0: {fileID: 1793919263}
-    txt_PowerUp1: {fileID: 1168686525}
-    txt_PowerUp2: {fileID: 784521181}
+    txt_PowerUp:
+    - {fileID: 1793919263}
+    - {fileID: 1168686525}
+    - {fileID: 784521181}
   powersScript: {fileID: 1159477644}
   ammoTxtHolder: {fileID: 0}
   expSlider: {fileID: 515333224}
@@ -267,7 +269,6 @@ MonoBehaviour:
   playerLevelTXT: {fileID: 1385030389}
   animAmmoPow: 1.08
   animAmmoTime: 0.6
-  tempLivello: 0
   weapon: {fileID: 1488306991}
 --- !u!4 &49108078 stripped
 Transform:
@@ -2810,8 +2811,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -162.7102, y: 77.1358}
-  m_SizeDelta: {x: 325.42004, y: 188.27}
+  m_AnchoredPosition: {x: -162.71, y: 79.27}
+  m_SizeDelta: {x: 285, y: 124}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &784521181
 MonoBehaviour:
@@ -2837,7 +2838,7 @@ MonoBehaviour:
     m_Font: {fileID: 12800000, guid: 58a9e937a79857b439bce37cb671a6ed, type: 3}
     m_FontSize: 52
     m_FontStyle: 0
-    m_BestFit: 0
+    m_BestFit: 1
     m_MinSize: 5
     m_MaxSize: 106
     m_Alignment: 4
@@ -2845,7 +2846,7 @@ MonoBehaviour:
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
-    m_LineSpacing: 1.23
+    m_LineSpacing: 1.08
   m_Text: 15% more ammo
 --- !u!222 &784521182
 CanvasRenderer:
@@ -3069,7 +3070,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &898386673
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3956,14 +3957,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyPrefab: {fileID: 2665966712921770188, guid: a96472d6e0f84bf4bb0084f156b081b4,
     type: 3}
-  maxEnemy: 10
-  enemyIncrease: 3
-  enemyIncreaseT: 1.5
-  minRangeX: 10
-  maxRangeX: 10
-  minRangeY: 10
-  maxRangeY: 10
-  spawnDelay: 0
+  maxEnemy: 500
+  enemyIncrease: 1
+  enemyIncreaseT: 2
+  minPos: {x: 1, y: 1}
+  maxPos: {x: 30, y: 30}
+  spawnDelay: 0.05
 --- !u!4 &1159477642
 Transform:
   m_ObjectHideFlags: 0
@@ -3990,6 +3989,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d03868a6c992b2f4e83ba642949de68a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameManager: {fileID: 1159477640}
 --- !u!114 &1159477644
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4002,34 +4002,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56eeb91fb65be3d49a99ae6d303892a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  powers:
-  - name: Granata
-    id: 0
+  grenadePowerUp:
     descLevel:
     - Unlock Grenade
-    - Grenade +1 2/5
-    - Grenade +1 3/5
-    - Grenade +1 4/5
-    - Grenade +1 5/5
-    level: 0
-  - name: Fulmine
-    id: 1
+    - 2 Grenades
+    - 3 Grenades every 3 sec
+    - 4 grenades
+    - 5 grenades every 2 sec
+    maxLevel: 5
+    isActive: 1
+  boltPowerUp:
     descLevel:
     - Unlock Bolt
-    - Bolt +1 2/5
-    - Bolt +1 3/5
-    - Bolt +1 4/5
-    - Bolt +1 5/5
-    level: 0
-  - name: Kunai
-    id: 2
+    - 2 bolt every 3 sec
+    - 3 bolt every 2sec
+    - 4 bolt every 1 sec
+    - 5 bolt
+    maxLevel: 5
+    isActive: 1
+  kunaiPowerUp:
     descLevel:
     - Unlock Kunai
-    - Kunai Level 2
-    - Kunai Level 3
-    - Kunai Level 4
-    - Kunai Level 5
-    level: 0
+    - 2 kunai every 3 sec
+    - 3 kunai
+    - 4 kunai every 2 sec
+    - 5 kunai every 1 sec
+    maxLevel: 5
+    isActive: 1
   grenadeExplosionSound: {fileID: 851860846}
   grenadePrefab: {fileID: 2529332762634400003, guid: 2aa4a1936ca1b244ab3c469f10291433,
     type: 3}
@@ -4047,11 +4046,11 @@ MonoBehaviour:
   particleBruciatura: {fileID: 7310477816737461270, guid: 204258f1bfc9b27408c45ffd565f8d23,
     type: 3}
   boltRechargeT: 1.5
-  kunaiPrefab: {fileID: 5006237957194821110, guid: 690142ba6ea7442488399e08b218c971,
+  kunaiPrefab: {fileID: 746227973769437451, guid: d705659714de51542b91e92c4ab684f1,
     type: 3}
-  kunayDestroyTime: 1
+  kunayDestroyTime: 3
   kunayRechargeT: 3
-  kunaiForce: 500
+  kunaiForce: 300
 --- !u!114 &1159477645
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4065,7 +4064,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   expToUnlock: 200
-  expToUnlcokMul: 1.5
+  expToUnlcokMul: 1.25
   ui_Script: {fileID: 24813079}
 --- !u!1 &1168686523
 GameObject:
@@ -4101,8 +4100,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -2.1210938}
-  m_SizeDelta: {x: 325.42, y: 188.27}
+  m_AnchoredPosition: {x: -0.00066257, y: -0.01}
+  m_SizeDelta: {x: 285, y: 124}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1168686525
 MonoBehaviour:
@@ -4128,7 +4127,7 @@ MonoBehaviour:
     m_Font: {fileID: 12800000, guid: 58a9e937a79857b439bce37cb671a6ed, type: 3}
     m_FontSize: 52
     m_FontStyle: 0
-    m_BestFit: 0
+    m_BestFit: 1
     m_MinSize: 5
     m_MaxSize: 106
     m_Alignment: 4
@@ -4136,7 +4135,7 @@ MonoBehaviour:
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
-    m_LineSpacing: 1.23
+    m_LineSpacing: 1.08
   m_Text: 'Bolt
 
     +1'
@@ -5404,8 +5403,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 162.71014, y: 77.1358}
-  m_SizeDelta: {x: 325.42, y: 188.27}
+  m_AnchoredPosition: {x: 161.32, y: 79.27}
+  m_SizeDelta: {x: 285, y: 124}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1793919263
 MonoBehaviour:
@@ -5431,7 +5430,7 @@ MonoBehaviour:
     m_Font: {fileID: 12800000, guid: 58a9e937a79857b439bce37cb671a6ed, type: 3}
     m_FontSize: 52
     m_FontStyle: 0
-    m_BestFit: 0
+    m_BestFit: 1
     m_MinSize: 5
     m_MaxSize: 106
     m_Alignment: 4
@@ -5439,7 +5438,7 @@ MonoBehaviour:
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
-    m_LineSpacing: 1.23
+    m_LineSpacing: 1.08
   m_Text: 'GRANATA
 
     +1'
@@ -11244,6 +11243,11 @@ PrefabInstance:
       propertyPath: m_Offset.y
       value: -0.06006261
       objectReference: {fileID: 0}
+    - target: {fileID: 4075160901282670246, guid: 525d8ed557176b044b1bb5baec578600,
+        type: 3}
+      propertyPath: m_TagString
+      value: DeathZone
+      objectReference: {fileID: 0}
     - target: {fileID: 4156179886566131468, guid: 525d8ed557176b044b1bb5baec578600,
         type: 3}
       propertyPath: m_Mesh
@@ -11474,6 +11478,21 @@ PrefabInstance:
       propertyPath: ColorModule.gradient.maxGradient.m_NumAlphaKeys
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 5255618014276855263, guid: 525d8ed557176b044b1bb5baec578600,
+        type: 3}
+      propertyPath: m_Radius
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 5255618014276855263, guid: 525d8ed557176b044b1bb5baec578600,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5255618014276855263, guid: 525d8ed557176b044b1bb5baec578600,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6868744732594619198, guid: 525d8ed557176b044b1bb5baec578600,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -11537,12 +11556,17 @@ PrefabInstance:
     - target: {fileID: 8448212412545100611, guid: 525d8ed557176b044b1bb5baec578600,
         type: 3}
       propertyPath: NormalSpeed
-      value: 2000
+      value: 2100
       objectReference: {fileID: 0}
     - target: {fileID: 8448212412545100611, guid: 525d8ed557176b044b1bb5baec578600,
         type: 3}
       propertyPath: ShootingSpeed
       value: 1900
+      objectReference: {fileID: 0}
+    - target: {fileID: 8635342095267604994, guid: 525d8ed557176b044b1bb5baec578600,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8667215625037979035, guid: 525d8ed557176b044b1bb5baec578600,
         type: 3}

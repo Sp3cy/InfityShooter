@@ -23,6 +23,7 @@ public class Powers : MonoBehaviour
     [Header("- Powers")]
     public PowersStruct grenadePowerUp;
     public PowersStruct boltPowerUp;
+    public PowersStruct kunaiPowerUp;
 
     [System.NonSerialized]
     public List<PowersStruct> powersData = new List<PowersStruct>();
@@ -46,7 +47,7 @@ public class Powers : MonoBehaviour
     public GameObject particleBruciatura;
     public float boltRechargeT = 2f;
 
-    public static float boltDamage = 20f;
+    public static float boltDamage = 15f;
 
     [Header("- Kunai")]
     public GameObject kunaiPrefab;
@@ -55,7 +56,7 @@ public class Powers : MonoBehaviour
     public float kunayRechargeT = 3f;
     public float kunaiForce = 35f;
 
-    public static float kunaiDamage = 20f;
+    public static float kunaiDamage = 5f;
 
 
 
@@ -72,6 +73,7 @@ public class Powers : MonoBehaviour
 
         if (grenadePowerUp.isActive) powersData.Add(grenadePowerUp);
         if (boltPowerUp.isActive) powersData.Add(boltPowerUp);
+        if (kunaiPowerUp.isActive) powersData.Add(kunaiPowerUp);
 
         for (int i = 0; i < powersData.Count; i++) powersData[i].Id = i;
     }
@@ -147,8 +149,8 @@ public class Powers : MonoBehaviour
     {
         var kunai = Instantiate(kunaiPrefab, player.transform.position, player.transform.rotation);
         Rigidbody2D kunaiRb = kunai.GetComponent<Rigidbody2D>();
+        Collider2D kunaiCol = kunai.GetComponent<Collider2D>();
         kunaiRb.AddForce(new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f)) * grenadeForce, ForceMode2D.Force);
-
         yield return new WaitForSeconds(kunayDestroyTime);
         Destroy(kunai);
         yield return null;

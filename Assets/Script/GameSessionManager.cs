@@ -18,8 +18,6 @@ public class GameSessionManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        ui_Script.playerLevelTXT.text = "Livello " + ui_Script.tempLivello.ToString();
-
         GameData.CurrentPlayT = 0;
         GameData.EnemyDead = 0;
         GameData.ActualExp = 0f;
