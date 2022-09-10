@@ -7,7 +7,7 @@ public class WeaponManager : MonoBehaviour
     public int currentWeaponIndex = 0;
     private int totalWeapons;
 
-    public GameObject[] guns;
+    public List<GameObject> guns;
     public GameObject weaponHolder;
     public GameObject currentGun;
 
@@ -19,14 +19,14 @@ public class WeaponManager : MonoBehaviour
 
         for (int i=0; i<totalWeapons; i++)
         {
-            guns[i] = weaponHolder.transform.GetChild(i).gameObject;
+            Debug.Log(totalWeapons);
+            guns.Add(weaponHolder.transform.GetChild(i).gameObject);
             guns[i].SetActive(false);
         }
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        currentWeaponIndex = GameData.CurrentWeaponIndex;
+        if (currentWeaponIndex > guns.Count) currentWeaponIndex = 0;
+
+        guns[currentWeaponIndex].SetActive(true);
     }
 }
