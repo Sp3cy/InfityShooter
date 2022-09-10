@@ -96,7 +96,7 @@ public class UI_Script : MonoBehaviour
                 Debug.LogError("PowerUp not found");
                 powerUpMenu.txt_PowerUp[i].text = "No Powerup";
             }
-            // Se il livello attuale è minore o uguale dei testi esistenti per il powerup
+            // Se il livello attuale ï¿½ minore o uguale dei testi esistenti per il powerup
             else if (actualMenuPowers[i].Level < actualMenuPowers[i].descLevel.Length)
             {
                 powerUpMenu.txt_PowerUp[i].text = actualMenuPowers[i].descLevel[actualMenuPowers[i].Level];
@@ -116,11 +116,23 @@ public class UI_Script : MonoBehaviour
         powerUpMenu.obj_PwMenu.SetActive(true);
     }
 
-    // Serve ai bottoni per dire quale è stato cliccato 
+    // Serve ai bottoni per dire quale ï¿½ stato cliccato 
     public void PowerUpSelected(int id)
     {
-        if (actualMenuPowers[id] == null) return;
-        if (actualMenuPowers[id].Level >= actualMenuPowers[id].maxLevel) return;
+        if (actualMenuPowers[id] == null)
+        {
+            powerUpMenu.obj_PwMenu.SetActive(false);
+            gameManager.GetComponent<GameSessionManager>().Resume();
+            return;
+        }
+
+        if (actualMenuPowers[id].Level >= actualMenuPowers[id].maxLevel)
+        {
+            powerUpMenu.obj_PwMenu.SetActive(false);
+            gameManager.GetComponent<GameSessionManager>().Resume();
+            return;
+        }
+
 
         // Se non returna
         // Aumenta di un livello il powerUp

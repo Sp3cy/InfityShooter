@@ -13,11 +13,9 @@ public class EnemySpawner : MonoBehaviour
     private float tempEnemyIncreaseT;
 
     [Header("- Spawner Related")]
-    public float minRangeX;
-    public float maxRangeX;
+    public Vector2 minPos;
     [Space(5)]
-    public float minRangeY;
-    public float maxRangeY;
+    public Vector2 maxPos;
     [Space(5)]
     public float spawnDelay = 2f;
 
@@ -27,6 +25,10 @@ public class EnemySpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // Set global respawn boundaries
+        GameMethods.MinPos = minPos;
+        GameMethods.MaxPos = maxPos;
+
         tempEnemyIncreaseT = enemyIncreaseT;
         GameData.ActualEnemy = 0;
 
@@ -52,17 +54,8 @@ public class EnemySpawner : MonoBehaviour
         yield return new WaitForSeconds(delay);
         yield return new WaitUntil(() => GameData.ActualEnemy < maxEnemy);
 
-        // Posizione player attuale
-        float posX = player.transform.position.x;
-        float posY = player.transform.position.y;
+        Vector3 pos = GameMethods.RespawnEnemy(player);
 
-        // Random tra distanza minima dal player e massima
-        float enemyPosX = Random.Range(minRangeX, maxRangeX);
-        float enemyPosY = Random.Range(minRangeY, maxRangeY);
-
-        // Random.Range(0, 2) * 2 - 1 == -1 or 1
-        Vector3 pos = new Vector2(posX + (Random.Range(0, 2) * 2 - 1) * enemyPosX, posY + (Random.Range(0, 2) * 2 - 1)*enemyPosY);
-        
         // Non so se serva più di tanto creare un gameobject
         GameObject newEnemy = Instantiate(enemy, pos, Quaternion.identity);
         GameData.ActualEnemy++;
