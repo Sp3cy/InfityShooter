@@ -19,7 +19,6 @@ public class WeaponManager : MonoBehaviour
 
         for (int i=0; i<totalWeapons; i++)
         {
-            Debug.Log(totalWeapons);
             guns.Add(weaponHolder.transform.GetChild(i).gameObject);
             guns[i].SetActive(false);
         }

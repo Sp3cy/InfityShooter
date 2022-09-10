@@ -12,7 +12,7 @@ public class Bullet : MonoBehaviour
 
     private Animator animator;
     private Rigidbody2D rb;
-    private Collider2D collider;
+    private Collider2D bulletCollider;
 
 
     private void Start()
@@ -22,7 +22,7 @@ public class Bullet : MonoBehaviour
 
         rb = gameObject.GetComponent<Rigidbody2D>();
 
-        collider = gameObject.GetComponent<Collider2D>();
+        bulletCollider = gameObject.GetComponent<Collider2D>();
 
 
 
@@ -37,9 +37,6 @@ public class Bullet : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-
-
-
         if (damage == 0f) Debug.LogError("- Damage not setted");
 
         // if enemy is been hitted
@@ -47,9 +44,8 @@ public class Bullet : MonoBehaviour
         {
             collision.gameObject.GetComponent<Enemy>().Hitted(damage);
         }
+
         StartCoroutine(AnimazioneBulletEsplode(BulletAnimDurata));
-
-
     }
 
     // Disrugge il gameobject dopo tot secondi
@@ -70,7 +66,7 @@ public class Bullet : MonoBehaviour
 
         rb.constraints = RigidbodyConstraints2D.FreezeAll;
 
-        collider.isTrigger = true;
+        bulletCollider.isTrigger = true;
 
       //roba mia gius POI TI SPIEGO
 

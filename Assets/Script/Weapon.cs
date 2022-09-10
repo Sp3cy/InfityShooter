@@ -3,6 +3,9 @@ using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
+    [Header("- Fire Point")]
+    public Transform firePos;
+
     [Header("- Weapon Stats")]
     public float bulletDmg = 20f;
     public float bulletForce = 30f;
@@ -24,7 +27,6 @@ public class Weapon : MonoBehaviour
     private float keepFireRate;
     private bool isShooting;
     private bool btnFirePressed;
-    private Transform firePos;
     private AudioSource fireSound;
     public AudioSource reloadSound;
 
@@ -128,17 +130,4 @@ public class Weapon : MonoBehaviour
     {
         return isShooting;
     }
-
-    // Set FirePos to handle bugs -- PlayerBehaviour
-    public void setFirePos(Transform newFirePos)
-    {
-        firePos = newFirePos;
-    }
-
-    public int GetAmmoMax ()
-    {
-        return ammoMax;
-    }
-
-
 }

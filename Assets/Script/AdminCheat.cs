@@ -19,7 +19,8 @@ public class AdminCheat : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        weapon = GameObject.FindGameObjectWithTag("Weapon").GetComponent<Weapon>();
+        weapon = GameObject.FindGameObjectWithTag("WeaponHolder").transform.GetChild(GameData.CurrentWeaponIndex)
+            .GetComponent<Weapon>();
     }
 
     // Update is called once per frame

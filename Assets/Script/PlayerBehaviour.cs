@@ -12,7 +12,6 @@ public class PlayerBehaviour : MonoBehaviour
 
     [Header("- Objects")]
     public Rigidbody2D player;
-    public Weapon weapon;
 
     [Space(1)]
     [Header("- Rotation Time")]
@@ -26,9 +25,10 @@ public class PlayerBehaviour : MonoBehaviour
     public float knockbackT = 0.2f;
 
     // Se viene preso direttamente da weapon non funziona
-    private Transform firePos;
+   // private Transform firePos;
 
     private Joystick joystick;
+    private Weapon selectedWeapon;
 
     private void Awake()
     {
@@ -38,12 +38,10 @@ public class PlayerBehaviour : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        selectedWeapon = GameObject.FindGameObjectWithTag("WeaponHolder").transform.GetChild(GameData.CurrentWeaponIndex)
+            .GetComponent<Weapon>();
 
         joystick = GameObject.FindGameObjectWithTag("Joystick").GetComponent<Joystick>();
-        firePos = GameObject.FindGameObjectWithTag("Firepoint").GetComponent<Transform>();
-
-        // Handle firePos bug
-        weapon.setFirePos(firePos);
     }
 
     private void Update()
@@ -61,7 +59,7 @@ public class PlayerBehaviour : MonoBehaviour
         Vector2 lookDir = new Vector2(0,0);
 
         // If an enemy is found
-        if (weapon.IsShooting() & FindClosestEnemy())
+        if (selectedWeapon.IsShooting() & FindClosestEnemy())
         {
             lookDir = FindClosestEnemy().transform.position - player.transform.position;
         } 
@@ -81,11 +79,13 @@ public class PlayerBehaviour : MonoBehaviour
         }
     }
 
+    // Quando player morto
     public void Dead()
     {
         ScenaManagement.CaricaScena("MainMenu");
     }
 
+    // When player hitted
     public void HittedByEnemy(float damage, float knockback, Transform enemy)
     {
         GameData.PlayerLife -= damage;
