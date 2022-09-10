@@ -4,16 +4,15 @@ using UnityEngine;
 
 public class WeaponManager : MonoBehaviour
 {
-    public int currentWeaponIndex = 0;
+    public int currentWeaponIndex;
     private int totalWeapons;
 
     public List<GameObject> guns;
     public GameObject weaponHolder;
-    public GameObject currentGun;
 
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         totalWeapons = weaponHolder.transform.childCount;
 

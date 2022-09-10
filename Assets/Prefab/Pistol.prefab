@@ -78,12 +78,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   firePos: {fileID: 1663875049685783625}
-  bulletDmg: 1
+  bulletDmg: 10
   bulletForce: 30
   fireRate: 0.7
   fireRateTarget: 0.7
   coeffRPS: 0.5
-  ammoMax: 20
+  ammoMax: 10
   reloadT: 1
   bulletPrefab: {fileID: 1304352845726487513, guid: b602888ad4dde0a42a7d896218f34034,
     type: 3}
@@ -254,7 +254,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_Sprite: {fileID: 21300000, guid: 0bd9633ab138f7c4b98e9561240fe465, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
