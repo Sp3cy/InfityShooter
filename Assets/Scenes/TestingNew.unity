@@ -1911,7 +1911,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1086.5803, y: -2146.2932, z: 540.69885}
+  m_LocalPosition: {x: -1086.5803, y: -2146.2932, z: 540.3264}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1707582985}
@@ -3956,9 +3956,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyPrefab: {fileID: 2665966712921770188, guid: a96472d6e0f84bf4bb0084f156b081b4,
     type: 3}
-  maxEnemy: 10
+  maxEnemy: 200
   enemyIncrease: 1
-  enemyIncreaseT: 2
+  enemyIncreaseT: 100
   minPos: {x: 1, y: 1}
   maxPos: {x: 30, y: 30}
   spawnDelay: 0.05
@@ -4047,6 +4047,7 @@ MonoBehaviour:
   particleBruciatura: {fileID: 7310477816737461270, guid: 204258f1bfc9b27408c45ffd565f8d23,
     type: 3}
   boltRechargeT: 1.5
+  boltMaxRange: 9
   kunaiPrefab: {fileID: 746227973769437451, guid: d705659714de51542b91e92c4ab684f1,
     type: 3}
   kunayDestroyTime: 3
@@ -5055,7 +5056,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1709212648}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1086.5803, y: -2146.2932, z: 540.69885}
+  m_LocalPosition: {x: -1086.5803, y: -2146.2932, z: 540.3264}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1739160545}
@@ -11104,7 +11105,7 @@ PrefabInstance:
     - target: {fileID: 2749385503348596312, guid: 525d8ed557176b044b1bb5baec578600,
         type: 3}
       propertyPath: lerpT
-      value: 0.5
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 2749385503348596312, guid: 525d8ed557176b044b1bb5baec578600,
         type: 3}
@@ -11114,12 +11115,12 @@ PrefabInstance:
     - target: {fileID: 2749385503348596312, guid: 525d8ed557176b044b1bb5baec578600,
         type: 3}
       propertyPath: angleFix
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2749385503348596312, guid: 525d8ed557176b044b1bb5baec578600,
         type: 3}
       propertyPath: maxEnemy
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2749385503348596312, guid: 525d8ed557176b044b1bb5baec578600,
         type: 3}
@@ -11185,7 +11186,7 @@ PrefabInstance:
     - target: {fileID: 2749385503348596315, guid: 525d8ed557176b044b1bb5baec578600,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.37243
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2749385503348596315, guid: 525d8ed557176b044b1bb5baec578600,
         type: 3}
@@ -11230,7 +11231,7 @@ PrefabInstance:
     - target: {fileID: 2819028058409473710, guid: 525d8ed557176b044b1bb5baec578600,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2832388108643086090, guid: 525d8ed557176b044b1bb5baec578600,
         type: 3}
@@ -11570,7 +11571,7 @@ PrefabInstance:
     - target: {fileID: 8635342095267604994, guid: 525d8ed557176b044b1bb5baec578600,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8667215625037979035, guid: 525d8ed557176b044b1bb5baec578600,
         type: 3}

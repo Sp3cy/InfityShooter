@@ -78,7 +78,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   firePos: {fileID: 1663875049685783625}
-  bulletDmg: 10
+  bulletDmg: 20
   bulletForce: 30
   fireRate: 0.7
   fireRateTarget: 0.7
