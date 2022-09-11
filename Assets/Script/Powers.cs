@@ -135,11 +135,21 @@ public class Powers : MonoBehaviour
 
     protected IEnumerator Bolts(Transform enemyPos)
     {
+        // Instantiate bolt and sound
         var bolt = Instantiate(boltPrefab, enemyPos.position - new Vector3(0, -11.6f, 0), Quaternion.Euler(55,180,0));
-        var hitZone = Instantiate(boltHitZone,bolt.transform.position + new Vector3(0,-11.6f,0), Quaternion.identity);
         boltSoundfx.Play();
+
+        // When bolt anim (only strikes) instantiate the hitzone
+        yield return new WaitForSeconds(boltPrefab.GetComponent<ParticleSystem>().main.duration - 0.5f);
+        var hitZone = Instantiate(boltHitZone, bolt.transform.position + new Vector3(0, -11.6f, 0), Quaternion.identity);
+
+        // Wait 3 frames (Just for caution) and destroy hitzone -- Cringe but i wont write a for
+        yield return new WaitForFixedUpdate();
+        yield return new WaitForFixedUpdate();
         yield return new WaitForFixedUpdate();
         Destroy(hitZone);
+
+        // Wait for bruciature anim to end
         yield return new WaitForSeconds(particleBruciatura.GetComponent<ParticleSystem>().main.duration);
         Destroy(bolt);
 

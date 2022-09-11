@@ -101,12 +101,25 @@ public class PowerUpBehaviour : Powers
                 break;
         }
 
-        for (int i = 0; i < boltAmount; i++)
+        // Se non scaglia il primo colpo il tempo di ricarica scende a 0
+        GameObject enemyPos = GameMethods.GetRandomEnemy(boltMaxRange);
+        if (enemyPos == null)
         {
-            var enemyPos = GetRandEnemy(boltMaxRange);
-            if (enemyPos == null) break;
+            boltRechargeT = 0f;
+        }
+        else
+        {
+            // Scaglia il primo colpo
+            StartCoroutine(Bolts(enemyPos.transform));
 
-            StartCoroutine(Bolts(enemyPos));
+            // Parte dal secondo in poi
+            for (int i = 1; i < boltAmount; i++)
+            {
+                enemyPos = GameMethods.GetRandomEnemy(boltMaxRange);
+                if (enemyPos == null) break;
+
+                StartCoroutine(Bolts(enemyPos.transform));
+            }
         }
 
         yield return new WaitForSeconds(boltRechargeT);
@@ -164,20 +177,5 @@ public class PowerUpBehaviour : Powers
     }
 
 
-    private Transform GetRandEnemy(float maxRange)
-    {
-        // Array di Enemy attuali
-        GameObject[] gos = GameObject.FindGameObjectsWithTag("Enemy");
-
-        if (gos.Length == 0) return null;
-
-        var nearest = gos
-          .Where(t => Vector3.Distance(player.transform.position, t.transform.position) < maxRange)
-          .ToArray();
-
-        if (nearest.Length == 0) return null;
-
-        Transform rand = nearest[Random.Range(0, nearest.Length)].transform;
-        return rand;
-    }
+    
 }

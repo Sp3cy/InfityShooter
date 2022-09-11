@@ -26,8 +26,8 @@ public class EnemySpawner : MonoBehaviour
     void Start()
     {
         // Set global respawn boundaries
-        GameMethods.MinPos = minPos;
-        GameMethods.MaxPos = maxPos;
+        GameMethods.MinEnemyRespawnPos = minPos;
+        GameMethods.MaxEnemyRespawnPos = maxPos;
 
         tempEnemyIncreaseT = enemyIncreaseT;
         GameData.ActualEnemy = 0;

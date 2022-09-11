@@ -17,18 +17,19 @@ public class Weapon : MonoBehaviour
     [Space(2)]
     public int ammoMax;
     public float reloadT = 1f;
-    
 
-    [Space(1)]
+    [Space(5)]
     [Header("- Bullet Prefab")]
     public GameObject bulletPrefab;
+
+    [Space(5)]
+    [Header("- Sound FX")]
+    public AudioSource fireSound;
+    public AudioSource reloadSound;
 
     private float RowBullets;
     private float keepFireRate;
     private bool isShooting;
-    private bool btnFirePressed;
-    private AudioSource fireSound;
-    public AudioSource reloadSound;
 
     private void Awake()
     {
@@ -38,26 +39,17 @@ public class Weapon : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
-        RowBullets = 0;
-        keepFireRate = fireRate;
+        // Set variables to 0
+        StopShooting();
 
-        btnFirePressed = false;
-        isShooting = false;
+        // Start the coroutine -- It will wait until isShooting == true
         StartCoroutine(Shooting());
 
         // Reload every time ammocount = 0
         StartCoroutine(Reload(reloadT));
 
-        fireSound = gameObject.GetComponent<AudioSource>();
-    }
-
-    // Update is called once per frame
-    void FixedUpdate()
-    {
+        // Set isShooting to true
         StartShooting();
-        // if (btnFirePressed) StartShooting();
-        // else StopShooting();
     }
 
     public void StartShooting()
@@ -102,28 +94,18 @@ public class Weapon : MonoBehaviour
     {
         yield return new WaitUntil(() => GameData.AmmoCount <= 0);
 
-        isShooting = false;
-        RowBullets = 0;
-
+        // Pause the shooting coroutine
+        StopShooting();
         reloadSound.Play();
 
-        Debug.Log("reloading");
         yield return new WaitForSeconds(reloadT);
 
+        // Reload and resume shooting
         GameData.AmmoCount = ammoMax;
+        StartShooting();
 
         // Fa ripartire questa coroutine
         yield return Reload(reloadT);
-    }
-
-    public void ReloadWeapon()
-    {
-        if (GameData.AmmoCount > 0 & GameData.AmmoCount < ammoMax) GameData.AmmoCount = 0;
-    }
-
-    public void SetBtnFirePressed(bool value)
-    {
-        btnFirePressed = value;
     }
 
     // Get if player is shooting

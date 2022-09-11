@@ -26,16 +26,6 @@ public class AdminCheat : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            weapon.SetBtnFirePressed(true);
-        }
-
-        if (Input.GetKeyUp(KeyCode.Space))
-        {
-            weapon.SetBtnFirePressed(false);
-        }
-
         if (Input.GetKeyDown(KeyCode.A))
         {
             // Open powerups menu and stop the game
@@ -45,8 +35,8 @@ public class AdminCheat : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.P)) gameManager.GetComponent<GameSessionManager>().Resume();
 
-        if (Input.GetKeyDown(KeyCode.RightArrow)) GameData.CurrentWeaponIndex++;
+        if (Input.GetKeyDown(KeyCode.RightArrow)) Time.timeScale += 0.1f;
 
-        if (Input.GetKeyDown(KeyCode.LeftArrow)) GameData.CurrentWeaponIndex--;
+        if (Input.GetKeyDown(KeyCode.LeftArrow)) Time.timeScale -= 0.1f;
     }
 }
