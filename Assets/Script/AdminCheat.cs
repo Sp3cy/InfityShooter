@@ -6,12 +6,21 @@ public class AdminCheat : MonoBehaviour
 {
     public GameObject gameManager;
 
+    public bool disable = true;
+    public int currentWeaponIndex;
+
     private Weapon weapon;
+
+    private void Awake()
+    {
+        if (!disable) GameData.CurrentWeaponIndex = currentWeaponIndex;
+    }
 
     // Start is called before the first frame update
     void Start()
     {
-        weapon = GameObject.FindGameObjectWithTag("Weapon").GetComponent<Weapon>();
+        weapon = GameObject.FindGameObjectWithTag("WeaponHolder").transform.GetChild(GameData.CurrentWeaponIndex)
+            .GetComponent<Weapon>();
     }
 
     // Update is called once per frame
@@ -35,5 +44,9 @@ public class AdminCheat : MonoBehaviour
         }
 
         if (Input.GetKeyDown(KeyCode.P)) gameManager.GetComponent<GameSessionManager>().Resume();
+
+        if (Input.GetKeyDown(KeyCode.RightArrow)) GameData.CurrentWeaponIndex++;
+
+        if (Input.GetKeyDown(KeyCode.LeftArrow)) GameData.CurrentWeaponIndex--;
     }
 }
