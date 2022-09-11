@@ -5048,7 +5048,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8635342095267604994}
-  - component: {fileID: 5255618014276855263}
+  - component: {fileID: 2265888577361804401}
   m_Layer: 0
   m_Name: DeathZone
   m_TagString: Untagged
@@ -5070,14 +5070,14 @@ Transform:
   m_Father: {fileID: 2749385503348596315}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!58 &5255618014276855263
+--- !u!58 &2265888577361804401
 CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4075160901282670246}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
@@ -5085,7 +5085,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 8
+  m_Radius: 13
 --- !u!1 &5901171553542015262
 GameObject:
   m_ObjectHideFlags: 0

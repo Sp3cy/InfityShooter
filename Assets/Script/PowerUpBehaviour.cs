@@ -88,10 +88,13 @@ public class PowerUpBehaviour : Powers
                 boltRechargeT = 3;
                 StartCoroutine(Bolts());
                 StartCoroutine(Bolts());
+                StartCoroutine(Bolts());
                 break;
 
             case 3:
                 boltRechargeT = 2;
+                StartCoroutine(Bolts());
+                StartCoroutine(Bolts());
                 StartCoroutine(Bolts());
                 StartCoroutine(Bolts());
                 StartCoroutine(Bolts());
@@ -103,10 +106,15 @@ public class PowerUpBehaviour : Powers
                 StartCoroutine(Bolts());
                 StartCoroutine(Bolts());
                 StartCoroutine(Bolts());
+                StartCoroutine(Bolts());
+                StartCoroutine(Bolts());
                 break;
 
             case 5:
                 boltRechargeT = 1;
+                StartCoroutine(Bolts());
+                StartCoroutine(Bolts());
+                StartCoroutine(Bolts());
                 StartCoroutine(Bolts());
                 StartCoroutine(Bolts());
                 StartCoroutine(Bolts());

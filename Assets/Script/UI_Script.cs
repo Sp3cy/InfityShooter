@@ -13,11 +13,11 @@ public class UI_Script : MonoBehaviour
 {
     [Header("- Game Manager Object")]
     public GameObject gameManager;
+    public Text buttonFire;
 
     [Space(2)]
     public PowerUpMenu powerUpMenu;
     public Powers powersScript;
-    public GameObject ammoTxtHolder;
     public Slider expSlider;
     public Text killedEnemyesTXT;
     public Text gameSessionCurrentTimeTXT;

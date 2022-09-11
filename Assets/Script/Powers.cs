@@ -47,7 +47,7 @@ public class Powers : MonoBehaviour
     public GameObject particleBruciatura;
     public float boltRechargeT = 2f;
 
-    public static float boltDamage = 15f;
+    public static float boltDamage = 20f;
 
     [Header("- Kunai")]
     public GameObject kunaiPrefab;

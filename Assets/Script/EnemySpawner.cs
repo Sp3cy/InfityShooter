@@ -22,6 +22,7 @@ public class EnemySpawner : MonoBehaviour
     private Vector2 playerPos;
     private GameObject player;
 
+
     // Start is called before the first frame update
     void Start()
     {

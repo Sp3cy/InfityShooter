@@ -105,7 +105,6 @@ MonoBehaviour:
   expDrop: 10
   lerpT: 0.1
   waitAfetrAtkAnim: 0.5
-  healtBar: {fileID: 0}
   enemyDeathEffectPrefab: {fileID: 3258158057525614007, guid: c260f3c9d0ea35f40a4481e60fa8db66,
     type: 3}
 --- !u!50 &8489877846852209201
@@ -116,7 +115,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2665966712921770188}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -157,7 +156,7 @@ Animator:
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 85b15ef49e66a8e4db378545662ed48d, type: 2}
   m_CullingMode: 0
-  m_UpdateMode: 0
+  m_UpdateMode: 1
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_WarningMessage: 

@@ -53,7 +53,7 @@ public class Weapon : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        StartShooting();
+       StartShooting();
         // if (btnFirePressed) StartShooting();
         // else StopShooting();
     }
