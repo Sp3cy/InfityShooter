@@ -74,6 +74,14 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "FlameThrower")
+        {
+            Hitted(Skill.flameThrowerDamage);
+        }
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Grenade")

@@ -49,7 +49,7 @@ public class Powers : MonoBehaviour
     public float boltRechargeT = 2f;
     public float boltMaxRange = 7f;
 
-    public static float boltDamage = 15f;
+    public static float boltDamage = 20f;
     protected int boltAmount;
 
     [Header("- Kunai")]

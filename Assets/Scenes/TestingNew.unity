@@ -256,7 +256,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 1159477640}
-  buttonFire: {fileID: 1777572017}
   powerUpMenu:
     obj_PwMenu: {fileID: 898386672}
     txt_PowerUp:
@@ -264,13 +263,13 @@ MonoBehaviour:
     - {fileID: 1168686525}
     - {fileID: 784521181}
   powersScript: {fileID: 1159477644}
+  ammoTxtHolder: {fileID: 0}
   expSlider: {fileID: 515333224}
   killedEnemyesTXT: {fileID: 735763685}
   gameSessionCurrentTimeTXT: {fileID: 702788318}
   playerLevelTXT: {fileID: 1385030389}
   animAmmoPow: 1.08
   animAmmoTime: 0.6
-  weapon: {fileID: 1488306991}
 --- !u!4 &49108078 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8351375070893166530, guid: 93af8d03f8fd70540b2e4c3644185374,
@@ -4162,7 +4161,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1488306991}
+        - m_Target: {fileID: 0}
           m_TargetAssemblyTypeName: Weapon, Assembly-CSharp
           m_MethodName: SetBtnFirePressed
           m_Mode: 6
@@ -4178,7 +4177,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1488306991}
+        - m_Target: {fileID: 0}
           m_TargetAssemblyTypeName: Weapon, Assembly-CSharp
           m_MethodName: SetBtnFirePressed
           m_Mode: 6
@@ -4225,11 +4224,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyPrefab: {fileID: 2665966712921770188, guid: a96472d6e0f84bf4bb0084f156b081b4,
     type: 3}
-  maxEnemy: 20
-  enemyIncrease: 3
-  enemyIncreaseT: 2
+  maxEnemy: 290
+  enemyIncrease: 10
+  enemyIncreaseT: 12
   minPos: {x: 1, y: 1}
-  maxPos: {x: 30, y: 30}
+  maxPos: {x: 25, y: 25}
   spawnDelay: 0
 --- !u!4 &1159477642
 Transform:
@@ -4258,6 +4257,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 1159477640}
+  disable: 1
+  currentWeaponIndex: 0
 --- !u!114 &1159477644
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4314,6 +4315,7 @@ MonoBehaviour:
   particleBruciatura: {fileID: 7310477816737461270, guid: 204258f1bfc9b27408c45ffd565f8d23,
     type: 3}
   boltRechargeT: 1.5
+  boltMaxRange: 7
   kunaiPrefab: {fileID: 746227973769437451, guid: d705659714de51542b91e92c4ab684f1,
     type: 3}
   kunayDestroyTime: 3
@@ -4331,8 +4333,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d03346b01615d14b9cc25f86b295807, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  expToUnlock: 2000
-  expToUnlcokMul: 1.25
+  expToUnlock: 400
+  expToUnlcokMul: 1.35
   ui_Script: {fileID: 24813079}
 --- !u!114 &1159477646
 MonoBehaviour:
@@ -4346,12 +4348,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8ccc8bef98b5434bb3d8549c88c4d22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ui: {fileID: 24813079}
   flameThrowerRechargeT: 10
   flameThrowerAudiofx: {fileID: 293696469}
   flameThrowerPrefab: {fileID: 2240620667737657595, guid: 8a85b96a7b66b2c4d83d9c271d16241e,
     type: 3}
   player: {fileID: 1975026283}
+  btnTxt: {fileID: 1777572017}
 --- !u!1 &1168686523
 GameObject:
   m_ObjectHideFlags: 0
@@ -5001,18 +5003,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &1488306991 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 849613597948349451, guid: 525d8ed557176b044b1bb5baec578600,
-    type: 3}
-  m_PrefabInstance: {fileID: 7106381606555818202}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0d60b370359748746b5e4241c7aa7da7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!224 &1557351445 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8174363227289279510, guid: 0f3c99024c677974ab99252e91d36e18,
@@ -6768,7 +6758,7 @@ PrefabInstance:
         type: 3}
       propertyPath: weapon
       value: 
-      objectReference: {fileID: 1488306991}
+      objectReference: {fileID: 0}
     - target: {fileID: 2749385503348596312, guid: 525d8ed557176b044b1bb5baec578600,
         type: 3}
       propertyPath: angleFix
@@ -7189,7 +7179,7 @@ PrefabInstance:
         type: 3}
       propertyPath: weapon
       value: 
-      objectReference: {fileID: 1488306991}
+      objectReference: {fileID: 0}
     - target: {fileID: 8448212412545100611, guid: 525d8ed557176b044b1bb5baec578600,
         type: 3}
       propertyPath: NormalSpeed
