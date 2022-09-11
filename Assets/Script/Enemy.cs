@@ -74,6 +74,14 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "FlameThrower")
+        {
+            Hitted(Skill.flameThrowerDamage);
+        }
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Grenade")
@@ -87,15 +95,6 @@ public class Enemy : MonoBehaviour
         if (collision.gameObject.tag == "Kunai")
         {
             Hitted(Powers.kunaiDamage);
-         
-        }
-    }
-
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag == "FlameThrower")
-        {
-            Hitted(Skill.flameThrowerDamage);
         }
     }
 

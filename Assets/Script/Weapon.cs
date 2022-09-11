@@ -3,6 +3,9 @@ using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
+    [Header("- Fire Point")]
+    public Transform firePos;
+
     [Header("- Weapon Stats")]
     public float bulletDmg = 20f;
     public float bulletForce = 30f;
@@ -14,19 +17,19 @@ public class Weapon : MonoBehaviour
     [Space(2)]
     public int ammoMax;
     public float reloadT = 1f;
-    
 
-    [Space(1)]
+    [Space(5)]
     [Header("- Bullet Prefab")]
     public GameObject bulletPrefab;
+
+    [Space(5)]
+    [Header("- Sound FX")]
+    public AudioSource fireSound;
+    public AudioSource reloadSound;
 
     private float RowBullets;
     private float keepFireRate;
     private bool isShooting;
-    private bool btnFirePressed;
-    private Transform firePos;
-    private AudioSource fireSound;
-    public AudioSource reloadSound;
 
     private void Awake()
     {
@@ -36,26 +39,17 @@ public class Weapon : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
-        RowBullets = 0;
-        keepFireRate = fireRate;
+        // Set variables to 0
+        StopShooting();
 
-        btnFirePressed = false;
-        isShooting = false;
+        // Start the coroutine -- It will wait until isShooting == true
         StartCoroutine(Shooting());
 
         // Reload every time ammocount = 0
         StartCoroutine(Reload(reloadT));
 
-        fireSound = gameObject.GetComponent<AudioSource>();
-    }
-
-    // Update is called once per frame
-    void FixedUpdate()
-    {
-       StartShooting();
-        // if (btnFirePressed) StartShooting();
-        // else StopShooting();
+        // Set isShooting to true
+        StartShooting();
     }
 
     public void StartShooting()
@@ -100,28 +94,18 @@ public class Weapon : MonoBehaviour
     {
         yield return new WaitUntil(() => GameData.AmmoCount <= 0);
 
-        isShooting = false;
-        RowBullets = 0;
-
+        // Pause the shooting coroutine
+        StopShooting();
         reloadSound.Play();
 
-        Debug.Log("reloading");
         yield return new WaitForSeconds(reloadT);
 
+        // Reload and resume shooting
         GameData.AmmoCount = ammoMax;
+        StartShooting();
 
         // Fa ripartire questa coroutine
         yield return Reload(reloadT);
-    }
-
-    public void ReloadWeapon()
-    {
-        if (GameData.AmmoCount > 0 & GameData.AmmoCount < ammoMax) GameData.AmmoCount = 0;
-    }
-
-    public void SetBtnFirePressed(bool value)
-    {
-        btnFirePressed = value;
     }
 
     // Get if player is shooting
@@ -129,17 +113,4 @@ public class Weapon : MonoBehaviour
     {
         return isShooting;
     }
-
-    // Set FirePos to handle bugs -- PlayerBehaviour
-    public void setFirePos(Transform newFirePos)
-    {
-        firePos = newFirePos;
-    }
-
-    public int GetAmmoMax ()
-    {
-        return ammoMax;
-    }
-
-
 }

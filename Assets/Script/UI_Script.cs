@@ -13,11 +13,11 @@ public class UI_Script : MonoBehaviour
 {
     [Header("- Game Manager Object")]
     public GameObject gameManager;
-    public Text buttonFire;
 
     [Space(2)]
     public PowerUpMenu powerUpMenu;
     public Powers powersScript;
+    public GameObject ammoTxtHolder;
     public Slider expSlider;
     public Text killedEnemyesTXT;
     public Text gameSessionCurrentTimeTXT;
@@ -31,8 +31,6 @@ public class UI_Script : MonoBehaviour
     private Slider ammoBar;
 
     private PowersStruct[] actualMenuPowers;
-
-    public Weapon weapon;
 
     // Start is called before the first frame update
     void Start()
@@ -48,7 +46,7 @@ public class UI_Script : MonoBehaviour
 
         // AmmoBar Setup
         ammoBar = GameObject.FindGameObjectWithTag("PlayerAmmoBar").GetComponent<Slider>();
-        ammoBar.maxValue = weapon.GetAmmoMax();
+        ammoBar.maxValue = GameData.AmmoCount;
         ammoBar.minValue = 0;
 
         // AmmoCount setup
@@ -74,6 +72,7 @@ public class UI_Script : MonoBehaviour
         // Change sliders value every fixedupdate
         hpBar.value = GameData.PlayerLife;
         expSlider.value = GameData.ActualExp;
+        ammoBar.value = GameData.AmmoCount;
     }
     private void Update()
     {

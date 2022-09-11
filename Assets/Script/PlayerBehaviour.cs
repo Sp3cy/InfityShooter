@@ -12,7 +12,6 @@ public class PlayerBehaviour : MonoBehaviour
 
     [Header("- Objects")]
     public Rigidbody2D player;
-    public Weapon weapon;
 
     [Space(1)]
     [Header("- Rotation Time")]
@@ -26,9 +25,10 @@ public class PlayerBehaviour : MonoBehaviour
     public float knockbackT = 0.2f;
 
     // Se viene preso direttamente da weapon non funziona
-    private Transform firePos;
+   // private Transform firePos;
 
     private Joystick joystick;
+    private Weapon selectedWeapon;
 
     private void Awake()
     {
@@ -38,12 +38,10 @@ public class PlayerBehaviour : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        selectedWeapon = GameObject.FindGameObjectWithTag("WeaponHolder").transform.GetChild(GameData.CurrentWeaponIndex)
+            .GetComponent<Weapon>();
 
         joystick = GameObject.FindGameObjectWithTag("Joystick").GetComponent<Joystick>();
-        firePos = GameObject.FindGameObjectWithTag("Firepoint").GetComponent<Transform>();
-
-        // Handle firePos bug
-        weapon.setFirePos(firePos);
     }
 
     private void Update()
@@ -59,17 +57,15 @@ public class PlayerBehaviour : MonoBehaviour
     void FixedUpdate()
     {
         Vector2 lookDir = new Vector2(0,0);
+        GameObject closestEnemy = GameMethods.GetRandomEnemy(maxEnemyDistance, maxEnemy);
 
-        // If an enemy is found
-        if (weapon.IsShooting() & FindClosestEnemy())
-        {
-            lookDir = FindClosestEnemy().transform.position - player.transform.position;
-        } 
-        // Enemy not found
-        else
-        {
-            lookDir = new Vector2(joystick.Horizontal, joystick.Vertical);
-        }
+        // Se non esistono enemy vicine smette di sparare -- NO ME GUSTA SHOOTING IN UPDATE
+        if (closestEnemy == null) selectedWeapon.StopShooting();
+        else selectedWeapon.StartShooting();
+
+        // If isShooting
+        if (selectedWeapon.IsShooting()) lookDir = closestEnemy.transform.position - selectedWeapon.transform.position;
+        else lookDir = new Vector2(joystick.Horizontal, joystick.Vertical);
 
         // If joystick is moving or an enemy is found
         if (!lookDir.Equals(new Vector2(0,0)))
@@ -81,11 +77,13 @@ public class PlayerBehaviour : MonoBehaviour
         }
     }
 
+    // Quando player morto
     public void Dead()
     {
         ScenaManagement.CaricaScena("MainMenu");
     }
 
+    // When player hitted
     public void HittedByEnemy(float damage, float knockback, Transform enemy)
     {
         GameData.PlayerLife -= damage;
@@ -100,31 +98,7 @@ public class PlayerBehaviour : MonoBehaviour
         player.gameObject.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
     }
 
-    public bool DoesEnemyExist()
-    {
-        GameObject[] gos = GameObject.FindGameObjectsWithTag("Enemy");
-
-        if (gos.Length == 0) return false;
-
-        return true;
-    }
-
-    // Find nearest object with Enemy Tag
-    public GameObject FindClosestEnemy()
-    {
-        // Array di Enemy attuali
-        GameObject[] gos = GameObject.FindGameObjectsWithTag("Enemy");
-
-        if (gos.Length == 0) return null;
-
-        var nearest = gos
-          .OrderBy(t => Vector3.Distance(player.transform.position, t.transform.position))
-          .Take(maxEnemy)
-          .OrderBy(t => t.GetComponent<Enemy>().life)
-          .FirstOrDefault();
-
-        return nearest;
-    }
+    
 
 }
 

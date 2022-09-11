@@ -2,10 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
 public class GameSessionManager : MonoBehaviour
 {
-
     public float expToUnlock = 10f;
     public float expToUnlcokMul = 1.1f;
 
@@ -46,7 +44,6 @@ public class GameSessionManager : MonoBehaviour
     }
 
     // Stop everything that works with Time -- EVEN COROUTINE BUT NOT THE EMEMY SPAWNER SCRIPT
-    //in pratica tutto cio che funziona con il "Time"
     public void Pause()
     {
         Time.timeScale = 0f;

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class PowerUpBehaviour : Powers
 {
@@ -31,38 +32,33 @@ public class PowerUpBehaviour : Powers
 
             case 1:
                 grenadeRechargeT = 4;
-                StartCoroutine(Grenade());
+                grenadeAmount = 1;
                 break;
 
             case 2:
                 grenadeRechargeT = 4;
-                StartCoroutine(Grenade());
-                StartCoroutine(Grenade());
+                grenadeAmount = 2;
                 break;
 
             case 3:
                 grenadeRechargeT = 3;
-                StartCoroutine(Grenade());
-                StartCoroutine(Grenade());
-                StartCoroutine(Grenade());
+                grenadeAmount = 3;
                 break;
 
             case 4:
                 grenadeRechargeT = 3;
-                StartCoroutine(Grenade());
-                StartCoroutine(Grenade());
-                StartCoroutine(Grenade());
-                StartCoroutine(Grenade());
+                grenadeAmount = 4;
                 break;
 
             case 5:
                 grenadeRechargeT = 2;
-                StartCoroutine(Grenade());
-                StartCoroutine(Grenade());
-                StartCoroutine(Grenade());
-                StartCoroutine(Grenade());
-                StartCoroutine(Grenade());
+                grenadeAmount = 5;
                 break;
+        }
+
+        for (int i = 0; i<grenadeAmount; i++)
+        {
+            StartCoroutine(Grenade());
         }
 
         yield return new WaitForSeconds(grenadeRechargeT);
@@ -81,46 +77,49 @@ public class PowerUpBehaviour : Powers
 
             case 1:
                 boltRechargeT = 5;
-                StartCoroutine(Bolts());
+                boltAmount = 1;
                 break;
 
             case 2:
                 boltRechargeT = 3;
-                StartCoroutine(Bolts());
-                StartCoroutine(Bolts());
-                StartCoroutine(Bolts());
+                boltAmount = 2;
                 break;
 
             case 3:
                 boltRechargeT = 2;
-                StartCoroutine(Bolts());
-                StartCoroutine(Bolts());
-                StartCoroutine(Bolts());
-                StartCoroutine(Bolts());
-                StartCoroutine(Bolts());
+                boltAmount = 3;
                 break;
 
             case 4:
                 boltRechargeT = 1;
-                StartCoroutine(Bolts());
-                StartCoroutine(Bolts());
-                StartCoroutine(Bolts());
-                StartCoroutine(Bolts());
-                StartCoroutine(Bolts());
-                StartCoroutine(Bolts());
+                boltAmount = 4;
                 break;
 
             case 5:
                 boltRechargeT = 1;
-                StartCoroutine(Bolts());
-                StartCoroutine(Bolts());
-                StartCoroutine(Bolts());
-                StartCoroutine(Bolts());
-                StartCoroutine(Bolts());
-                StartCoroutine(Bolts());
-                StartCoroutine(Bolts());
-                StartCoroutine(Bolts());
+                boltAmount = 5;
                 break;
+        }
+
+        // Se non scaglia il primo colpo il tempo di ricarica scende a 0
+        GameObject enemyPos = GameMethods.GetRandomEnemy(boltMaxRange);
+        if (enemyPos == null)
+        {
+            boltRechargeT = 0f;
+        }
+        else
+        {
+            // Scaglia il primo colpo
+            StartCoroutine(Bolts(enemyPos.transform));
+
+            // Parte dal secondo in poi
+            for (int i = 1; i < boltAmount; i++)
+            {
+                enemyPos = GameMethods.GetRandomEnemy(boltMaxRange);
+                if (enemyPos == null) break;
+
+                StartCoroutine(Bolts(enemyPos.transform));
+            }
         }
 
         yield return new WaitForSeconds(boltRechargeT);
@@ -140,54 +139,43 @@ public class PowerUpBehaviour : Powers
             case 1:
                 kunayRechargeT = 3;
                 kunaiDamage = 20;
-                StartCoroutine(Kunai());
-                
-
+                kunaiAmount = 1;
                 break;
 
             case 2:
                 kunayRechargeT = 3;
                 kunaiDamage = 20;
-                StartCoroutine(Kunai());
-                StartCoroutine(Kunai());
-
-
+                kunaiAmount = 2;
                 break;
 
             case 3:
                 kunayRechargeT = 3;
                 kunaiDamage = 30;
-                StartCoroutine(Kunai());
-                StartCoroutine(Kunai());
-                StartCoroutine(Kunai());
-
-
+                kunaiAmount = 3;
                 break;
 
             case 4:
                 kunaiDamage = 40;
                 kunayRechargeT = 2;
-                StartCoroutine(Kunai());
-                StartCoroutine(Kunai());
-                StartCoroutine(Kunai());
-                StartCoroutine(Kunai());
-      
-
+                kunaiAmount = 4;
                 break;
 
             case 5:
                 kunaiDamage = 50;
                 kunayRechargeT = 1;
-                StartCoroutine(Kunai());
-                StartCoroutine(Kunai());
-                StartCoroutine(Kunai());
-                StartCoroutine(Kunai());
-                StartCoroutine(Kunai());
-
+                kunaiAmount = 5;
                 break;
         }
-                yield return new WaitForSeconds(kunayRechargeT);
-                yield return KunaiPowerUp();
+
+        for (int i = 0; i < kunaiAmount; i++)
+        {
+            StartCoroutine(Kunai());
+        }
+
+        yield return new WaitForSeconds(kunayRechargeT);
+        yield return KunaiPowerUp();
     }
+
+
     
 }

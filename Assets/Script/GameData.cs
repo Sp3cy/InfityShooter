@@ -10,6 +10,7 @@ public class GameData : MonoBehaviour
 
     // Weapon
     private static int ammoCount;
+    private static int currentWeaponIndex = 0;
 
     // Player
     private static float playerLife;
@@ -30,6 +31,7 @@ public class GameData : MonoBehaviour
     public static float ActualExp { get => actualExp; set => actualExp = value; }
     public static float ExpToLevelUp { get => expToLevelUp; set => expToLevelUp = value; }
     public static int ExpLevel { get => expLevel; set => expLevel = value; }
+    public static int CurrentWeaponIndex { get => currentWeaponIndex; set => currentWeaponIndex = value; }
 
     public static bool isCountChanged(int Count,int tempCount)
     {
