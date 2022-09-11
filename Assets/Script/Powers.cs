@@ -39,6 +39,7 @@ public class Powers : MonoBehaviour
     public float offsetGrenade = 1f;
 
     public static float grenadeDamage = 20f;
+    protected int grenadeAmount = 0;
 
     [Header("- Bolt")]
     public AudioSource boltSoundfx;
@@ -46,8 +47,10 @@ public class Powers : MonoBehaviour
     public GameObject boltHitZone;
     public GameObject particleBruciatura;
     public float boltRechargeT = 2f;
+    public float boltMaxRange = 7f;
 
     public static float boltDamage = 15f;
+    protected int boltAmount;
 
     [Header("- Kunai")]
     public GameObject kunaiPrefab;
@@ -57,9 +60,7 @@ public class Powers : MonoBehaviour
     public float kunaiForce = 35f;
 
     public static float kunaiDamage = 5f;
-
-
-
+    protected int kunaiAmount = 0;
 
     protected GameObject player;
 
@@ -132,9 +133,9 @@ public class Powers : MonoBehaviour
         yield return null;
     }
 
-    protected IEnumerator Bolts()
+    protected IEnumerator Bolts(Transform enemyPos)
     {
-        var bolt = Instantiate(boltPrefab, player.transform.localPosition + new Vector3(Random.Range(-4f,4f), Random.Range(-1.5f, 20f),0), Quaternion.Euler(55,180,0));
+        var bolt = Instantiate(boltPrefab, enemyPos.position - new Vector3(0, -11.6f, 0), Quaternion.Euler(55,180,0));
         var hitZone = Instantiate(boltHitZone,bolt.transform.position + new Vector3(0,-11.6f,0), Quaternion.identity);
         boltSoundfx.Play();
         yield return new WaitForFixedUpdate();

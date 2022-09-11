@@ -15,6 +15,7 @@ TagManager:
   - Bolt
   - Kunai
   - DeathZone
+  - WeaponHolder
   layers:
   - Default
   - TransparentFX

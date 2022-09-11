@@ -269,7 +269,6 @@ MonoBehaviour:
   playerLevelTXT: {fileID: 1385030389}
   animAmmoPow: 1.08
   animAmmoTime: 0.6
-  weapon: {fileID: 1488306991}
 --- !u!4 &49108078 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8351375070893166530, guid: 93af8d03f8fd70540b2e4c3644185374,
@@ -3895,7 +3894,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1488306991}
+        - m_Target: {fileID: 0}
           m_TargetAssemblyTypeName: Weapon, Assembly-CSharp
           m_MethodName: SetBtnFirePressed
           m_Mode: 6
@@ -3911,7 +3910,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1488306991}
+        - m_Target: {fileID: 0}
           m_TargetAssemblyTypeName: Weapon, Assembly-CSharp
           m_MethodName: SetBtnFirePressed
           m_Mode: 6
@@ -3957,7 +3956,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyPrefab: {fileID: 2665966712921770188, guid: a96472d6e0f84bf4bb0084f156b081b4,
     type: 3}
-  maxEnemy: 500
+  maxEnemy: 10
   enemyIncrease: 1
   enemyIncreaseT: 2
   minPos: {x: 1, y: 1}
@@ -3990,6 +3989,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 1159477640}
+  disable: 0
+  currentWeaponIndex: 1
 --- !u!114 &1159477644
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4344,7 +4345,7 @@ Transform:
   - {fileID: 1449413543}
   - {fileID: 2046294952}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1226118331 stripped
 Transform:
@@ -4678,18 +4679,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &1488306991 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 849613597948349451, guid: 525d8ed557176b044b1bb5baec578600,
-    type: 3}
-  m_PrefabInstance: {fileID: 7106381606555818202}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0d60b370359748746b5e4241c7aa7da7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!224 &1557351445 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8174363227289279510, guid: 0f3c99024c677974ab99252e91d36e18,
@@ -5636,7 +5625,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4952050734382352001}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!199 &1963738834
 ParticleSystemRenderer:
@@ -10976,6 +10965,11 @@ PrefabInstance:
       propertyPath: reverbZoneMixCustomCurve.m_Curve.Array.data[0].value
       value: 1.1
       objectReference: {fileID: 0}
+    - target: {fileID: 1613968664651633517, guid: 525d8ed557176b044b1bb5baec578600,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1650626472558363952, guid: 525d8ed557176b044b1bb5baec578600,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -11116,7 +11110,7 @@ PrefabInstance:
         type: 3}
       propertyPath: weapon
       value: 
-      objectReference: {fileID: 1488306991}
+      objectReference: {fileID: 0}
     - target: {fileID: 2749385503348596312, guid: 525d8ed557176b044b1bb5baec578600,
         type: 3}
       propertyPath: angleFix
@@ -11161,7 +11155,7 @@ PrefabInstance:
     - target: {fileID: 2749385503348596315, guid: 525d8ed557176b044b1bb5baec578600,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2749385503348596315, guid: 525d8ed557176b044b1bb5baec578600,
         type: 3}
@@ -11233,6 +11227,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerNonModificare
       objectReference: {fileID: 0}
+    - target: {fileID: 2819028058409473710, guid: 525d8ed557176b044b1bb5baec578600,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 2832388108643086090, guid: 525d8ed557176b044b1bb5baec578600,
         type: 3}
       propertyPath: m_Size.y
@@ -11242,6 +11241,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Offset.y
       value: -0.06006261
+      objectReference: {fileID: 0}
+    - target: {fileID: 3134071197853354316, guid: 525d8ed557176b044b1bb5baec578600,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4075160901282670246, guid: 525d8ed557176b044b1bb5baec578600,
         type: 3}
@@ -11481,7 +11485,7 @@ PrefabInstance:
     - target: {fileID: 5255618014276855263, guid: 525d8ed557176b044b1bb5baec578600,
         type: 3}
       propertyPath: m_Radius
-      value: 15
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5255618014276855263, guid: 525d8ed557176b044b1bb5baec578600,
         type: 3}
@@ -11552,7 +11556,7 @@ PrefabInstance:
         type: 3}
       propertyPath: weapon
       value: 
-      objectReference: {fileID: 1488306991}
+      objectReference: {fileID: 0}
     - target: {fileID: 8448212412545100611, guid: 525d8ed557176b044b1bb5baec578600,
         type: 3}
       propertyPath: NormalSpeed
@@ -11566,7 +11570,7 @@ PrefabInstance:
     - target: {fileID: 8635342095267604994, guid: 525d8ed557176b044b1bb5baec578600,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8667215625037979035, guid: 525d8ed557176b044b1bb5baec578600,
         type: 3}
