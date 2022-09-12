@@ -72,7 +72,7 @@ public class Weapon : MonoBehaviour
 
         // Crea l'oggetto bulletPrefab e gli assegna il damage
         GameObject bullet = Instantiate(bulletPrefab, firePos.position, firePos.rotation);
-        bullet.GetComponent<Bullet>().setDamage(bulletDmg);
+        bullet.GetComponent<Bullet>().SetDamage(bulletDmg);
 
         // Aggiunge la forza per far andare avanti il colpo
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
