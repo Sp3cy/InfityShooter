@@ -18,8 +18,15 @@ public class Enemy : MonoBehaviour
     public float lerpT = 0.5f;
 
     [Space(1)]
-    [Header("- Anim Time")]
+    [Header("- Animation")]
+    public string name_atkAnim;
+    public string name_hitAnim;
     public float waitAfetrAtkAnim;
+
+    [Space(1)]
+    [Header("- Sound FX")]
+    public AudioSource sound_atkFX;
+    public AudioSource sound_deathFX;
 
     [Space(1)]
     [Header("- Objects")]
@@ -36,8 +43,6 @@ public class Enemy : MonoBehaviour
     private GameObject player;
     private Rigidbody2D rbEnemy;
     private Animator animator;
-    private AudioSource biteFx;
-    private AudioSource deathFx;
 
     // Start is called before the first frame update
     void Start()
@@ -51,8 +56,8 @@ public class Enemy : MonoBehaviour
 
         deathZone = GameObject.FindGameObjectWithTag("DeathZone").GetComponent<Collider2D>();
 
-        biteFx = GameObject.Find("LittleMonsterAttackSound").GetComponent<AudioSource>();
-        deathFx = GameObject.Find("LittleMonesterDeathSound").GetComponent<AudioSource>();
+        sound_atkFX = GameObject.Find("LittleMonsterAttackSound").GetComponent<AudioSource>();
+        sound_deathFX = GameObject.Find("LittleMonesterDeathSound").GetComponent<AudioSource>();
 
         SetAnimationTime();
         StartCoroutine(AttackEachSecond(animAtkTime, waitAfetrAtkAnim));
@@ -123,7 +128,7 @@ public class Enemy : MonoBehaviour
         animator.SetBool("Attacca", true);
         player.gameObject.GetComponent<PlayerBehaviour>().HittedByEnemy(attack, knockback, gameObject.transform);
 
-        biteFx.PlayOneShot(biteFx.clip);
+        sound_atkFX.PlayOneShot(sound_atkFX.clip);
 
         yield return new WaitForSeconds(sec);
         animator.SetBool("Attacca", false);
@@ -159,8 +164,8 @@ public class Enemy : MonoBehaviour
     }
     private void Dead()
     {
-        deathFx.pitch = Random.Range(1.6f, 2.7f);
-        deathFx.Play();
+        sound_deathFX.pitch = Random.Range(1.6f, 2.7f);
+        sound_deathFX.Play();
         StartCoroutine(EnemyDeathEffect());
       //  GameData.ActualEnemy--;
         GameData.EnemyDead++;
@@ -188,19 +193,8 @@ public class Enemy : MonoBehaviour
 
         foreach (AnimationClip clip in clips)
         {
-            switch (clip.name)
-            {
-                case "LittleMonster_Attacca":
-                    animAtkTime = clip.length;
-                    break;
-
-                case "LittleMonster_Colpito":
-                    animHitTime = clip.length;
-                    break;
-
-                case null:
-                    break;
-            }
+            if (clip.name == name_atkAnim) animAtkTime = clip.length;
+            else if (clip.name == name_hitAnim) animHitTime = clip.length;
         }
     }
 }
