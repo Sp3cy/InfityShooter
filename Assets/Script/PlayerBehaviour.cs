@@ -74,6 +74,10 @@ public class PlayerBehaviour : MonoBehaviour
         }
         else lookDir = new Vector2(joystick.Horizontal, joystick.Vertical);
 
+        // If isShooting
+        if (selectedWeapon.IsShooting()) lookDir = GameData.TargetEnemy.transform.position - selectedWeapon.transform.position;
+        else lookDir = new Vector2(joystick.Horizontal, joystick.Vertical);
+
         // If joystick is moving or an enemy is found
         if (!lookDir.Equals(new Vector2(0,0)))
         {
