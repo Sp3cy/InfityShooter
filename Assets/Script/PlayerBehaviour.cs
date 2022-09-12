@@ -16,7 +16,6 @@ public class PlayerBehaviour : MonoBehaviour
     [Space(1)]
     [Header("- Rotation Time")]
     public float lerpT = 0.5f;
-    public float angleFix = 10f;
 
     [Space(1)]
     [Header("- Shot Behaviour")]
@@ -24,8 +23,9 @@ public class PlayerBehaviour : MonoBehaviour
     public int maxEnemy = 3;
     public float knockbackT = 0.2f;
 
-    // Se viene preso direttamente da weapon non funziona
-   // private Transform firePos;
+    [Space(5)]
+    [Header("- Fix")]
+    public float enemyTooClose = 1f;
 
     private Joystick joystick;
     private Weapon selectedWeapon;
@@ -57,21 +57,27 @@ public class PlayerBehaviour : MonoBehaviour
     void FixedUpdate()
     {
         Vector2 lookDir = new Vector2(0,0);
-        GameObject closestEnemy = GameMethods.GetRandomEnemy(maxEnemyDistance, maxEnemy);
+        GameObject closestEnemy = GameMethods.GetClosestEnemyByLife(maxEnemyDistance, maxEnemy);
 
         // Se non esistono enemy vicine smette di sparare -- NO ME GUSTA SHOOTING IN UPDATE
         if (closestEnemy == null) selectedWeapon.StopShooting();
         else selectedWeapon.StartShooting();
 
         // If isShooting
-        if (selectedWeapon.IsShooting()) lookDir = closestEnemy.transform.position - selectedWeapon.transform.position;
+        if (selectedWeapon.IsShooting())
+        {
+            // Enemy too close bug handler
+            if (Vector2.Distance(player.transform.position, closestEnemy.transform.position) < enemyTooClose)
+                lookDir = closestEnemy.transform.position - player.transform.position;
+            else
+                lookDir = closestEnemy.transform.position - selectedWeapon.transform.position;
+        }
         else lookDir = new Vector2(joystick.Horizontal, joystick.Vertical);
 
         // If joystick is moving or an enemy is found
         if (!lookDir.Equals(new Vector2(0,0)))
         {
             float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90f;
-            angle += angleFix;
 
             player.rotation = Mathf.LerpAngle(player.rotation, angle, lerpT);
         }

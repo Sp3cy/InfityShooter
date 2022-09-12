@@ -28,7 +28,7 @@ public class GameMethods : MonoBehaviour
     }
 
     // Find nearest object with Enemy Tag
-    public static GameObject GetRandomEnemy(float maxDistance, int maxEnemy)
+    public static GameObject GetClosestEnemyByLife(float maxDistance, int maxEnemy)
     {
         // Array di Enemy attuali
         GameObject[] gos = GameObject.FindGameObjectsWithTag("Enemy");
