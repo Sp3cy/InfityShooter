@@ -57,20 +57,20 @@ public class PlayerBehaviour : MonoBehaviour
     void FixedUpdate()
     {
         Vector2 lookDir = new Vector2(0,0);
-        GameObject closestEnemy = GameMethods.GetClosestEnemyByLife(maxEnemyDistance, maxEnemy);
+        GameData.TargetEnemy = GameMethods.GetClosestEnemyByLife(maxEnemyDistance, maxEnemy);
 
         // Se non esistono enemy vicine smette di sparare -- NO ME GUSTA SHOOTING IN UPDATE
-        if (closestEnemy == null) selectedWeapon.StopShooting();
+        if (GameData.TargetEnemy == null) selectedWeapon.StopShooting();
         else selectedWeapon.StartShooting();
 
         // If isShooting
         if (selectedWeapon.IsShooting())
         {
             // Enemy too close bug handler
-            if (Vector2.Distance(player.transform.position, closestEnemy.transform.position) < enemyTooClose)
-                lookDir = closestEnemy.transform.position - player.transform.position;
+            if (Vector2.Distance(player.transform.position, GameData.TargetEnemy.transform.position) < enemyTooClose)
+                lookDir = GameData.TargetEnemy.transform.position - player.transform.position;
             else
-                lookDir = closestEnemy.transform.position - selectedWeapon.transform.position;
+                lookDir = GameData.TargetEnemy.transform.position - selectedWeapon.transform.position;
         }
         else lookDir = new Vector2(joystick.Horizontal, joystick.Vertical);
 

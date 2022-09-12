@@ -7,6 +7,7 @@ public class GameData : MonoBehaviour
     // Enemy
     private static int enemyDead;
     private static int actualEnemy;
+    private static GameObject targetEnemy;
 
     // Weapon
     private static int ammoCount;
@@ -32,6 +33,7 @@ public class GameData : MonoBehaviour
     public static float ExpToLevelUp { get => expToLevelUp; set => expToLevelUp = value; }
     public static int ExpLevel { get => expLevel; set => expLevel = value; }
     public static int CurrentWeaponIndex { get => currentWeaponIndex; set => currentWeaponIndex = value; }
+    public static GameObject TargetEnemy { get => targetEnemy; set => targetEnemy = value; }
 
     public static bool isCountChanged(int Count,int tempCount)
     {
