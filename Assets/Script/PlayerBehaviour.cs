@@ -75,7 +75,7 @@ public class PlayerBehaviour : MonoBehaviour
         else lookDir = new Vector2(joystick.Horizontal, joystick.Vertical);
 
         // If isShooting
-        if (selectedWeapon.IsShooting()) lookDir = closestEnemy.transform.position - selectedWeapon.transform.position;
+        if (selectedWeapon.IsShooting()) lookDir = GameData.TargetEnemy.transform.position - selectedWeapon.transform.position;
         else lookDir = new Vector2(joystick.Horizontal, joystick.Vertical);
 
         // If joystick is moving or an enemy is found

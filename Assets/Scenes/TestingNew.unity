@@ -7120,6 +7120,11 @@ PrefabInstance:
       propertyPath: ColorModule.gradient.maxGradient.m_NumAlphaKeys
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 5255618014276855263, guid: 525d8ed557176b044b1bb5baec578600,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6868744732594619198, guid: 525d8ed557176b044b1bb5baec578600,
         type: 3}
       propertyPath: m_LocalScale.x
