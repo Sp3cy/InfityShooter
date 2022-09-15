@@ -5,13 +5,10 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
     [Header("- Object")]
-    public GameObject enemyPrefab;
+    public GameObject[] enemiesPrefab;
+    public SpawnerDetails[] spawnerDetails;
 
-    public int maxEnemy = 20;
-    public int enemyIncrease = 10;
-    public float enemyIncreaseT = 1f;
-    private float tempEnemyIncreaseT;
-
+    [Space(5)]
     [Header("- Spawner Related")]
     public Vector2 minPos;
     [Space(5)]
@@ -19,48 +16,89 @@ public class EnemySpawner : MonoBehaviour
     [Space(5)]
     public float spawnDelay = 2f;
 
-    private Vector2 playerPos;
     private GameObject player;
+    private IEnumerator spawnerCoroutine;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
         // Set global respawn boundaries
         GameMethods.MinEnemyRespawnPos = minPos;
         GameMethods.MaxEnemyRespawnPos = maxPos;
-
-        tempEnemyIncreaseT = enemyIncreaseT;
-        GameData.ActualEnemy = 0;
-
-        player = GameObject.FindGameObjectWithTag("Player");
-        StartCoroutine(EntitySpawner(enemyPrefab, spawnDelay));
-
-        playerPos = player.transform.position;
-        float angle = Mathf.Atan2(playerPos.y, playerPos.x) * Mathf.Rad2Deg - 90f;
     }
 
-    // Update is called once per frame
-    void Update()
+    // Start is called before the first frame update
+    void Start()
     {
-        if (GameData.CurrentPlayT > tempEnemyIncreaseT)
+        // Setup variables
+        Setup();
+
+        // Get player
+        player = GameObject.FindGameObjectWithTag("Player");
+
+        // Start the changes coroutine
+        spawnerCoroutine = EntitySpawner(0, 0, 0);
+        StartCoroutine(CheckSpawnerDetails());
+    }
+
+    private void Setup()
+    {
+        for (int i=0; i<enemiesPrefab.Length; i++)
         {
-            maxEnemy += enemyIncrease;
-            tempEnemyIncreaseT = GameData.CurrentPlayT + enemyIncreaseT;
+            GameData.ActualEnemy.Add(0);
+            GameData.MaxEnemy.Add(0);
         }
     }
 
-    private IEnumerator EntitySpawner(GameObject enemy, float delay)
+    private IEnumerator EntitySpawner(int enemyIndex, int amount, float delay)
     {
-        yield return new WaitForSeconds(delay);
-        yield return new WaitUntil(() => GameData.ActualEnemy < maxEnemy);
+        if (amount <= 0) yield return null;
 
-        Vector3 pos = GameMethods.RespawnEnemy(player);
+        for (int i=0; i<amount; i++)
+        {
+            Vector3 pos = GameMethods.RespawnEnemy(player);
+            GameObject newEnemy = Instantiate(enemiesPrefab[enemyIndex], pos, Quaternion.identity);
+            GameData.ActualEnemy[enemyIndex]++;
 
-        // Non so se serva più di tanto creare un gameobject
-        GameObject newEnemy = Instantiate(enemy, pos, Quaternion.identity);
-        GameData.ActualEnemy++;
+            yield return new WaitForSeconds(delay);
+        }
 
-        // Restart this coroutine
-        StartCoroutine(EntitySpawner(enemy, delay));
+        yield return null;
     }
+
+    // Da fare in multitreadhing
+    private IEnumerator CheckSpawnerDetails()
+    {
+        foreach (SpawnerDetails sp in spawnerDetails)
+        {
+            if (sp.enabled & GameData.CurrentPlayT >= sp.startTime)
+            {
+                // Stop the coroutine
+                StopCoroutine(spawnerCoroutine);
+
+                // Change Values
+                spawnDelay = sp.spawnDelay;
+                GameData.MaxEnemy[sp.enemyIndex] += sp.enemyAddAmount;
+                sp.enabled = false;
+
+                // Restart coroutine
+                spawnerCoroutine = EntitySpawner(sp.enemyIndex, sp.enemyAddAmount, spawnDelay);
+                StartCoroutine(spawnerCoroutine);
+            }
+        }
+
+        yield return new WaitForFixedUpdate();
+        yield return CheckSpawnerDetails();
+    }
+}
+
+[System.Serializable]
+public class SpawnerDetails
+{
+    public int enemyIndex;
+    public int enemyAddAmount;
+
+    public float startTime;
+    public float spawnDelay;
+
+    public bool enabled;
 }

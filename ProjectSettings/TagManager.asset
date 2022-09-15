@@ -16,6 +16,8 @@ TagManager:
   - Kunai
   - DeathZone
   - FlameThrower
+  - WeaponHolder
+  - GameManager
   layers:
   - Default
   - TransparentFX

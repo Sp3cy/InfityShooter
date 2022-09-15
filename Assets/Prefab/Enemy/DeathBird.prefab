@@ -164,12 +164,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39e75ad4fc237b04f97783ca9a0df172, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  index: 1
   life: 150
   attack: 200
   speed: 1
   knockback: 1
   expDrop: 200
   lerpT: 0.5
+  name_atkAnim: 
+  name_hitAnim: 
   waitAfetrAtkAnim: 1
+  sound_atkFX: {fileID: 0}
+  sound_deathFX: {fileID: 0}
   enemyDeathEffectPrefab: {fileID: 3258158057525614007, guid: c260f3c9d0ea35f40a4481e60fa8db66,
     type: 3}

@@ -22,12 +22,12 @@ public class CameraSizeChanger : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (GameData.ActualEnemy >= cameraSizeChangerCap)
+        /*if (GameData.ActualEnemy >= cameraSizeChangerCap)
         {
             cinemachineVirtualCamera.m_Lens.OrthographicSize = Mathf.Lerp(cinemachineVirtualCamera.m_Lens.OrthographicSize, 22, 5);
             cameraSizeChangerCap = cameraSizeChangerCap * 100;
             Instantiate(enemyTrapPrefab, player.transform.position, Quaternion.identity);
-        }
+        }*/
     }
 
 }

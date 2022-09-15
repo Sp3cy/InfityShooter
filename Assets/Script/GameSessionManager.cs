@@ -43,7 +43,7 @@ public class GameSessionManager : MonoBehaviour
         }
     }
 
-    // Stop everything that works with Time -- EVEN COROUTINE BUT NOT THE EMEMY SPAWNER SCRIPT
+    // Stop everything that works with Time -- EVEN COROUTINE BUT NOT THE ENEMY SPAWNER SCRIPT
     public void Pause()
     {
         Time.timeScale = 0f;

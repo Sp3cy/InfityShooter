@@ -4,15 +4,21 @@ using UnityEngine;
 
 public class AdminCheat : MonoBehaviour
 {
-    public bool disable = true;
+    public bool enableCheat00 = true;
     public int currentWeaponIndex;
+
+    [Space(5)]
+    public bool enableFixedUpdate = false;
+    public float fixedUpdateT = 1f;
+
+    private float keepFixedUpdateT;
 
     private Weapon weapon;
     private GameObject gameManager;
 
     private void Awake()
     {
-        if (!disable) GameData.CurrentWeaponIndex = currentWeaponIndex;
+        if (enableCheat00) GameData.CurrentWeaponIndex = currentWeaponIndex;
     }
 
     // Start is called before the first frame update
@@ -23,6 +29,8 @@ public class AdminCheat : MonoBehaviour
 
         weapon = GameObject.FindGameObjectWithTag("WeaponHolder").transform.GetChild(GameData.CurrentWeaponIndex)
             .GetComponent<Weapon>();
+
+        keepFixedUpdateT = fixedUpdateT;
     }
 
     // Update is called once per frame
@@ -40,5 +48,15 @@ public class AdminCheat : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.RightArrow)) Time.timeScale += 0.1f;
 
         if (Input.GetKeyDown(KeyCode.LeftArrow)) Time.timeScale -= 0.1f;
+
+
+        if (Time.time > fixedUpdateT && enableFixedUpdate)
+        {
+            int totalEnemy = 0;
+            for (int i = 0; i < GameData.ActualEnemy.Count; i++) totalEnemy += GameData.ActualEnemy[i];
+
+            Debug.Log(totalEnemy);
+            fixedUpdateT = Time.time + keepFixedUpdateT;
+        }
     }
 }
