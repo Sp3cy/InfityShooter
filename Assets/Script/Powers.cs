@@ -137,6 +137,7 @@ public class Powers : MonoBehaviour
     {
         // Instantiate bolt and sound
         var bolt = Instantiate(boltPrefab, enemyPos.position - new Vector3(0, -11.6f, 0), Quaternion.Euler(55,180,0));
+        boltSoundfx.pitch = Random.Range(0.65f, 1f);
         boltSoundfx.Play();
 
         // When bolt anim (only strikes) instantiate the hitzone
