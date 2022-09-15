@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
-    [Header("- Fire Point")]
+    [Header("- Objects")]
     public Transform firePos;
 
     [Header("- Weapon Stats")]
@@ -31,6 +31,9 @@ public class Weapon : MonoBehaviour
     private float keepFireRate;
     private bool isShooting;
 
+    private GameObject gameManager;
+    private Skill skillScript;
+
     private void Awake()
     {
         GameData.AmmoCount = ammoMax;
@@ -39,6 +42,15 @@ public class Weapon : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // Get gamemanager
+        gameManager = GameObject.FindGameObjectWithTag("GameManager");
+
+        // Get skill script
+        skillScript = gameManager.GetComponent<Skill>();
+
+        // Set keepFireRate
+        keepFireRate = fireRate;
+
         // Set variables to 0
         StopShooting();
 
@@ -68,7 +80,7 @@ public class Weapon : MonoBehaviour
     {
         if (GameData.AmmoCount <= 0) fireRate = keepFireRate; 
 
-        yield return new WaitUntil(() => isShooting == true & GameData.AmmoCount > 0);
+        yield return new WaitUntil(() => !skillScript.IsSkillShooting() & isShooting & GameData.AmmoCount > 0);
 
         // Crea l'oggetto bulletPrefab e gli assegna il damage
         GameObject bullet = Instantiate(bulletPrefab, firePos.position, firePos.rotation);

@@ -4,12 +4,11 @@ using UnityEngine;
 
 public class AdminCheat : MonoBehaviour
 {
-    public GameObject gameManager;
-
     public bool disable = true;
     public int currentWeaponIndex;
 
     private Weapon weapon;
+    private GameObject gameManager;
 
     private void Awake()
     {
@@ -19,6 +18,9 @@ public class AdminCheat : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // Get gamemanager
+        gameManager = GameObject.FindGameObjectWithTag("GameManager");
+
         weapon = GameObject.FindGameObjectWithTag("WeaponHolder").transform.GetChild(GameData.CurrentWeaponIndex)
             .GetComponent<Weapon>();
     }

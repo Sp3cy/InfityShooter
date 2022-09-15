@@ -10,9 +10,6 @@ public class PlayerBehaviour : MonoBehaviour
     [Header("- Player Stats")]
     public float life = 100f;
 
-    [Header("- Objects")]
-    public Rigidbody2D player;
-
     [Space(1)]
     [Header("- Rotation Time")]
     public float lerpT = 0.5f;
@@ -27,8 +24,12 @@ public class PlayerBehaviour : MonoBehaviour
     [Header("- Fix")]
     public float enemyTooClose = 1f;
 
+    private Rigidbody2D player;
     private Joystick joystick;
+
+    private GameObject gameManager;
     private Weapon selectedWeapon;
+    private Skill skillScript;
 
     private void Awake()
     {
@@ -38,10 +39,16 @@ public class PlayerBehaviour : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // Get gamemanager
+        gameManager = GameObject.FindGameObjectWithTag("GameManager");
+
+        joystick = GameObject.FindGameObjectWithTag("Joystick").GetComponent<Joystick>();
+        player = gameObject.GetComponent<Rigidbody2D>();
+
         selectedWeapon = GameObject.FindGameObjectWithTag("WeaponHolder").transform.GetChild(GameData.CurrentWeaponIndex)
             .GetComponent<Weapon>();
 
-        joystick = GameObject.FindGameObjectWithTag("Joystick").GetComponent<Joystick>();
+        skillScript = gameManager.GetComponent<Skill>();
     }
 
     private void Update()
@@ -63,8 +70,8 @@ public class PlayerBehaviour : MonoBehaviour
         if (GameData.TargetEnemy == null) selectedWeapon.StopShooting();
         else selectedWeapon.StartShooting();
 
-        // If isShooting
-        if (selectedWeapon.IsShooting())
+        // If weapon isShooting or skill isShooting
+        if (selectedWeapon.IsShooting() || skillScript.IsSkillShooting())
         {
             // Enemy too close bug handler
             if (Vector2.Distance(player.transform.position, GameData.TargetEnemy.transform.position) < enemyTooClose)
