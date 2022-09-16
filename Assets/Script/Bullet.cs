@@ -18,9 +18,6 @@ public class Bullet : MonoBehaviour
 
     private void Start()
     {
-    //    if (GameData.TargetEnemy == null) Destroy(gameObject);
-    //    else enemyTarget = GameData.TargetEnemy;
-
         animator = gameObject.GetComponent<Animator>();
         rb = gameObject.GetComponent<Rigidbody2D>();
         bulletCollider = gameObject.GetComponent<Collider2D>();

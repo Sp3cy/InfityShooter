@@ -82,22 +82,22 @@ public class PowerUpBehaviour : Powers
 
             case 2:
                 boltRechargeT = 3;
-                boltAmount = 2;
+                boltAmount = 3;
                 break;
 
             case 3:
                 boltRechargeT = 2;
-                boltAmount = 3;
+                boltAmount = 5;
                 break;
 
             case 4:
                 boltRechargeT = 1;
-                boltAmount = 4;
+                boltAmount = 6;
                 break;
 
             case 5:
                 boltRechargeT = 1;
-                boltAmount = 5;
+                boltAmount = 8;
                 break;
         }
 

@@ -11,19 +11,19 @@ public class PowerUpMenu
 
 public class UI_Script : MonoBehaviour
 {
-    [Header("- Game Manager Object")]
-    public GameObject gameManager;
-
-    [Space(2)]
+    [Header("- PowerUp Menu")]
     public PowerUpMenu powerUpMenu;
-    public Powers powersScript;
-    public GameObject ammoTxtHolder;
+
+    [Space(5)]
+    [Header("- UI Objects")]
+   // public GameObject ammoTxtHolder;
     public Slider expSlider;
     public Text killedEnemyesTXT;
-    public Text killedEnemyesTXT2;
     public Text gameSessionCurrentTimeTXT;
-    public Text gameSessionCurrentTimeTXT2;
     public Text playerLevelTXT;
+
+    [Space(5)]
+    [Header("- Animation")]
     public float animAmmoPow = 1.6f;
     public float animAmmoTime = 1;
 
@@ -32,11 +32,20 @@ public class UI_Script : MonoBehaviour
     private Slider hpBar;
     private Slider ammoBar;
 
+    private GameObject gameManager;
+    private Powers powersScript;
+
     private PowersStruct[] actualMenuPowers;
 
     // Start is called before the first frame update
     void Start()
     {
+        // Get gamemanager
+        gameManager = GameObject.FindGameObjectWithTag("GameManager");
+
+        // Get power script
+        powersScript = gameManager.GetComponent<PowerUpBehaviour>();
+
         // Powerup menu setup
         actualMenuPowers = new PowersStruct[3];
         powerUpMenu.obj_PwMenu.SetActive(false);
@@ -68,8 +77,7 @@ public class UI_Script : MonoBehaviour
         if (GameData.isCountChanged(GameData.EnemyDead,tempKilledEnemyes))
         {
             tempKilledEnemyes = GameData.EnemyDead;
-            killedEnemyesTXT.text =  GameData.EnemyDead.ToString();
-            killedEnemyesTXT2.text = "Killed Enemyes: " + GameData.EnemyDead.ToString();
+            killedEnemyesTXT.text = GameData.EnemyDead.ToString();
         }
 
         // Change sliders value every fixedupdate
@@ -80,7 +88,6 @@ public class UI_Script : MonoBehaviour
     private void Update()
     {
         gameSessionCurrentTimeTXT.text = GameData.CurrentPlayT.ToString("0") + " s";
-        gameSessionCurrentTimeTXT2.text = "Time survived: " + GameData.CurrentPlayT.ToString("0") + " s";
     }
 
     // Genera il menu dei powerup

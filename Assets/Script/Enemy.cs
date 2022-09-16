@@ -7,6 +7,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     [Header("- Enemy Stats")]
+    public int index;
     public float life = 50f;
     public float attack = 10f;
     public float speed = 2f;
@@ -166,15 +167,22 @@ public class Enemy : MonoBehaviour
     {
         sound_deathFX.pitch = Random.Range(1.6f, 2.7f);
         sound_deathFX.Play();
+
         StartCoroutine(EnemyDeathEffect());
-      //  GameData.ActualEnemy--;
+
         GameData.EnemyDead++;
         GameData.ActualExp += expDrop;
-        gameObject.transform.position = GameMethods.RespawnEnemy(player);
 
-
-        life = keepLife;
-      //  Destroy(gameObject);
+        // Se i nemici totali instanziati sono maggiori del massimo di nemici
+        if (GameData.MaxEnemy[index] < GameData.ActualEnemy[index])
+        {
+            GameData.ActualEnemy[index]--;
+            Destroy(gameObject);
+        } else
+        {
+            gameObject.transform.position = GameMethods.RespawnEnemy(player);
+            life = keepLife;
+        }
     }
 
     private void MoveToPlayer()

@@ -5,55 +5,58 @@ using UnityEngine.UI;
 
 public class Skill : MonoBehaviour
 {
-
-    public static bool shooting;
-    public static float flameThrowerDamage = 3;
     public float flameThrowerRechargeT = 10f;
+    public static float flameThrowerDamage = 3;
 
     public AudioSource flameThrowerAudiofx;
     public GameObject flameThrowerPrefab;
     public GameObject player;
     public Text btnTxt;
 
-    private Weapon selectedWeapon;
+    private bool active = false;
+    private bool shooting = false;
 
     public IEnumerator FlameThrower()
     {
-        selectedWeapon.StopShooting();
+        shooting = true;
 
+        // Change button text
         btnTxt.text = "BLOCCATO";
         btnTxt.color = new Color(0.3f, 0.3f, 0.3f);
+
+        // Instantiate flame
         var flame = Instantiate(flameThrowerPrefab, player.transform.position, player.transform.rotation) as GameObject;
         flame.transform.parent = player.transform;
         flameThrowerAudiofx.Play();
+
+        // Wait for flame time
         yield return new WaitForSeconds(flame.GetComponent<ParticleSystem>().main.duration);
+
+        // Destroy flame and set shooting to false
         Destroy(flame);
         flameThrowerAudiofx.Stop();
+        shooting = false;
 
-        selectedWeapon.StartShooting();
-
+        // Wait for skill recharge time
         yield return new WaitForSeconds(flameThrowerRechargeT);
+
+        // Change button text
         btnTxt.color = new Color(1, 0, 0);
         btnTxt.text = "ULTRA FIRE";
-        shooting = false;
+
+        active = false;
     }    
     public void FlameThrowerStart()
     {
-        if (shooting == true)
-            return;
-       
+        if (active == true) return;
         else
         {
-            // CRINGE qua dentro
-            selectedWeapon = GameObject.FindGameObjectWithTag("WeaponHolder").transform.GetChild(GameData.CurrentWeaponIndex)
-            .GetComponent<Weapon>();
-
             StartCoroutine(FlameThrower());
-            shooting = true;
+            active = true;
         }
     }
 
-    public bool isShooting()
+    public bool IsSkillShooting()
     {
         return shooting;
     }
