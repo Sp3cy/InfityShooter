@@ -54,7 +54,7 @@ public class AdminCheat : MonoBehaviour
         {
             int totalEnemy = GameData.GetTotalActualEnemy();
 
-            Debug.Log(totalEnemy);
+            Debug.Log(GameData.MaxEnemy[1] + " --- " + GameData.ActualEnemy[1]);
             fixedUpdateT = Time.time + keepFixedUpdateT;
         }
     }

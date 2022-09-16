@@ -71,18 +71,14 @@ public class PlayerBehaviour : MonoBehaviour
         else selectedWeapon.StartShooting();
 
         // If weapon isShooting or skill isShooting
-        if (selectedWeapon.IsShooting() || skillScript.IsSkillShooting())
+        if ((selectedWeapon.IsShooting() || skillScript.IsSkillShooting()) && GameData.TargetEnemy != null)
         {
             // Enemy too close bug handler
-            if (Vector2.Distance(player.transform.position, GameData.TargetEnemy.transform.position) < enemyTooClose)
+            if (GameData.TargetEnemy != null && (Vector2.Distance(player.transform.position, GameData.TargetEnemy.transform.position) < enemyTooClose))
                 lookDir = GameData.TargetEnemy.transform.position - player.transform.position;
             else
                 lookDir = GameData.TargetEnemy.transform.position - selectedWeapon.transform.position;
         }
-        else lookDir = new Vector2(joystick.Horizontal, joystick.Vertical);
-
-        // If isShooting
-        if (selectedWeapon.IsShooting()) lookDir = GameData.TargetEnemy.transform.position - selectedWeapon.transform.position;
         else lookDir = new Vector2(joystick.Horizontal, joystick.Vertical);
 
         // If joystick is moving or an enemy is found

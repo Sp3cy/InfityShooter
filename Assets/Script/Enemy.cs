@@ -7,7 +7,6 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     [Header("- Enemy Stats")]
-    public int index;
     public float life = 50f;
     public float attack = 10f;
     public float speed = 2f;
@@ -32,6 +31,8 @@ public class Enemy : MonoBehaviour
     [Space(1)]
     [Header("- Objects")]
     public GameObject enemyDeathEffectPrefab;
+
+    private int index = 0;
 
     private float animAtkTime;
     private float animHitTime;
@@ -192,6 +193,11 @@ public class Enemy : MonoBehaviour
 
         if (transform.position.x > player.transform.position.x) gameObject.GetComponent<SpriteRenderer>().flipX = true;
         else gameObject.GetComponent<SpriteRenderer>().flipX = false;
+    }
+
+    public void SetIndex(int newIndex)
+    {
+        index = newIndex;
     }
 
     private void SetAnimationTime()

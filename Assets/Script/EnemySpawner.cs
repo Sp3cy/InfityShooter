@@ -56,7 +56,11 @@ public class EnemySpawner : MonoBehaviour
         for (int i=0; i<amount; i++)
         {
             Vector3 pos = GameMethods.RespawnEnemy(player);
+
+            // Instantiate an enemy and set his index for Dead() method
             GameObject newEnemy = Instantiate(enemiesPrefab[enemyIndex], pos, Quaternion.identity);
+            newEnemy.GetComponent<Enemy>().SetIndex(enemyIndex);
+
             GameData.ActualEnemy[enemyIndex]++;
 
             yield return new WaitForSeconds(delay);
