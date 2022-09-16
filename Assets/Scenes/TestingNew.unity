@@ -256,20 +256,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5aa214186b6684a408742ab608c3bf82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameManager: {fileID: 1159477640}
   powerUpMenu:
     obj_PwMenu: {fileID: 898386672}
     txt_PowerUp:
     - {fileID: 1793919263}
     - {fileID: 1168686525}
     - {fileID: 784521181}
-  powersScript: {fileID: 1159477644}
-  ammoTxtHolder: {fileID: 0}
   expSlider: {fileID: 515333224}
   killedEnemyesTXT: {fileID: 735763685}
-  killedEnemyesTXT2: {fileID: 613058300}
   gameSessionCurrentTimeTXT: {fileID: 702788318}
-  gameSessionCurrentTimeTXT2: {fileID: 571629859}
   playerLevelTXT: {fileID: 1385030389}
   animAmmoPow: 1.08
   animAmmoTime: 0.6
@@ -4765,7 +4760,7 @@ GameObject:
   - component: {fileID: 1159477647}
   m_Layer: 0
   m_Name: _GameMaster
-  m_TagString: Untagged
+  m_TagString: GameManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4782,11 +4777,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6ec33f43326f0243acc59e59abd4c7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: 2665966712921770188, guid: a96472d6e0f84bf4bb0084f156b081b4,
-    type: 3}
-  maxEnemy: 10
-  enemyIncrease: 10
-  enemyIncreaseT: 12
+  enemiesPrefab:
+  - {fileID: 2665966712921770188, guid: a96472d6e0f84bf4bb0084f156b081b4, type: 3}
+  - {fileID: 4842676663674171591, guid: 2aaecc4ff1db0b04ba7ef38b804b5848, type: 3}
+  spawnerDetails:
+  - enemyIndex: 0
+    enemyAddAmount: 20
+    startTime: 0
+    spawnDelay: 0
+    enabled: 1
+  - enemyIndex: 0
+    enemyAddAmount: 70
+    startTime: 10
+    spawnDelay: 0
+    enabled: 1
+  - enemyIndex: 0
+    enemyAddAmount: -50
+    startTime: 20
+    spawnDelay: 0
+    enabled: 1
+  - enemyIndex: 1
+    enemyAddAmount: 10
+    startTime: 30
+    spawnDelay: 0
+    enabled: 1
   minPos: {x: 1, y: 1}
   maxPos: {x: 25, y: 25}
   spawnDelay: 0
@@ -4816,9 +4830,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d03868a6c992b2f4e83ba642949de68a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameManager: {fileID: 1159477640}
-  disable: 0
+  enableCheat00: 1
   currentWeaponIndex: 1
+  enableFixedUpdate: 0
+  fixedUpdateT: 1
 --- !u!114 &1159477644
 MonoBehaviour:
   m_ObjectHideFlags: 0

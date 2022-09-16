@@ -24,7 +24,7 @@ public class CameraSizeChanger : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (GameData.ActualEnemy >= cameraSizeChangerCap1 && a == false)
+       /* if (GameData.GetTotalActualEnemy() >= cameraSizeChangerCap1 && a == false)
         {
             cinemachineVirtualCamera.m_Lens.OrthographicSize = Mathf.Lerp(cinemachineVirtualCamera.m_Lens.OrthographicSize, 22, 5);
             cameraSizeChangerCap1 = cameraSizeChangerCap1 = 350;
@@ -32,11 +32,11 @@ public class CameraSizeChanger : MonoBehaviour
             a = true;
         }
         
-        if (GameData.ActualEnemy >= cameraSizeChangerCap2)
+        if (GameData.GetTotalActualEnemy() >= cameraSizeChangerCap2)
         {
             Instantiate(deathBirdPrefab, player.transform.position, Quaternion.identity);
             cameraSizeChangerCap2 *= 2;
-        }
+        }*/
     }
 
     

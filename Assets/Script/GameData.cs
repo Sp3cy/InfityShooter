@@ -42,4 +42,12 @@ public class GameData : MonoBehaviour
         if (Count != tempCount) return true;
         return false;
     }
+
+    public static int GetTotalActualEnemy()
+    {
+        int totalEnemy = 0;
+        for (int i = 0; i < GameData.ActualEnemy.Count; i++) totalEnemy += GameData.ActualEnemy[i];
+
+        return totalEnemy;
+    }
 }
