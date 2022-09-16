@@ -20,7 +20,9 @@ public class UI_Script : MonoBehaviour
     public GameObject ammoTxtHolder;
     public Slider expSlider;
     public Text killedEnemyesTXT;
+    public Text killedEnemyesTXT2;
     public Text gameSessionCurrentTimeTXT;
+    public Text gameSessionCurrentTimeTXT2;
     public Text playerLevelTXT;
     public float animAmmoPow = 1.6f;
     public float animAmmoTime = 1;
@@ -66,7 +68,8 @@ public class UI_Script : MonoBehaviour
         if (GameData.isCountChanged(GameData.EnemyDead,tempKilledEnemyes))
         {
             tempKilledEnemyes = GameData.EnemyDead;
-            killedEnemyesTXT.text = GameData.EnemyDead.ToString();
+            killedEnemyesTXT.text =  GameData.EnemyDead.ToString();
+            killedEnemyesTXT2.text = "Killed Enemyes: " + GameData.EnemyDead.ToString();
         }
 
         // Change sliders value every fixedupdate
@@ -77,6 +80,7 @@ public class UI_Script : MonoBehaviour
     private void Update()
     {
         gameSessionCurrentTimeTXT.text = GameData.CurrentPlayT.ToString("0") + " s";
+        gameSessionCurrentTimeTXT2.text = "Time survived: " + GameData.CurrentPlayT.ToString("0") + " s";
     }
 
     // Genera il menu dei powerup

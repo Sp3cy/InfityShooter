@@ -15,8 +15,12 @@ public class Skill : MonoBehaviour
     public GameObject player;
     public Text btnTxt;
 
+    private Weapon selectedWeapon;
+
     public IEnumerator FlameThrower()
     {
+        selectedWeapon.StopShooting();
+
         btnTxt.text = "BLOCCATO";
         btnTxt.color = new Color(0.3f, 0.3f, 0.3f);
         var flame = Instantiate(flameThrowerPrefab, player.transform.position, player.transform.rotation) as GameObject;
@@ -25,6 +29,9 @@ public class Skill : MonoBehaviour
         yield return new WaitForSeconds(flame.GetComponent<ParticleSystem>().main.duration);
         Destroy(flame);
         flameThrowerAudiofx.Stop();
+
+        selectedWeapon.StartShooting();
+
         yield return new WaitForSeconds(flameThrowerRechargeT);
         btnTxt.color = new Color(1, 0, 0);
         btnTxt.text = "ULTRA FIRE";
@@ -37,9 +44,17 @@ public class Skill : MonoBehaviour
        
         else
         {
+            // CRINGE qua dentro
+            selectedWeapon = GameObject.FindGameObjectWithTag("WeaponHolder").transform.GetChild(GameData.CurrentWeaponIndex)
+            .GetComponent<Weapon>();
+
             StartCoroutine(FlameThrower());
             shooting = true;
         }
     }
 
+    public bool isShooting()
+    {
+        return shooting;
+    }
 }

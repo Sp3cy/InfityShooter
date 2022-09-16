@@ -9,4 +9,5 @@ public static void CaricaScena(string scena)
     {
         SceneManager.LoadScene(scena);
     }
+
 }

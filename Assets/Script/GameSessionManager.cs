@@ -18,6 +18,8 @@ public class GameSessionManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Resume();
+
         GameData.CurrentPlayT = 0;
         GameData.EnemyDead = 0;
         GameData.ActualExp = 0f;

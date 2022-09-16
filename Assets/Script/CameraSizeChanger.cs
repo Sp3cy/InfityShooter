@@ -9,9 +9,11 @@ public class CameraSizeChanger : MonoBehaviour
     public EnemySpawner enemy;
     public GameObject player;
     public GameObject enemyTrapPrefab;
+    public GameObject deathBirdPrefab;
 
-    public float cameraSizeChangerCap = 300;
-
+    public float cameraSizeChangerCap1 = 300;
+    public float cameraSizeChangerCap2 = 30;
+    bool a = false;
 
     // Start is called before the first frame update
     void Start()
@@ -22,12 +24,20 @@ public class CameraSizeChanger : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (GameData.ActualEnemy >= cameraSizeChangerCap)
+        if (GameData.ActualEnemy >= cameraSizeChangerCap1 && a == false)
         {
             cinemachineVirtualCamera.m_Lens.OrthographicSize = Mathf.Lerp(cinemachineVirtualCamera.m_Lens.OrthographicSize, 22, 5);
-            cameraSizeChangerCap = cameraSizeChangerCap * 100;
+            cameraSizeChangerCap1 = cameraSizeChangerCap1 = 350;
             Instantiate(enemyTrapPrefab, player.transform.position, Quaternion.identity);
+            a = true;
+        }
+        
+        if (GameData.ActualEnemy >= cameraSizeChangerCap2)
+        {
+            Instantiate(deathBirdPrefab, player.transform.position, Quaternion.identity);
+            cameraSizeChangerCap2 *= 2;
         }
     }
 
+    
 }

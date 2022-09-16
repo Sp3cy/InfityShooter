@@ -12,6 +12,8 @@ public class PlayerBehaviour : MonoBehaviour
 
     [Header("- Objects")]
     public Rigidbody2D player;
+    public GameObject gameOverPanel;
+    public GameObject deadZone;
 
     [Space(1)]
     [Header("- Rotation Time")]
@@ -27,8 +29,11 @@ public class PlayerBehaviour : MonoBehaviour
     [Header("- Fix")]
     public float enemyTooClose = 1f;
 
+    public GameSessionManager gsm;
+
     private Joystick joystick;
     private Weapon selectedWeapon;
+    private Skill skill;
 
     private void Awake()
     {
@@ -42,6 +47,7 @@ public class PlayerBehaviour : MonoBehaviour
             .GetComponent<Weapon>();
 
         joystick = GameObject.FindGameObjectWithTag("Joystick").GetComponent<Joystick>();
+        skill = gsm.GetComponent<Skill>();
     }
 
     private void Update()
@@ -60,11 +66,13 @@ public class PlayerBehaviour : MonoBehaviour
         GameData.TargetEnemy = GameMethods.GetClosestEnemyByLife(maxEnemyDistance, maxEnemy);
 
         // Se non esistono enemy vicine smette di sparare -- NO ME GUSTA SHOOTING IN UPDATE
-        if (GameData.TargetEnemy == null) selectedWeapon.StopShooting();
-        else selectedWeapon.StartShooting();
+        // if (GameData.TargetEnemy == null) selectedWeapon.StopShooting();
+        // else selectedWeapon.StartShooting();
+
+      //  Debug.Log(skill.isShooting());
 
         // If isShooting
-        if (selectedWeapon.IsShooting())
+        if (skill.isShooting() || selectedWeapon.IsShooting())
         {
             // Enemy too close bug handler
             if (Vector2.Distance(player.transform.position, GameData.TargetEnemy.transform.position) < enemyTooClose)
@@ -72,10 +80,6 @@ public class PlayerBehaviour : MonoBehaviour
             else
                 lookDir = GameData.TargetEnemy.transform.position - selectedWeapon.transform.position;
         }
-        else lookDir = new Vector2(joystick.Horizontal, joystick.Vertical);
-
-        // If isShooting
-        if (selectedWeapon.IsShooting()) lookDir = GameData.TargetEnemy.transform.position - selectedWeapon.transform.position;
         else lookDir = new Vector2(joystick.Horizontal, joystick.Vertical);
 
         // If joystick is moving or an enemy is found
@@ -90,7 +94,9 @@ public class PlayerBehaviour : MonoBehaviour
     // Quando player morto
     public void Dead()
     {
-        ScenaManagement.CaricaScena("MainMenu");
+        gameOverPanel.SetActive(true);
+        gsm.Pause();
+        
     }
 
     // When player hitted

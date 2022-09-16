@@ -66,6 +66,7 @@ public class Weapon : MonoBehaviour
     // Spara a ripetizione ogni tot s finchè non viene stoppata la coroutine
     public IEnumerator Shooting()
     {
+
         if (GameData.AmmoCount <= 0) fireRate = keepFireRate; 
 
         yield return new WaitUntil(() => isShooting == true & GameData.AmmoCount > 0);
