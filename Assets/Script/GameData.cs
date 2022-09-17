@@ -25,6 +25,10 @@ public class GameData : MonoBehaviour
     private static float expToLevelUp;
     private static int expLevel;
 
+    // Props
+    private static int maxProps;
+    private static int actualProps;
+
     public static int EnemyDead { get => enemyDead; set => enemyDead = value; }
     public static int AmmoCount { get => ammoCount; set => ammoCount = value; }
     public static float PlayerLife { get => playerLife; set => playerLife = value; }
@@ -36,6 +40,8 @@ public class GameData : MonoBehaviour
     public static GameObject TargetEnemy { get => targetEnemy; set => targetEnemy = value; }
     public static List<int> ActualEnemy { get => actualEnemy; set => actualEnemy = value; }
     public static List<int> MaxEnemy { get => maxEnemy; set => maxEnemy = value; }
+    public static int MaxProps { get => maxProps; set => maxProps = value; }
+    public static int ActualProps { get => actualProps; set => actualProps = value; }
 
     public static bool isCountChanged(int Count,int tempCount)
     {
