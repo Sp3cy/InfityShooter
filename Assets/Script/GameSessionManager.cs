@@ -7,7 +7,9 @@ public class GameSessionManager : MonoBehaviour
     public float expToUnlock = 10f;
     public float expToUnlcokMul = 1.1f;
 
-    public UI_Script ui_Script;
+    private GameObject gameManager;
+
+    private UI_Script ui_Script;
 
     private void Awake()
     {
@@ -23,6 +25,10 @@ public class GameSessionManager : MonoBehaviour
         GameData.CurrentPlayT = 0;
         GameData.EnemyDead = 0;
         GameData.ActualExp = 0f;
+
+        // Get game manager and scripts
+        gameManager = GameObject.FindGameObjectWithTag("GameManager");
+        ui_Script = gameManager.GetComponent<UI_Script>();
     }
 
     // Update is called once per frame

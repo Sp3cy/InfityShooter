@@ -40,7 +40,7 @@ public class AdminCheat : MonoBehaviour
         {
             // Open powerups menu and stop the game
             gameManager.GetComponent<GameSessionManager>().Pause();
-            gameManager.GetComponent<GameSessionManager>().ui_Script.GeneratePwMenu();
+            gameManager.GetComponent<UI_Script>().GeneratePwMenu();
         }
 
         if (Input.GetKeyDown(KeyCode.P)) gameManager.GetComponent<GameSessionManager>().Resume();
