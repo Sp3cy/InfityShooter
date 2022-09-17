@@ -17,6 +17,10 @@ public class EnemySpawner : MonoBehaviour
     public float spawnDelay = 2f;
 
     private GameObject player;
+    private GameObject gameManager;
+
+    private UI_Script ui_Script;
+
     private IEnumerator spawnerCoroutine;
 
     private void Awake()
@@ -31,6 +35,10 @@ public class EnemySpawner : MonoBehaviour
     {
         // Setup variables
         Setup();
+
+        // Get game manager and scripts
+        gameManager = GameObject.FindGameObjectWithTag("GameManager");
+        ui_Script = gameManager.GetComponent<UI_Script>();
 
         // Get player
         player = GameObject.FindGameObjectWithTag("Player");
@@ -84,6 +92,9 @@ public class EnemySpawner : MonoBehaviour
                 GameData.MaxEnemy[sp.enemyIndex] += sp.enemyAddAmount;
                 sp.enabled = false;
 
+                // Change ui text
+                if (sp.uiText != "") ui_Script.ShowEnemyText(sp.uiText, sp.uiTextDuration);
+
                 // Restart coroutine
                 spawnerCoroutine = EntitySpawner(sp.enemyIndex, sp.enemyAddAmount, spawnDelay);
                 StartCoroutine(spawnerCoroutine);
@@ -103,6 +114,10 @@ public class SpawnerDetails
 
     public float startTime;
     public float spawnDelay;
+
+    public string uiText;
+    // Momentaneo?
+    public float uiTextDuration;
 
     public bool enabled;
 }

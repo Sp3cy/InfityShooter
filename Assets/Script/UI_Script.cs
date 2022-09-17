@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -21,6 +22,7 @@ public class UI_Script : MonoBehaviour
     public Text killedEnemyesTXT;
     public Text gameSessionCurrentTimeTXT;
     public Text playerLevelTXT;
+    public Text enemySpawnTXT;
 
     [Space(5)]
     [Header("- Animation")]
@@ -159,6 +161,15 @@ public class UI_Script : MonoBehaviour
         gameManager.GetComponent<GameSessionManager>().Resume();
     }
 
+    // Show the text of important enemy or bosses - In the upper ui
+    public IEnumerator ShowEnemyText(string text, float duration)
+    {
+        enemySpawnTXT.text = text;
+
+        yield return new WaitForSeconds(duration);
+
+        enemySpawnTXT.text = "";
+    }
 }
 
 
