@@ -18,6 +18,8 @@ public class GameSessionManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Resume();
+
         GameData.CurrentPlayT = 0;
         GameData.EnemyDead = 0;
         GameData.ActualExp = 0f;
@@ -43,7 +45,7 @@ public class GameSessionManager : MonoBehaviour
         }
     }
 
-    // Stop everything that works with Time -- EVEN COROUTINE BUT NOT THE ENEMY SPAWNER SCRIPT
+    // Stop everything that works with Time -- EVEN COROUTINE BUT NOT THE EMEMY SPAWNER SCRIPT
     public void Pause()
     {
         Time.timeScale = 0f;

@@ -141,7 +141,7 @@ public class Powers : MonoBehaviour
         boltSoundfx.Play();
 
         // When bolt anim (only strikes) instantiate the hitzone
-        yield return new WaitForSeconds(boltPrefab.GetComponent<ParticleSystem>().main.duration - 0.5f);
+        yield return new WaitForSeconds(boltPrefab.GetComponent<ParticleSystem>().main.duration - 0.65f);
         var hitZone = Instantiate(boltHitZone, bolt.transform.position + new Vector3(0, -11.6f, 0), Quaternion.identity);
 
         // Wait 3 frames (Just for caution) and destroy hitzone -- Cringe but i wont write a for
