@@ -4785,20 +4785,20 @@ MonoBehaviour:
     enemyAddAmount: 20
     startTime: 0
     spawnDelay: 0
-    enabled: 1
-  - enemyIndex: 0
-    enemyAddAmount: 70
-    startTime: 10
-    spawnDelay: 0
-    enabled: 1
-  - enemyIndex: 0
-    enemyAddAmount: -50
-    startTime: 20
+    enabled: 0
+  - enemyIndex: 1
+    enemyAddAmount: 10
+    startTime: 5
     spawnDelay: 0
     enabled: 1
   - enemyIndex: 1
-    enemyAddAmount: 10
-    startTime: 30
+    enemyAddAmount: -5
+    startTime: 10
+    spawnDelay: 0
+    enabled: 1
+  - enemyIndex: 1
+    enemyAddAmount: -5
+    startTime: 15
     spawnDelay: 0
     enabled: 1
   minPos: {x: 1, y: 1}
