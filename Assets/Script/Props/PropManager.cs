@@ -28,13 +28,11 @@ public class PropManager : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
     }
 
-    // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        if (GameData.CurrentPlayT > spawnT & GameData.ActualProps < GameData.MaxProps)
+        if (GameData.ActualProps < GameData.MaxProps & GameData.CurrentPlayT > spawnT)
         {
             // Aggiungere probabilita
-
             Vector3 pos = GameMethods.RespawnEnemy(player);
 
             Instantiate(props[Random.Range(0, props.Length)].propPrefab, pos, Quaternion.identity);

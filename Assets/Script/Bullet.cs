@@ -11,6 +11,8 @@ public class Bullet : MonoBehaviour
     private float damage = 0f;
     private float BulletAnimDurata;
 
+    private bool destroyed = false;
+
     private Animator animator;
     private Rigidbody2D rb;
     private Collider2D bulletCollider;
@@ -50,13 +52,15 @@ public class Bullet : MonoBehaviour
         yield return new WaitForSeconds(seconds);
 
         // Handle bug
-        if (gameObject.Equals(gameObject)) Destroy(gameObject);
+        if (!destroyed) Destroy(gameObject);
     }
 
     // Animazione Bullet Contatto
 
     private IEnumerator AnimazioneBulletEsplode(float seconds)
     {
+        // Se ha colpito qualcosa è come se fosse stato distrutto
+        destroyed = true;
 
         rb.constraints = RigidbodyConstraints2D.FreezeAll;
 
@@ -65,6 +69,8 @@ public class Bullet : MonoBehaviour
         animator.SetBool("Hit", true);
         yield return new WaitForSeconds(seconds);
         animator.SetBool("Hit", false);
+
+        
         Destroy(gameObject);
 
     }

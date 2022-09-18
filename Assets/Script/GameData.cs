@@ -41,7 +41,15 @@ public class GameData : MonoBehaviour
     public static List<int> ActualEnemy { get => actualEnemy; set => actualEnemy = value; }
     public static List<int> MaxEnemy { get => maxEnemy; set => maxEnemy = value; }
     public static int MaxProps { get => maxProps; set => maxProps = value; }
-    public static int ActualProps { get => actualProps; set => actualProps = value; }
+    public static int ActualProps
+    {
+        get => actualProps; 
+        set
+        {
+            if (value < 0) value = 0;
+            actualProps = value;
+        }
+    }
 
     public static bool isCountChanged(int Count,int tempCount)
     {
