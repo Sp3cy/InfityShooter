@@ -136,7 +136,6 @@ GameObject:
   - component: {fileID: 24813075}
   - component: {fileID: 24813074}
   - component: {fileID: 24813078}
-  - component: {fileID: 24813079}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -244,30 +243,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e2bcf6c93da59c42a177bec9a9d54ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &24813079
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 24813073}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5aa214186b6684a408742ab608c3bf82, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  powerUpMenu:
-    obj_PwMenu: {fileID: 898386672}
-    txt_PowerUp:
-    - {fileID: 1793919263}
-    - {fileID: 1168686525}
-    - {fileID: 784521181}
-  expSlider: {fileID: 515333224}
-  killedEnemyesTXT: {fileID: 735763685}
-  gameSessionCurrentTimeTXT: {fileID: 702788318}
-  playerLevelTXT: {fileID: 1385030389}
-  animAmmoPow: 1.08
-  animAmmoTime: 0.6
 --- !u!4 &49108078 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8351375070893166530, guid: 93af8d03f8fd70540b2e4c3644185374,
@@ -578,7 +553,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 24813079}
+        - m_Target: {fileID: 1159477649}
           m_TargetAssemblyTypeName: UI_Script, Assembly-CSharp
           m_MethodName: PowerUpSelected
           m_Mode: 3
@@ -1630,7 +1605,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 24813079}
+        - m_Target: {fileID: 1159477649}
           m_TargetAssemblyTypeName: UI_Script, Assembly-CSharp
           m_MethodName: PowerUpSelected
           m_Mode: 3
@@ -2656,7 +2631,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 24813079}
+        - m_Target: {fileID: 1159477649}
           m_TargetAssemblyTypeName: UI_Script, Assembly-CSharp
           m_MethodName: PowerUpSelected
           m_Mode: 3
@@ -4758,6 +4733,8 @@ GameObject:
   - component: {fileID: 1159477645}
   - component: {fileID: 1159477646}
   - component: {fileID: 1159477647}
+  - component: {fileID: 1159477648}
+  - component: {fileID: 1159477649}
   m_Layer: 0
   m_Name: _GameMaster
   m_TagString: GameManager
@@ -4785,21 +4762,29 @@ MonoBehaviour:
     enemyAddAmount: 20
     startTime: 0
     spawnDelay: 0
+    uiText: 
+    uiTextDuration: 0
     enabled: 0
   - enemyIndex: 1
     enemyAddAmount: 10
     startTime: 5
     spawnDelay: 0
+    uiText: 
+    uiTextDuration: 0
     enabled: 1
   - enemyIndex: 1
     enemyAddAmount: -5
     startTime: 10
     spawnDelay: 0
+    uiText: 
+    uiTextDuration: 0
     enabled: 1
   - enemyIndex: 1
     enemyAddAmount: -5
     startTime: 15
     spawnDelay: 0
+    uiText: 
+    uiTextDuration: 0
     enabled: 1
   minPos: {x: 1, y: 1}
   maxPos: {x: 25, y: 25}
@@ -4832,7 +4817,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enableCheat00: 1
   currentWeaponIndex: 1
-  enableFixedUpdate: 0
+  enableFixedUpdate: 1
   fixedUpdateT: 1
 --- !u!114 &1159477644
 MonoBehaviour:
@@ -4910,7 +4895,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   expToUnlock: 400
   expToUnlcokMul: 1.35
-  ui_Script: {fileID: 24813079}
 --- !u!114 &1159477646
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4941,6 +4925,49 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cd3cacd3bcdccf4da5d36695d8bf1e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1159477648
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1159477640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f4a8c8343a20db419ee199353584e44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  props:
+  - propPrefab: {fileID: 275112028578935643, guid: bf1bede6bfec18a40b0bf0f1fd77bae5,
+      type: 3}
+    probability: 0
+  maxProps: 5
+  spawnT: 1
+--- !u!114 &1159477649
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1159477640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5aa214186b6684a408742ab608c3bf82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  powerUpMenu:
+    obj_PwMenu: {fileID: 898386672}
+    txt_PowerUp:
+    - {fileID: 1793919263}
+    - {fileID: 1168686525}
+    - {fileID: 784521181}
+  expSlider: {fileID: 515333224}
+  killedEnemyesTXT: {fileID: 735763685}
+  gameSessionCurrentTimeTXT: {fileID: 702788318}
+  playerLevelTXT: {fileID: 1385030389}
+  enemySpawnTXT: {fileID: 0}
+  animAmmoPow: 1.08
+  animAmmoTime: 0.6
 --- !u!1 &1160237111
 GameObject:
   m_ObjectHideFlags: 0

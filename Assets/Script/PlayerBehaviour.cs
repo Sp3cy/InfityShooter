@@ -111,7 +111,15 @@ public class PlayerBehaviour : MonoBehaviour
         player.gameObject.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
     }
 
-    
+    public void Cure(float amount, float time)
+    {
+        if (amount < 0) return;
+        if (GameData.PlayerLife + amount > life) GameData.PlayerLife = life;
+
+        // fare la cosa col tempo
+
+        GameData.PlayerLife += amount;
+    }
 
 }
 

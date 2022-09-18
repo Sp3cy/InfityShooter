@@ -1,0 +1,56 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class PropManager : MonoBehaviour
+{
+    public PropStats[] props;
+
+    public int maxProps = 5;
+    public float spawnT = 10f;
+
+    private float keepSpawnT;
+
+    private GameObject player;
+
+    private void Awake()
+    {
+        GameData.MaxProps = maxProps;
+        GameData.ActualProps = 0;
+    }
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        keepSpawnT = spawnT;
+
+        // Get Player
+        player = GameObject.FindGameObjectWithTag("Player");
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (GameData.CurrentPlayT > spawnT & GameData.ActualProps < GameData.MaxProps)
+        {
+            // Aggiungere probabilita
+
+            Vector3 pos = GameMethods.RespawnEnemy(player);
+
+            Instantiate(props[Random.Range(0, props.Length)].propPrefab, pos, Quaternion.identity);
+
+            GameData.ActualProps++;
+
+            spawnT = GameData.CurrentPlayT + keepSpawnT;
+        }
+    }
+}
+
+[System.Serializable]
+public class PropStats
+{
+    public GameObject propPrefab;
+
+    public float probability;
+}
+

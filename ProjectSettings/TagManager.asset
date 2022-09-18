@@ -18,6 +18,7 @@ TagManager:
   - FlameThrower
   - WeaponHolder
   - GameManager
+  - Prop_Hp
   layers:
   - Default
   - TransparentFX
