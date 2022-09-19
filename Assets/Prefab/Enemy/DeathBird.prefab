@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2950606299827664124}
   - component: {fileID: 7957456559436081521}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: AtkFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -137,7 +137,7 @@ GameObject:
   m_Component:
   - component: {fileID: 71291450299833864}
   - component: {fileID: 2486374838102469917}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: DeathFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -268,7 +268,7 @@ GameObject:
   - component: {fileID: 8475954858096930250}
   - component: {fileID: 2660878325113029416}
   - component: {fileID: 5331867957615624401}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: DeathBird
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -395,7 +395,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.021317743, y: -0.096324876}
+  m_Offset: {x: -0.0042102784, y: -0.1122089}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -406,7 +406,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.2436464, y: 0.39997712}
+  m_Size: {x: 0.19259036, y: 0.36820906}
   m_EdgeRadius: 0
 --- !u!114 &5331867957615624401
 MonoBehaviour:
@@ -421,8 +421,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   life: 150
-  attack: 20
-  speed: 0.87
+  attack: 35
+  speed: 1
   knockback: 20
   expDrop: 50
   lerpT: 0.5

@@ -93,7 +93,7 @@ public class EnemySpawner : MonoBehaviour
                 sp.enabled = false;
 
                 // Change ui text
-                if (sp.uiText != "") ui_Script.ShowEnemyText(sp.uiText, sp.uiTextDuration);
+                if (sp.uiText != "") StartCoroutine(ui_Script.ShowEnemyText(sp.uiText, sp.uiTextDuration));
 
                 // Restart coroutine
                 spawnerCoroutine = EntitySpawner(sp.enemyIndex, sp.enemyAddAmount, spawnDelay);

@@ -105,6 +105,15 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    private void OnParticleCollision(GameObject other)
+    {
+        if (other.gameObject.tag == "CrazyCircle")
+        {
+            Hitted(Powers.crazyCircleDamage);         
+        }
+
+    }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         // Quando entra in collisione col player

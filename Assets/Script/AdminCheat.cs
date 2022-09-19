@@ -53,8 +53,6 @@ public class AdminCheat : MonoBehaviour
         if (Time.time > fixedUpdateT && enableFixedUpdate)
         {
             int totalEnemy = GameData.GetTotalActualEnemy();
-
-            Debug.Log(GameData.ActualProps);
             fixedUpdateT = Time.time + keepFixedUpdateT;
         }
     }

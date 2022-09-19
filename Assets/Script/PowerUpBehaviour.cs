@@ -17,6 +17,7 @@ public class PowerUpBehaviour : Powers
         StartCoroutine(GrenadePowerUp());
         StartCoroutine(BoltPowerUp());
         StartCoroutine(KunaiPowerUp());
+        StartCoroutine(CrazyCirclePowerUp());
     }
 
 
@@ -176,6 +177,56 @@ public class PowerUpBehaviour : Powers
         yield return KunaiPowerUp();
     }
 
+    public IEnumerator CrazyCirclePowerUp()
+    {
+        yield return new WaitUntil(() => crazyCirclePowerUp.Level > 0);
 
-    
+        switch (crazyCirclePowerUp.Level)
+        {
+            default:
+                Debug.LogError("PowerUp fail");
+                break;
+
+            case 1:
+                crazyCircleRechargeT = 3;
+                crazyCircleDamage = 20;
+                crazyCircleAmount = 1;
+                break;
+
+            case 2:
+                crazyCircleRechargeT = 3;
+                crazyCircleDamage = 30;
+                crazyCircleAmount = 2;
+                break;
+
+            case 3:
+                crazyCircleRechargeT = 2;
+                crazyCircleDamage = 40;
+                crazyCircleAmount = 3;
+                break;
+
+            case 4:
+                crazyCircleRechargeT = 1.5f;
+                crazyCircleDamage = 50;
+                crazyCircleAmount = 4;
+                break;
+
+            case 5:
+                crazyCircleRechargeT = 1f;
+                crazyCircleDamage = 75;
+                crazyCircleAmount = 5;
+                break;
+        }
+
+        for (int i = 0; i < crazyCircleAmount; i++)
+        {
+            StartCoroutine(CrazyCircle());
+        }
+
+        yield return new WaitForSeconds(crazyCircleRechargeT);
+        yield return CrazyCirclePowerUp();
+    }
+
+
+
 }
