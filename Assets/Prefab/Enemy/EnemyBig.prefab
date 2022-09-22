@@ -101,11 +101,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39e75ad4fc237b04f97783ca9a0df172, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  life: 500
-  attack: 50
+  life: 1000
+  attack: 80
   speed: 1
   knockback: 10
-  expDrop: 200
+  expDrop: 450
   lerpT: 0.1
   name_atkAnim: LittleMonster_Attacca
   name_hitAnim: LittleMonster_Colpito
