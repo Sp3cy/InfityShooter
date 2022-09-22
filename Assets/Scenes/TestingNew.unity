@@ -135,6 +135,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerNonModificare
       objectReference: {fileID: 0}
+    - target: {fileID: 3265866656116440461, guid: 4e509541d2375734e99f302ee0754536,
+        type: 3}
+      propertyPath: life
+      value: 450
+      objectReference: {fileID: 0}
     - target: {fileID: 3265866656116440462, guid: 4e509541d2375734e99f302ee0754536,
         type: 3}
       propertyPath: m_RootOrder
@@ -189,6 +194,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4871420741829182986, guid: 4e509541d2375734e99f302ee0754536,
+        type: 3}
+      propertyPath: m_Radius
+      value: 8.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4e509541d2375734e99f302ee0754536, type: 3}
@@ -383,6 +393,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5039613517927382460, guid: 21aa69046b2d32e4e89e0b7d4ed3a542,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 6.32
+      objectReference: {fileID: 0}
     - target: {fileID: 5039613518161337461, guid: 21aa69046b2d32e4e89e0b7d4ed3a542,
         type: 3}
       propertyPath: m_RootOrder
@@ -1539,6 +1554,37 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: LoadingScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 3022291856791223208, guid: 0979af8f58857bf43a38479e89e01b20,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3022291857100306620, guid: 0979af8f58857bf43a38479e89e01b20,
+        type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3022291857100306620, guid: 0979af8f58857bf43a38479e89e01b20,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 8403b7e17281f66468b24a365bddc362,
+        type: 3}
+    - target: {fileID: 3022291857100306620, guid: 0979af8f58857bf43a38479e89e01b20,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3022291857100306620, guid: 0979af8f58857bf43a38479e89e01b20,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3022291857100306620, guid: 0979af8f58857bf43a38479e89e01b20,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0.42358887
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0979af8f58857bf43a38479e89e01b20, type: 3}
@@ -5083,7 +5129,7 @@ MonoBehaviour:
     uiTextDuration: 0
     enabled: 1
   - enemyIndex: 2
-    enemyAddAmount: 25
+    enemyAddAmount: 15
     startTime: 120
     spawnDelay: 4.8
     uiText: 
@@ -5097,7 +5143,7 @@ MonoBehaviour:
     uiTextDuration: 0
     enabled: 1
   - enemyIndex: 2
-    enemyAddAmount: 17
+    enemyAddAmount: 15
     startTime: 245
     spawnDelay: 10
     uiText: 
@@ -5127,7 +5173,7 @@ MonoBehaviour:
   enemySpawnerHolder: {fileID: 1150078035}
   minPos: {x: 0, y: 0}
   maxPos: {x: 3, y: 3}
-  spawnDelay: 0
+  spawnDelay: 0.01
   rotationSpeed: 2
 --- !u!4 &1159477642
 Transform:
@@ -5246,8 +5292,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d03346b01615d14b9cc25f86b295807, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  expToUnlock: 400
-  expToUnlcokMul: 1.35
+  expToUnlock: 300
+  expToUnlcokMul: 1.25
 --- !u!114 &1159477646
 MonoBehaviour:
   m_ObjectHideFlags: 0
