@@ -77,7 +77,7 @@ public class Enemy : MonoBehaviour
 
         if (!gameObject.GetComponent<Collider2D>().IsTouching(deathZone))
         {
-            gameObject.transform.position = GameMethods.RespawnEnemy(player);
+            gameObject.transform.position = GameMethods.RespawnEnemy();
         }
     }
 
@@ -190,7 +190,7 @@ public class Enemy : MonoBehaviour
             Destroy(gameObject);
         } else
         {
-            gameObject.transform.position = GameMethods.RespawnEnemy(player);
+            gameObject.transform.position = GameMethods.RespawnEnemy();
             life = keepLife;
         }
     }

@@ -33,7 +33,7 @@ public class PropManager : MonoBehaviour
         if (GameData.ActualProps < GameData.MaxProps & GameData.CurrentPlayT > spawnT)
         {
             // Aggiungere probabilita
-            Vector3 pos = GameMethods.RespawnEnemy(player);
+            Vector3 pos = GameMethods.RespawnEnemy();
 
             Instantiate(props[Random.Range(0, props.Length)].propPrefab, pos, Quaternion.identity);
 

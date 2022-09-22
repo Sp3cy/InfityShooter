@@ -8,6 +8,9 @@ public class EnemySpawner : MonoBehaviour
     public GameObject[] enemiesPrefab;
     public SpawnerDetails[] spawnerDetails;
 
+    [Space(2)]
+    public GameObject enemySpawnerHolder;
+
     [Space(5)]
     [Header("- Spawner Related")]
     public Vector2 minPos;
@@ -15,9 +18,11 @@ public class EnemySpawner : MonoBehaviour
     public Vector2 maxPos;
     [Space(5)]
     public float spawnDelay = 2f;
+    public float rotationSpeed = 2f;
 
     private GameObject player;
     private GameObject gameManager;
+    private GameObject enemySpawnObject;
 
     private UI_Script ui_Script;
 
@@ -28,6 +33,10 @@ public class EnemySpawner : MonoBehaviour
         // Set global respawn boundaries
         GameMethods.MinEnemyRespawnPos = minPos;
         GameMethods.MaxEnemyRespawnPos = maxPos;
+
+        // Get and Set spawnerobject
+        enemySpawnObject = enemySpawnerHolder.transform.GetChild(0).gameObject;
+        GameMethods.Spawner = enemySpawnObject;
     }
 
     // Start is called before the first frame update
@@ -41,11 +50,18 @@ public class EnemySpawner : MonoBehaviour
         ui_Script = gameManager.GetComponent<UI_Script>();
 
         // Get player
-        player = GameObject.FindGameObjectWithTag("Player");
+          player = GameObject.FindGameObjectWithTag("Player");
+
 
         // Start the changes coroutine
         spawnerCoroutine = EntitySpawner(0, 0, 0);
         StartCoroutine(CheckSpawnerDetails());
+    }
+
+    private void FixedUpdate()
+    {
+        enemySpawnerHolder.transform.Rotate(new Vector3(0f, 0f, rotationSpeed));
+        enemySpawnerHolder.transform.position = player.transform.position;
     }
 
     private void Setup()
@@ -63,7 +79,7 @@ public class EnemySpawner : MonoBehaviour
 
         for (int i=0; i<amount; i++)
         {
-            Vector3 pos = GameMethods.RespawnEnemy(player);
+            Vector3 pos = GameMethods.RespawnEnemy();
 
             // Instantiate an enemy and set his index for Dead() method
             GameObject newEnemy = Instantiate(enemiesPrefab[enemyIndex], pos, Quaternion.identity);
