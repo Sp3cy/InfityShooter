@@ -167,10 +167,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   life: 100
-  attack: 20
-  speed: 3.5
+  attack: 25
+  speed: 3.2
   knockback: 20
-  expDrop: 35
+  expDrop: 50
   lerpT: 0.5
   name_atkAnim: AttackDeathBird
   name_hitAnim: HitDeadBird

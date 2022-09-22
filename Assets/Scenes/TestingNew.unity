@@ -4827,7 +4827,7 @@ MonoBehaviour:
     uiTextDuration: 0
     enabled: 1
   - enemyIndex: 2
-    enemyAddAmount: 35
+    enemyAddAmount: 17
     startTime: 245
     spawnDelay: 10
     uiText: 
