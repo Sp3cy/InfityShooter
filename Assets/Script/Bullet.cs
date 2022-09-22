@@ -11,6 +11,10 @@ public class Bullet : MonoBehaviour
     private float damage = 0f;
     private float BulletAnimDurata;
 
+    private int _layerHittable = 3;
+
+    private bool destroyed = false;
+
     private Animator animator;
     private Rigidbody2D rb;
     private Collider2D bulletCollider;
@@ -31,7 +35,7 @@ public class Bullet : MonoBehaviour
         damage = newDamage;
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (damage == 0f) Debug.LogError("- Damage not setted");
 
@@ -40,6 +44,8 @@ public class Bullet : MonoBehaviour
         {
             collision.gameObject.GetComponent<Enemy>().Hitted(damage);
         }
+
+        if (collision.gameObject.layer != _layerHittable) return;
 
         StartCoroutine(AnimazioneBulletEsplode(BulletAnimDurata));
     }
@@ -50,13 +56,15 @@ public class Bullet : MonoBehaviour
         yield return new WaitForSeconds(seconds);
 
         // Handle bug
-        if (gameObject.Equals(gameObject)) Destroy(gameObject);
+        if (!destroyed) Destroy(gameObject);
     }
 
     // Animazione Bullet Contatto
 
     private IEnumerator AnimazioneBulletEsplode(float seconds)
     {
+        // Se ha colpito qualcosa è come se fosse stato distrutto
+        destroyed = true;
 
         rb.constraints = RigidbodyConstraints2D.FreezeAll;
 
@@ -65,6 +73,8 @@ public class Bullet : MonoBehaviour
         animator.SetBool("Hit", true);
         yield return new WaitForSeconds(seconds);
         animator.SetBool("Hit", false);
+
+        
         Destroy(gameObject);
 
     }
