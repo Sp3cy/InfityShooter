@@ -15,6 +15,9 @@ public class GameSessionManager : MonoBehaviour
     {
         GameData.ExpToLevelUp = expToUnlock;
         GameData.ExpLevel = 0;
+
+        GameData.ActualEnemy.Clear();
+        GameData.MaxEnemy.Clear();
     }
 
     // Start is called before the first frame update
@@ -62,5 +65,7 @@ public class GameSessionManager : MonoBehaviour
     {
         Time.timeScale = 1f;
     }
+
+
 
 }
