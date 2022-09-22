@@ -93,8 +93,7 @@ public class PlayerBehaviour : MonoBehaviour
     // Quando player morto
     public void Dead()
     {
-        gameManager.GetComponent<GameSessionManager>().Pause();
-        gameManager.GetComponent<UI_Script>().ShowEndGame();
+        gameManager.GetComponent<GameSessionManager>().StopGame();
     }
 
     // When player hitted

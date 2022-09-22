@@ -8,6 +8,10 @@ public class AdminCheat : MonoBehaviour
     public int currentWeaponIndex;
 
     [Space(5)]
+    [Tooltip("Press L to die")]
+    public bool enableCheat01 = true;
+
+    [Space(5)]
     public bool enableFixedUpdate = false;
     public float fixedUpdateT = 1f;
 
@@ -48,6 +52,8 @@ public class AdminCheat : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.RightArrow)) Time.timeScale += 0.1f;
 
         if (Input.GetKeyDown(KeyCode.LeftArrow)) Time.timeScale -= 0.1f;
+
+        if (Input.GetKeyDown(KeyCode.L) && enableCheat01) gameManager.GetComponent<GameSessionManager>().StopGame();
 
 
         if (Time.time > fixedUpdateT && enableFixedUpdate)

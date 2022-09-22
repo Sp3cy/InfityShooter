@@ -54,6 +54,14 @@ public class GameSessionManager : MonoBehaviour
         }
     }
 
+    public void StopGame()
+    {
+        Pause();
+        StopAllCoroutines();
+        
+        gameManager.GetComponent<UI_Script>().ShowEndGame();
+    }
+
     // Stop everything that works with Time -- EVEN COROUTINE BUT NOT THE EMEMY SPAWNER SCRIPT
     public void Pause()
     {

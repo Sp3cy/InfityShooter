@@ -17,21 +17,21 @@ public class ScenaManagement : MonoBehaviour
     public void LoadSceneAfterSec(int sceneId)
     {
         // resume timescale
-        //gameObject.GetComponent<GameSessionManager>().Resume();
-        Debug.Log(Time.timeScale);
         StartCoroutine(LoadSceneAfterSecCoro(sceneId, loadDelayT));
     }
 
     private IEnumerator LoadSceneAfterSecCoro(int sceneId, float sec)
     {
         loadingScreen.SetActive(true);
-        Debug.Log(Time.timeScale);
-        yield return new WaitForSeconds(sec);
-        Debug.Log(Time.timeScale);
 
-        SceneManager.LoadSceneAsync(sceneId);
+        yield return new WaitForSecondsRealtime(sec);
 
-        yield return null;
+        AsyncOperation operation = SceneManager.LoadSceneAsync(sceneId, LoadSceneMode.Single);
+
+        while (!operation.isDone)
+        { 
+            yield return null;
+        }
     }
 
     private IEnumerator LoadSceneAsync(int sceneId)
