@@ -242,6 +242,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e2bcf6c93da59c42a177bec9a9d54ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &31643214
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 31643215}
+  m_Layer: 0
+  m_Name: EnemySpawnerRoot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &31643215
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 31643214}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 2.64, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 401667974}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &49108078 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8351375070893166530, guid: 93af8d03f8fd70540b2e4c3644185374,
@@ -1628,6 +1658,37 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 93af8d03f8fd70540b2e4c3644185374, type: 3}
+--- !u!1 &401667973
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 401667974}
+  m_Layer: 0
+  m_Name: EnemySpawnerHolder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &401667974
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 401667973}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 31643215}
+  m_Father: {fileID: 4952050734382352001}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &411159077
 GameObject:
   m_ObjectHideFlags: 0
@@ -4256,7 +4317,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -37}
+  m_AnchoredPosition: {x: 0, y: -37.000015}
   m_SizeDelta: {x: 365.97, y: -1479.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &991403352
@@ -4974,9 +5035,11 @@ MonoBehaviour:
     uiText: 
     uiTextDuration: 0
     enabled: 1
+  enemySpawnerHolder: {fileID: 401667973}
   minPos: {x: 5, y: 5}
   maxPos: {x: 25, y: 25}
   spawnDelay: 0
+  rotationSpeed: 2
 --- !u!4 &1159477642
 Transform:
   m_ObjectHideFlags: 0

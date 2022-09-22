@@ -8,14 +8,18 @@ public class GameMethods : MonoBehaviour
     private static Vector2 maxEnemyRespawnPos;
     private static Vector2 minEnemyRespawnPos;
 
+    // Puzza
+    private static GameObject spawner;
+
     public static Vector2 MaxEnemyRespawnPos { get => maxEnemyRespawnPos; set => maxEnemyRespawnPos = value; }
     public static Vector2 MinEnemyRespawnPos { get => minEnemyRespawnPos; set => minEnemyRespawnPos = value; }
+    public static GameObject Spawner { get => spawner; set => spawner = value; }
 
-    public static Vector3 RespawnEnemy(GameObject player)
+    public static Vector3 RespawnEnemy()
     {
         // Posizione player attuale
-        float posX = player.transform.position.x;
-        float posY = player.transform.position.y;
+        float posX = spawner.transform.position.x;
+        float posY = spawner.transform.position.y;
 
         // Random tra distanza minima dal player e massima
         float enemyPosX = Random.Range(minEnemyRespawnPos.x, maxEnemyRespawnPos.x);
