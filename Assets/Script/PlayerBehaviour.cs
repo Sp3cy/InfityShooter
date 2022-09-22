@@ -28,7 +28,7 @@ public class PlayerBehaviour : MonoBehaviour
     private Joystick joystick;
 
     private GameObject gameManager;
-    private Weapon selectedWeapon;
+    private WeaponManager weaponManager;
     private Skill skillScript;
 
     private void Awake()
@@ -45,8 +45,7 @@ public class PlayerBehaviour : MonoBehaviour
         joystick = GameObject.FindGameObjectWithTag("Joystick").GetComponent<Joystick>();
         player = gameObject.GetComponent<Rigidbody2D>();
 
-        selectedWeapon = GameObject.FindGameObjectWithTag("WeaponHolder").transform.GetChild(GameData.CurrentWeaponIndex)
-            .GetComponent<Weapon>();
+        weaponManager = gameManager.GetComponent<WeaponManager>();
 
         skillScript = gameManager.GetComponent<Skill>();
     }
@@ -66,18 +65,16 @@ public class PlayerBehaviour : MonoBehaviour
         Vector2 lookDir = new Vector2(0,0);
         GameData.TargetEnemy = GameMethods.GetClosestEnemyByLife(maxEnemyDistance, maxEnemy);
 
-        // Se non esistono enemy vicine smette di sparare -- NO ME GUSTA SHOOTING IN UPDATE
-        if (GameData.TargetEnemy == null) selectedWeapon.StopShooting();
-        else selectedWeapon.StartShooting();
+        
 
         // If weapon isShooting or skill isShooting
-        if ((selectedWeapon.IsShooting() || skillScript.IsSkillShooting()) && GameData.TargetEnemy != null)
+        if ((weaponManager.IsWeaponShooting() || skillScript.IsSkillShooting()) && GameData.TargetEnemy != null)
         {
             // Enemy too close bug handler
             if (GameData.TargetEnemy != null && (Vector2.Distance(player.transform.position, GameData.TargetEnemy.transform.position) < enemyTooClose))
                 lookDir = GameData.TargetEnemy.transform.position - player.transform.position;
             else
-                lookDir = GameData.TargetEnemy.transform.position - selectedWeapon.transform.position;
+                lookDir = GameData.TargetEnemy.transform.position - weaponManager.CurrentWeaponObject.transform.position;
         }
         else lookDir = new Vector2(joystick.Horizontal, joystick.Vertical);
 

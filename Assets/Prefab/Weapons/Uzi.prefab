@@ -151,7 +151,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1293250289945255099}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.375, z: 0}
+  m_LocalPosition: {x: 0, y: 0.265, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7727574378718378161}
@@ -166,7 +166,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7727574378718378161}
-  - component: {fileID: 8511663574762140042}
+  - component: {fileID: -4745217836451619580}
   m_Layer: 0
   m_Name: Uzi
   m_TagString: Weapon
@@ -192,7 +192,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8511663574762140042
+--- !u!114 &-4745217836451619580
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -201,15 +201,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 2108308391098875786}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0d60b370359748746b5e4241c7aa7da7, type: 3}
+  m_Script: {fileID: 11500000, guid: cf3688dcd8c6c394b9dde14aca6745b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   firePos: {fileID: 1663875049685783625}
-  bulletDmg: 7
+  bulletDmg: 20
   bulletForce: 30
-  fireRate: 0.3
+  fireRate: 0.5
   fireRateTarget: 0.1
-  coeffRPS: 0.7
+  coeffRPS: 0.8
   ammoMax: 50
   reloadT: 1
   bulletPrefab: {fileID: 1304352845726487513, guid: b602888ad4dde0a42a7d896218f34034,

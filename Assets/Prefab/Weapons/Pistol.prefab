@@ -39,7 +39,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7727574378718378161}
-  - component: {fileID: 8511663574762140042}
+  - component: {fileID: 7927760180730064146}
   m_Layer: 0
   m_Name: Pistol
   m_TagString: Weapon
@@ -65,7 +65,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8511663574762140042
+--- !u!114 &7927760180730064146
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -74,16 +74,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 2108308391098875786}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0d60b370359748746b5e4241c7aa7da7, type: 3}
+  m_Script: {fileID: 11500000, guid: cf3688dcd8c6c394b9dde14aca6745b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   firePos: {fileID: 1663875049685783625}
   bulletDmg: 20
   bulletForce: 30
-  fireRate: 0.7
-  fireRateTarget: 0.7
-  coeffRPS: 0.5
-  ammoMax: 10
+  fireRate: 0.5
+  fireRateTarget: 0.1
+  coeffRPS: 0.6
+  ammoMax: 0
   reloadT: 1
   bulletPrefab: {fileID: 1304352845726487513, guid: b602888ad4dde0a42a7d896218f34034,
     type: 3}
