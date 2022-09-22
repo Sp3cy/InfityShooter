@@ -19,6 +19,8 @@ TagManager:
   - WeaponHolder
   - GameManager
   - Prop_Hp
+  - CrazyCircle
+  - RotatingField
   layers:
   - Default
   - TransparentFX

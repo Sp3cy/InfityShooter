@@ -24,6 +24,7 @@ public class Powers : MonoBehaviour
     public PowersStruct grenadePowerUp;
     public PowersStruct boltPowerUp;
     public PowersStruct kunaiPowerUp;
+    public PowersStruct crazyCirclePowerUp;
 
     [System.NonSerialized]
     public List<PowersStruct> powersData = new List<PowersStruct>();
@@ -62,6 +63,15 @@ public class Powers : MonoBehaviour
     public static float kunaiDamage = 5f;
     protected int kunaiAmount = 0;
 
+    [Header("- Crazy Circle")]
+    public GameObject crazyCirclePrefab;
+    public float crazyCircleRechargeT = 3.5f;
+
+    public static float crazyCircleDamage = 5f;
+    protected int crazyCircleAmount = 0;
+
+
+
     protected GameObject player;
 
     // -- NON SI USA START IN QUESTO SCRIPT
@@ -75,6 +85,7 @@ public class Powers : MonoBehaviour
         if (grenadePowerUp.isActive) powersData.Add(grenadePowerUp);
         if (boltPowerUp.isActive) powersData.Add(boltPowerUp);
         if (kunaiPowerUp.isActive) powersData.Add(kunaiPowerUp);
+        if (crazyCirclePowerUp.isActive) powersData.Add(crazyCirclePowerUp);
 
         for (int i = 0; i < powersData.Count; i++) powersData[i].Id = i;
     }
@@ -159,12 +170,28 @@ public class Powers : MonoBehaviour
 
     public IEnumerator Kunai()
     {
+        //instantiate kunai
         var kunai = Instantiate(kunaiPrefab, player.transform.position, player.transform.rotation);
         Rigidbody2D kunaiRb = kunai.GetComponent<Rigidbody2D>();
         Collider2D kunaiCol = kunai.GetComponent<Collider2D>();
         kunaiRb.AddForce(new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f)) * grenadeForce, ForceMode2D.Force);
+
+        //wait destroy time
         yield return new WaitForSeconds(kunayDestroyTime);
         Destroy(kunai);
+
+        yield return null;
+    }
+
+    public IEnumerator CrazyCircle()
+    {
+        //instantiate CrazyCircle
+        var crazyCircle = Instantiate(crazyCirclePrefab, player.transform.position, player.transform.rotation);
+        
+        //wait anim duration
+        yield return new WaitForSeconds(crazyCirclePrefab.GetComponent<ParticleSystem>().main.duration);
+        Destroy(crazyCircle);
+
         yield return null;
     }
 

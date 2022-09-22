@@ -17,7 +17,8 @@ public class UI_Script : MonoBehaviour
 
     [Space(5)]
     [Header("- UI Objects")]
-   // public GameObject ammoTxtHolder;
+    // public GameObject ammoTxtHolder;
+    public GameObject gameOverPanel;
     public Slider expSlider;
     public Text killedEnemyesTXT;
     public Text gameSessionCurrentTimeTXT;
@@ -51,6 +52,9 @@ public class UI_Script : MonoBehaviour
         // Powerup menu setup
         actualMenuPowers = new PowersStruct[3];
         powerUpMenu.obj_PwMenu.SetActive(false);
+
+        // Set gameoverpanel
+        gameOverPanel.SetActive(false);
 
         // Hpbar Setup
         hpBar = GameObject.FindGameObjectWithTag("PlayerHpBar").GetComponent<Slider>();
@@ -159,6 +163,11 @@ public class UI_Script : MonoBehaviour
         // Chiude il powerup menu e riprende il gioco
         powerUpMenu.obj_PwMenu.SetActive(false);
         gameManager.GetComponent<GameSessionManager>().Resume();
+    }
+
+    public void ShowEndGame()
+    {
+        gameOverPanel.SetActive(true);
     }
 
     // Show the text of important enemy or bosses - In the upper ui

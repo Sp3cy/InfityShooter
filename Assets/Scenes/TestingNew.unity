@@ -221,8 +221,7 @@ RectTransform:
   - {fileID: 572344875}
   - {fileID: 898386673}
   - {fileID: 515333223}
-  - {fileID: 1271339561}
-  - {fileID: 991403351}
+  - {fileID: 1296057241}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -791,7 +790,7 @@ RectTransform:
   m_GameObject: {fileID: 180192444}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.1534055, y: 1.1534055, z: 1.1534055}
+  m_LocalScale: {x: 1.5156902, y: 1.5156902, z: 1.5156902}
   m_Children:
   - {fileID: 350234549}
   - {fileID: 190440257}
@@ -801,7 +800,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 186, y: 811}
+  m_AnchoredPosition: {x: 238, y: 759.00006}
   m_SizeDelta: {x: 298.42, y: 121.45}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &180192446
@@ -1706,18 +1705,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1159477645}
-        m_TargetAssemblyTypeName: GameSessionManager, Assembly-CSharp
-        m_MethodName: Resume
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 1159477647}
         m_TargetAssemblyTypeName: ScenaManagement, Assembly-CSharp
         m_MethodName: CaricaScena
@@ -2351,7 +2338,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 14
+  orthographic size: 16
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
@@ -2757,8 +2744,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1006, y: -377}
-  m_SizeDelta: {x: 330.72998, y: 340.20996}
+  m_AnchoredPosition: {x: 973, y: -429}
+  m_SizeDelta: {x: 418.65, y: 430.65}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &572344876
 MonoBehaviour:
@@ -3395,7 +3382,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -219, y: -7}
+  m_AnchoredPosition: {x: -229, y: -9}
   m_SizeDelta: {x: 305.372, y: 267.5592}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &784521179
@@ -3954,7 +3941,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 199
+  m_SortingOrder: 200
   m_TargetDisplay: 0
 --- !u!224 &917894152
 RectTransform:
@@ -3968,6 +3955,8 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 1557351445}
+  - {fileID: 991403351}
+  - {fileID: 1271339561}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4134,7 +4123,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 991403350}
-  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
+  m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -4142,12 +4131,12 @@ RectTransform:
   - {fileID: 1640993037}
   - {fileID: 1412905954}
   - {fileID: 427100040}
-  m_Father: {fileID: 24813077}
-  m_RootOrder: 7
+  m_Father: {fileID: 917894152}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -37}
+  m_AnchoredPosition: {x: 0, y: -37.000015}
   m_SizeDelta: {x: 365.97, y: -1479.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &991403352
@@ -4757,36 +4746,115 @@ MonoBehaviour:
   enemiesPrefab:
   - {fileID: 2665966712921770188, guid: a96472d6e0f84bf4bb0084f156b081b4, type: 3}
   - {fileID: 4842676663674171591, guid: 2aaecc4ff1db0b04ba7ef38b804b5848, type: 3}
+  - {fileID: 3194584658147630216, guid: 40e3f62e4e726fc43a9ebc4afec0ba7f, type: 3}
+  - {fileID: 218188528055411267, guid: e914f1f152d264b42a56f0821c9031af, type: 3}
   spawnerDetails:
   - enemyIndex: 0
+    enemyAddAmount: 120
+    startTime: 1
+    spawnDelay: 0.66
+    uiText: GOOD LUCK
+    uiTextDuration: 2
+    enabled: 1
+  - enemyIndex: 0
+    enemyAddAmount: 120
+    startTime: 1
+    spawnDelay: 0.66
+    uiText: 
+    uiTextDuration: 0
+    enabled: 1
+  - enemyIndex: 0
+    enemyAddAmount: 100
+    startTime: 300
+    spawnDelay: 0.3
+    uiText: 
+    uiTextDuration: 0
+    enabled: 1
+  - enemyIndex: 1
+    enemyAddAmount: 5
+    startTime: 60
+    spawnDelay: 0
+    uiText: 
+    uiTextDuration: 0
+    enabled: 1
+  - enemyIndex: 1
     enemyAddAmount: 20
-    startTime: 0
+    startTime: 65
+    spawnDelay: 6
+    uiText: 
+    uiTextDuration: 0
+    enabled: 1
+  - enemyIndex: 1
+    enemyAddAmount: 40
+    startTime: 180
+    spawnDelay: 1.5
+    uiText: 
+    uiTextDuration: 0
+    enabled: 1
+  - enemyIndex: 1
+    enemyAddAmount: -10
+    startTime: 240
     spawnDelay: 0
     uiText: 
     uiTextDuration: 0
-    enabled: 0
+    enabled: 1
   - enemyIndex: 1
+    enemyAddAmount: -10
+    startTime: 240
+    spawnDelay: 0
+    uiText: 
+    uiTextDuration: 0
+    enabled: 1
+  - enemyIndex: 1
+    enemyAddAmount: 50
+    startTime: 240
+    spawnDelay: 7
+    uiText: 
+    uiTextDuration: 0
+    enabled: 1
+  - enemyIndex: 2
+    enemyAddAmount: 25
+    startTime: 120
+    spawnDelay: 4.8
+    uiText: 
+    uiTextDuration: 0
+    enabled: 1
+  - enemyIndex: 2
+    enemyAddAmount: -10
+    startTime: 245
+    spawnDelay: 0
+    uiText: 
+    uiTextDuration: 0
+    enabled: 1
+  - enemyIndex: 2
+    enemyAddAmount: 35
+    startTime: 245
+    spawnDelay: 10
+    uiText: 
+    uiTextDuration: 0
+    enabled: 1
+  - enemyIndex: 3
     enemyAddAmount: 10
-    startTime: 5
-    spawnDelay: 0
+    startTime: 180
+    spawnDelay: 6
     uiText: 
     uiTextDuration: 0
     enabled: 1
-  - enemyIndex: 1
+  - enemyIndex: 3
     enemyAddAmount: -5
-    startTime: 10
-    spawnDelay: 0
+    startTime: 240
+    spawnDelay: 6
     uiText: 
     uiTextDuration: 0
     enabled: 1
-  - enemyIndex: 1
-    enemyAddAmount: -5
-    startTime: 15
-    spawnDelay: 0
+  - enemyIndex: 3
+    enemyAddAmount: 25
+    startTime: 185
+    spawnDelay: 12
     uiText: 
     uiTextDuration: 0
     enabled: 1
-  minPos: {x: 1, y: 1}
+  minPos: {x: 5, y: 5}
   maxPos: {x: 25, y: 25}
   spawnDelay: 0
 --- !u!4 &1159477642
@@ -4818,7 +4886,7 @@ MonoBehaviour:
   enableCheat00: 1
   currentWeaponIndex: 1
   enableFixedUpdate: 1
-  fixedUpdateT: 1
+  fixedUpdateT: 0.5
 --- !u!114 &1159477644
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4844,9 +4912,9 @@ MonoBehaviour:
     descLevel:
     - Unlock Bolt
     - 3 bolt every 3 sec
-    - 5 bolt every 2sec
-    - 6 bolt every 1 sec
-    - 8 bolt
+    - 6 bolt every 2sec
+    - 8 bolt every 1 sec
+    - 10 bolt
     maxLevel: 5
     isActive: 1
   kunaiPowerUp:
@@ -4856,6 +4924,15 @@ MonoBehaviour:
     - 3 kunai
     - 4 kunai every 2 sec
     - 5 kunai every 1 sec
+    maxLevel: 5
+    isActive: 1
+  crazyCirclePowerUp:
+    descLevel:
+    - UNLOCK C.C
+    - 2 cc every 3 seconds
+    - 3 cc every 2 seconds
+    - 4 cc every 1.5 seconds
+    - 5 cc every second
     maxLevel: 5
     isActive: 1
   grenadeExplosionSound: {fileID: 851860846}
@@ -4881,6 +4958,9 @@ MonoBehaviour:
   kunayDestroyTime: 3
   kunayRechargeT: 3
   kunaiForce: 300
+  crazyCirclePrefab: {fileID: 3455870696399001077, guid: 7451771b7907b8e4d962cfaa45c48860,
+    type: 3}
+  crazyCircleRechargeT: 3
 --- !u!114 &1159477645
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4941,7 +5021,7 @@ MonoBehaviour:
   - propPrefab: {fileID: 275112028578935643, guid: bf1bede6bfec18a40b0bf0f1fd77bae5,
       type: 3}
     probability: 0
-  maxProps: 5
+  maxProps: 1
   spawnT: 1
 --- !u!114 &1159477649
 MonoBehaviour:
@@ -4961,11 +5041,12 @@ MonoBehaviour:
     - {fileID: 1793919263}
     - {fileID: 1168686525}
     - {fileID: 784521181}
+  gameOverPanel: {fileID: 991403350}
   expSlider: {fileID: 515333224}
   killedEnemyesTXT: {fileID: 735763685}
   gameSessionCurrentTimeTXT: {fileID: 702788318}
   playerLevelTXT: {fileID: 1385030389}
-  enemySpawnTXT: {fileID: 0}
+  enemySpawnTXT: {fileID: 1296057239}
   animAmmoPow: 1.08
   animAmmoTime: 0.6
 --- !u!1 &1160237111
@@ -5477,18 +5558,97 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1271339560}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 164170872}
-  m_Father: {fileID: 24813077}
-  m_RootOrder: 6
+  m_Father: {fileID: 917894152}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1296057238
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1296057241}
+  - component: {fileID: 1296057240}
+  - component: {fileID: 1296057239}
+  m_Layer: 5
+  m_Name: OrdaTXT
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1296057239
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1296057238}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.8584906, g: 0.8584906, b: 0.8584906, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: 58a9e937a79857b439bce37cb671a6ed, type: 3}
+    m_FontSize: 99
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 4
+    m_MaxSize: 99
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 
+--- !u!222 &1296057240
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1296057238}
+  m_CullTransparentMesh: 1
+--- !u!224 &1296057241
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1296057238}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 24813077}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0.000015259, y: 393}
+  m_SizeDelta: {x: 661.07, y: 394.67}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1385030387
 GameObject:
@@ -6315,7 +6475,7 @@ MonoBehaviour:
   m_Follow: {fileID: 4952050734382352001}
   m_Lens:
     FieldOfView: 60
-    OrthographicSize: 14
+    OrthographicSize: 16
     NearClipPlane: 0.21
     FarClipPlane: 1000
     Dutch: 0
@@ -7552,6 +7712,16 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 421406985488041322, guid: 525d8ed557176b044b1bb5baec578600,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 521574267823922957, guid: 525d8ed557176b044b1bb5baec578600,
+        type: 3}
+      propertyPath: fireRate
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 849613597948349451, guid: 525d8ed557176b044b1bb5baec578600,
         type: 3}
       propertyPath: ammoMax
@@ -7969,6 +8139,16 @@ PrefabInstance:
       propertyPath: m_Offset.y
       value: -0.06006261
       objectReference: {fileID: 0}
+    - target: {fileID: 3516800492865989629, guid: 525d8ed557176b044b1bb5baec578600,
+        type: 3}
+      propertyPath: m_Pitch
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3516800492865989629, guid: 525d8ed557176b044b1bb5baec578600,
+        type: 3}
+      propertyPath: m_Volume
+      value: 0.25
+      objectReference: {fileID: 0}
     - target: {fileID: 4015724232530485227, guid: 525d8ed557176b044b1bb5baec578600,
         type: 3}
       propertyPath: bulletForce
@@ -8282,12 +8462,12 @@ PrefabInstance:
     - target: {fileID: 8448212412545100611, guid: 525d8ed557176b044b1bb5baec578600,
         type: 3}
       propertyPath: NormalSpeed
-      value: 1000
+      value: 2100
       objectReference: {fileID: 0}
     - target: {fileID: 8448212412545100611, guid: 525d8ed557176b044b1bb5baec578600,
         type: 3}
       propertyPath: ShootingSpeed
-      value: 1000
+      value: 2000
       objectReference: {fileID: 0}
     - target: {fileID: 8635342095267604994, guid: 525d8ed557176b044b1bb5baec578600,
         type: 3}
