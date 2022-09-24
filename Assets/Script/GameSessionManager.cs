@@ -16,6 +16,7 @@ public class GameSessionManager : MonoBehaviour
         GameData.ExpToLevelUp = expToUnlock;
         GameData.ExpLevel = 0;
 
+        GameData.CurrentPlayT = 0;
         GameData.ActualEnemy.Clear();
         GameData.MaxEnemy.Clear();
     }
@@ -25,7 +26,6 @@ public class GameSessionManager : MonoBehaviour
     {
         Resume();
 
-        GameData.CurrentPlayT = 0;
         GameData.EnemyDead = 0;
         GameData.ActualExp = 0f;
 
