@@ -135,11 +135,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerNonModificare
       objectReference: {fileID: 0}
-    - target: {fileID: 3265866656116440461, guid: 4e509541d2375734e99f302ee0754536,
-        type: 3}
-      propertyPath: life
-      value: 450
-      objectReference: {fileID: 0}
     - target: {fileID: 3265866656116440462, guid: 4e509541d2375734e99f302ee0754536,
         type: 3}
       propertyPath: m_RootOrder
@@ -194,11 +189,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4871420741829182986, guid: 4e509541d2375734e99f302ee0754536,
-        type: 3}
-      propertyPath: m_Radius
-      value: 8.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4e509541d2375734e99f302ee0754536, type: 3}
@@ -1824,12 +1814,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 93af8d03f8fd70540b2e4c3644185374, type: 3}
---- !u!1 &401667973 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5039613518161337462, guid: 21aa69046b2d32e4e89e0b7d4ed3a542,
-    type: 3}
-  m_PrefabInstance: {fileID: 5039613517917039603}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &411159077
 GameObject:
   m_ObjectHideFlags: 0
@@ -5046,7 +5030,6 @@ GameObject:
   - component: {fileID: 1159477647}
   - component: {fileID: 1159477648}
   - component: {fileID: 1159477649}
-  - component: {fileID: 1159477650}
   m_Layer: 0
   m_Name: _GameMaster
   m_TagString: GameManager
@@ -5377,21 +5360,6 @@ MonoBehaviour:
   enemySpawnTXT: {fileID: 1296057239}
   animAmmoPow: 1.08
   animAmmoTime: 0.6
---- !u!114 &1159477650
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1159477640}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4d2936c7f3b946e4bad053526a06e71f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentWeaponIndex: 1
-  guns: []
-  weaponHolder: {fileID: 3944909624730430480}
 --- !u!1 &1160237111
 GameObject:
   m_ObjectHideFlags: 0

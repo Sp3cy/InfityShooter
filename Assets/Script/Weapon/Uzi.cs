@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Usi : MonoBehaviour, Weapon
+public class Uzi : MonoBehaviour, Weapon
 {
     [Header("- Objects")]
     public Transform firePos;
@@ -31,10 +31,8 @@ public class Usi : MonoBehaviour, Weapon
     private float RowBullets;
     private float keepFireRate;
     private float fireRatedeltaT;
-    private bool isShooting;
 
     private GameObject gameManager;
-    private Skill skillScript;
 
     private void Awake()
     {
@@ -46,9 +44,6 @@ public class Usi : MonoBehaviour, Weapon
     {
         // Get gamemanager
         gameManager = GameObject.FindGameObjectWithTag("GameManager");
-
-        // Get skill script
-        skillScript = gameManager.GetComponent<Skill>();
 
         // Set keepFireRate
         keepFireRate = fireRate;

@@ -4944,7 +4944,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ec3aca443e8255409b08a1016cff99e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  life: 100
+  life: 450
   lerpT: 0.2
   maxEnemyDistance: 8
   maxEnemy: 1
@@ -5084,7 +5084,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 10
+  m_Radius: 8.5
 --- !u!1 &6525816623678122699
 GameObject:
   m_ObjectHideFlags: 0

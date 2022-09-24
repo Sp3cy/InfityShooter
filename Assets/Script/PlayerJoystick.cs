@@ -15,7 +15,7 @@ public class PlayerJoystick : MonoBehaviour
 
     private void Start()
     {
-        weaponManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<WeaponManager>();
+        weaponManager = GameObject.FindGameObjectWithTag("WeaponHolder").GetComponent<WeaponManager>();
         skillManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<Skill>();
         variableJoystick = GameObject.FindGameObjectWithTag("Joystick").GetComponent<FloatingJoystick>();
     }

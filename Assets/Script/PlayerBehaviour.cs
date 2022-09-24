@@ -45,7 +45,7 @@ public class PlayerBehaviour : MonoBehaviour
         joystick = GameObject.FindGameObjectWithTag("Joystick").GetComponent<Joystick>();
         player = gameObject.GetComponent<Rigidbody2D>();
 
-        weaponManager = gameManager.GetComponent<WeaponManager>();
+        weaponManager = GameObject.FindGameObjectWithTag("WeaponHolder").GetComponent<WeaponManager>();
 
         skillScript = gameManager.GetComponent<Skill>();
     }
