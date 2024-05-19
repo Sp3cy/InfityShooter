@@ -121,7 +121,7 @@ public class UI_Script : MonoBehaviour
             // Bug handle
             else
             {
-                Debug.LogError("Text not found");
+               // Debug.LogError("Text not found" + actualMenuPowers[i]);
                 powerUpMenu.txt_PowerUp[i].text = "?";
             }
         }

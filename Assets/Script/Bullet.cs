@@ -47,6 +47,8 @@ public class Bullet : MonoBehaviour
 
         if (collision.gameObject.layer != _layerHittable) return;
 
+        Debug.Log(collision.gameObject.layer);
+
         StartCoroutine(AnimazioneBulletEsplode(BulletAnimDurata));
     }
 
@@ -63,18 +65,17 @@ public class Bullet : MonoBehaviour
 
     private IEnumerator AnimazioneBulletEsplode(float seconds)
     {
-        // Se ha colpito qualcosa è come se fosse stato distrutto
-        destroyed = true;
 
-        rb.constraints = RigidbodyConstraints2D.FreezeAll;
+       // rb.constraints = RigidbodyConstraints2D.FreezeAll;
 
-        bulletCollider.isTrigger = true;
+       // bulletCollider.isTrigger = true;
 
         animator.SetBool("Hit", true);
         yield return new WaitForSeconds(seconds);
         animator.SetBool("Hit", false);
 
-        
+        // Se ha colpito qualcosa è come se fosse stato distrutto
+        destroyed = true;
         Destroy(gameObject);
 
     }

@@ -102,7 +102,7 @@ public class Powers : MonoBehaviour
 
     public PowersStruct GetRandPowerUp()
     {
-        if (avaiblePowerIndexes.Count == 0) return null;
+        if (avaiblePowerIndexes.Count <= 0) return null;
 
         int index = avaiblePowerIndexes[Random.Range(0, avaiblePowerIndexes.Count)];
 
