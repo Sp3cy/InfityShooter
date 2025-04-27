@@ -65,16 +65,11 @@ public class PlayerBehaviour : MonoBehaviour
         Vector2 lookDir = new Vector2(0,0);
         GameData.TargetEnemy = GameMethods.GetClosestEnemyByLife(maxEnemyDistance, maxEnemy);
 
-        
 
         // If weapon isShooting or skill isShooting
         if ((weaponManager.IsWeaponShooting() || skillScript.IsSkillShooting()) && GameData.TargetEnemy != null)
         {
-            // Enemy too close bug handler
-            if (GameData.TargetEnemy != null && (Vector2.Distance(player.transform.position, GameData.TargetEnemy.transform.position) < enemyTooClose))
-                lookDir = GameData.TargetEnemy.transform.position - weaponManager.CurrentWeaponObject.transform.position;
-            else
-                lookDir = GameData.TargetEnemy.transform.position - weaponManager.CurrentWeaponObject.transform.position;
+            lookDir = GameData.TargetEnemy.transform.position - weaponManager.CurrentWeaponObject.transform.position;
         }
         else lookDir = new Vector2(joystick.Horizontal, joystick.Vertical);
 

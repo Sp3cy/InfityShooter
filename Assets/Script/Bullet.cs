@@ -64,9 +64,6 @@ public class Bullet : MonoBehaviour
     // Animazione Bullet al Contatto
     private void AnimazioneBulletEsplode()
     {
-        // BUG: bullet quando hitta appena instanziato non imposta i valori di rb, animator e collider2D, i quali risultano in null (penso)
-        // Da capire perche'
-
         try
         {
             // Disabilita collider, ferma bullet nello spazio
