@@ -62,12 +62,12 @@ public class UI_Script : MonoBehaviour
         hpBar.minValue = 0;
 
         // AmmoBar Setup
-        ammoBar = GameObject.FindGameObjectWithTag("PlayerAmmoBar").GetComponent<Slider>();
-        ammoBar.maxValue = GameData.AmmoCount;
-        ammoBar.minValue = 0;
+       // ammoBar = GameObject.FindGameObjectWithTag("PlayerAmmoBar").GetComponent<Slider>();
+        //ammoBar.maxValue = GameData.AmmoCount;
+        //ammoBar.minValue = 0;
 
         // AmmoCount setup
-        tempAmmoCount = GameData.AmmoCount;
+        //tempAmmoCount = GameData.AmmoCount;
 
         // ExpBar Setup
         expSlider.maxValue = GameData.ExpToLevelUp;
@@ -89,7 +89,7 @@ public class UI_Script : MonoBehaviour
         // Change sliders value every fixedupdate
         hpBar.value = GameData.PlayerLife;
         expSlider.value = GameData.ActualExp;
-        ammoBar.value = GameData.AmmoCount;
+        //ammoBar.value = GameData.AmmoCount;
     }
     private void Update()
     {
