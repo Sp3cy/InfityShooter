@@ -19,7 +19,7 @@ public class Bullet : MonoBehaviour
     private Collider2D bulletCollider;
 
 
-    private void Start()
+    private void Awake()
     {
         animator = gameObject.GetComponent<Animator>();
         rb = gameObject.GetComponent<Rigidbody2D>();
@@ -36,9 +36,9 @@ public class Bullet : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (damage == 0f) Debug.LogError("- Damage not setted");
-        
+
         // BUG HANDLER: read at AnimazioneBulletEsplode
-        if (rb == null) return;
+        //if (rb == null) { Debug.LogError(collision.gameObject.tag); return; }
 
         // if enemy is been hitted
         if (collision.gameObject.tag == "Enemy" && !destroyed)

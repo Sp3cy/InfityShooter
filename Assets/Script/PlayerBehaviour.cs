@@ -72,7 +72,7 @@ public class PlayerBehaviour : MonoBehaviour
         {
             // Enemy too close bug handler
             if (GameData.TargetEnemy != null && (Vector2.Distance(player.transform.position, GameData.TargetEnemy.transform.position) < enemyTooClose))
-                lookDir = GameData.TargetEnemy.transform.position - player.transform.position;
+                lookDir = GameData.TargetEnemy.transform.position - weaponManager.CurrentWeaponObject.transform.position;
             else
                 lookDir = GameData.TargetEnemy.transform.position - weaponManager.CurrentWeaponObject.transform.position;
         }

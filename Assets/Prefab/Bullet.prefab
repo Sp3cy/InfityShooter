@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7814065509264799650}
   - component: {fileID: 2054142367081597890}
   - component: {fileID: -1597905665931509710}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -167,7 +167,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5131795126137384223}
   - component: {fileID: 7481686014422416617}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Scia
   m_TagString: Untagged
   m_Icon: {fileID: 0}

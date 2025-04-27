@@ -80,7 +80,7 @@ public class Uzi : MonoBehaviour, Weapon
         //if (GameData.AmmoCount > 0)
         //{
             // Crea l'oggetto bulletPrefab e gli assegna il damage
-            GameObject bullet = Instantiate(bulletPrefab, firePos.position, firePos.rotation);
+            GameObject bullet = Instantiate(bulletPrefab, firePos.position, firePos.rotation) as GameObject;
             bullet.GetComponent<Bullet>().SetDamage(bulletDmg);
 
             // Aggiunge la forza per far andare avanti il colpo
