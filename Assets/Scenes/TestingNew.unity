@@ -343,6 +343,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4932127170902249558, guid: 4e509541d2375734e99f302ee0754536,
         type: 3}
+      propertyPath: ammoMax
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4932127170902249558, guid: 4e509541d2375734e99f302ee0754536,
+        type: 3}
+      propertyPath: fireRate
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4932127170902249558, guid: 4e509541d2375734e99f302ee0754536,
+        type: 3}
       propertyPath: bulletDmg
       value: 1
       objectReference: {fileID: 0}
