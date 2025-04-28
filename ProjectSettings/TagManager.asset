@@ -21,6 +21,7 @@ TagManager:
   - Prop_Hp
   - CrazyCircle
   - RotatingField
+  - Meteor
   layers:
   - Default
   - TransparentFX

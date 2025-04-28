@@ -103,6 +103,10 @@ public class Enemy : MonoBehaviour
         {
             Hitted(Powers.kunaiDamage);
         }
+        if (collision.gameObject.tag == "Meteor")
+        {
+            Hitted(Skill.meteorDamage);
+        }
     }
 
     private void OnParticleCollision(GameObject other)
