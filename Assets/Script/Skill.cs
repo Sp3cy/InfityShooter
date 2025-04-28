@@ -5,6 +5,10 @@ using UnityEngine.UI;
 
 public class Skill : MonoBehaviour
 {
+    // ════════════════════════════════════════
+    //            FLAME THROWER
+    // ════════════════════════════════════════
+
     public float flameThrowerRechargeT = 10f;
     public static float flameThrowerDamage = 3;
 
@@ -15,11 +19,6 @@ public class Skill : MonoBehaviour
 
     private bool active = false;
     private bool shooting = false;
-
-
-    // ════════════════════════════════════════
-    //            FLAME THROWER
-    // ════════════════════════════════════════
 
 
     public IEnumerator FlameThrower()

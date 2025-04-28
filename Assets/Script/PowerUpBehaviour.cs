@@ -9,7 +9,7 @@ public class PowerUpBehaviour : Powers
     {
         // Setup powerup lists
         SetupPowers();
-        SetupAvaiblePowers();
+        //SetupAvaiblePowers();
 
         player = GameObject.FindGameObjectWithTag("Player");
 

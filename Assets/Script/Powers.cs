@@ -90,13 +90,19 @@ public class Powers : MonoBehaviour
         for (int i = 0; i < powersData.Count; i++) powersData[i].Id = i;
     }
 
+
+    // Controlla se i poteri utilizzabili hanno raggiunto il livello massimo
+    // If no, li assegna come disponibili
     public void SetupAvaiblePowers()
     {
         avaiblePowerIndexes.Clear();
 
         for (int i=0; i<powersData.Count; i++)
         {
-            avaiblePowerIndexes.Add(i);
+            if (powersData[i].Level < powersData[i].maxLevel)
+            {
+                avaiblePowerIndexes.Add(i);
+            }
         }
     }
 

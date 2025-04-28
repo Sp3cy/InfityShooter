@@ -7,6 +7,8 @@ public class GameSessionManager : MonoBehaviour
     public float expToUnlock = 10f;
     public float expToUnlcokMul = 1.1f;
 
+    private string audio_to_stop_tag = "audio_to_stop";
+
     private GameObject gameManager;
 
     private UI_Script ui_Script;
@@ -62,18 +64,40 @@ public class GameSessionManager : MonoBehaviour
         gameManager.GetComponent<UI_Script>().ShowEndGame();
     }
 
+
+    private GameObject audioToResume;
+
     // Stop everything that works with Time -- EVEN COROUTINE BUT NOT THE EMEMY SPAWNER SCRIPT
     public void Pause()
     {
         Time.timeScale = 0f;
+        AudioSource[] allAudioSources = FindObjectsOfType<AudioSource>();
+
+        foreach (AudioSource source in allAudioSources)
+        {
+            if (source.isPlaying && source.TryGetComponent(out CustomTags customTags) && customTags.HasTag(audio_to_stop_tag))
+            {
+                audioToResume = source.gameObject;
+                source.Stop();
+                return;
+            }
+        }
     }
 
     // Resume normal Time
     public void Resume()
     {
         Time.timeScale = 1f;
+
+        AudioSource[] allAudioSources = FindObjectsOfType<AudioSource>();
+
+        foreach (AudioSource source in allAudioSources)
+        {
+            if (source.gameObject == audioToResume)
+            {
+                source.Play();
+                return;
+            }
+        }
     }
-
-
-
 }
