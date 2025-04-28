@@ -16,6 +16,7 @@ public class Skill : MonoBehaviour
     public GameObject flameThrowerPrefab;
     public GameObject player;
     public Button FlameButton;
+    public Text flameThrowerCountdown;
 
     private bool active = false;
     private bool shooting = false;
@@ -30,6 +31,7 @@ public class Skill : MonoBehaviour
         flame.transform.parent = player.transform;
         flameThrowerAudiofx.Play();
         FlameButton.interactable = false;
+        StartCoroutine(StartCooldownCoroutine(flameThrowerRechargeT, flameThrowerCountdown));  // Avvia il cooldown
 
         // Wait for flame time
         yield return new WaitForSeconds(flame.GetComponent<ParticleSystem>().main.duration);
@@ -40,7 +42,7 @@ public class Skill : MonoBehaviour
         shooting = false;
 
         // Wait for skill recharge time
-        yield return new WaitForSeconds(flameThrowerRechargeT);
+        yield return new WaitForSeconds(flameThrowerRechargeT - flame.GetComponent<ParticleSystem>().main.duration);
 
         FlameButton.interactable = true;
 
@@ -79,6 +81,7 @@ public class Skill : MonoBehaviour
     public AudioClip meteorSound;  // Aggiungi il clip audio per il suono della meteora
     public AudioClip impactSound;  // Aggiungi il clip audio per il suono dell'impatto
     public Button meteorButton;
+    public Text cooldownTextMeteor;  // Text UI per visualizzare il countdown
 
     // Variazioni random per il pitch e il volume
     public float minPitch = 0.8f;  // Pitch minimo
@@ -94,6 +97,7 @@ public class Skill : MonoBehaviour
         if (!isRaining)
         {
             meteorButton.interactable = false;
+            StartCoroutine(StartCooldownCoroutine(meteroRechargeT, cooldownTextMeteor));  // Avvia il cooldown METEORA
             isRaining = true;
             StartCoroutine(MeteorShowerCoroutine());
         }
@@ -114,10 +118,9 @@ public class Skill : MonoBehaviour
         }
 
         // Fine pioggia di meteore
-        isRaining = false;
-        yield return new WaitForSeconds(meteroRechargeT);
+        yield return new WaitForSeconds(meteroRechargeT - rainDuration);
         meteorButton.interactable = true;
-
+        isRaining = false;
     }
 
     // Funzione che inizia il movimento della meteora
@@ -229,6 +232,29 @@ public class Skill : MonoBehaviour
 
         return randomPosition;
     }
+
+
+    // ════════════════════════════════════════
+    //            METODI CONDIVISI
+    // ════════════════════════════════════════
+
+
+    // Funzione per gestire il cooldown del bottone
+    IEnumerator StartCooldownCoroutine(float cooldownDuration, Text coolDownText)
+    {
+        float remainingTime = cooldownDuration;
+
+        while (remainingTime > 0)
+        {
+            // Aggiorna il testo con il tempo rimanente
+            coolDownText.text = Mathf.Ceil(remainingTime).ToString();
+            remainingTime -= Time.deltaTime;
+            yield return null;
+        }
+
+        coolDownText.text = "";  // Puoi anche resettare il testo o aggiungere un messaggio
+    }
+
 
 }
 
