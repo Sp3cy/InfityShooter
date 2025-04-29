@@ -351,6 +351,11 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4871420741829182986, guid: 4e509541d2375734e99f302ee0754536,
+        type: 3}
+      propertyPath: m_Radius
+      value: 6.5
+      objectReference: {fileID: 0}
     - target: {fileID: 4932127170902249558, guid: 4e509541d2375734e99f302ee0754536,
         type: 3}
       propertyPath: ammoMax
