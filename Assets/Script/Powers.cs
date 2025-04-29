@@ -9,6 +9,7 @@ public class PowersStruct
 {
     public string[] descLevel;
     public int maxLevel = 3;
+    public Sprite sprite;
     public bool isActive = true;
 
     private int id;

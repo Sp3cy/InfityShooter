@@ -8,6 +8,7 @@ public class PowerUpMenu
 {
     public GameObject obj_PwMenu;
     public Text[] txt_PowerUp;
+    public GameObject[] img_PowerUp;
 }
 
 public class UI_Script : MonoBehaviour
@@ -62,7 +63,7 @@ public class UI_Script : MonoBehaviour
         hpBar.minValue = 0;
 
         // AmmoBar Setup
-       // ammoBar = GameObject.FindGameObjectWithTag("PlayerAmmoBar").GetComponent<Slider>();
+        // ammoBar = GameObject.FindGameObjectWithTag("PlayerAmmoBar").GetComponent<Slider>();
         //ammoBar.maxValue = GameData.AmmoCount;
         //ammoBar.minValue = 0;
 
@@ -80,7 +81,7 @@ public class UI_Script : MonoBehaviour
     void FixedUpdate()
     {
         // Praticamente inutile, da cambiare
-        if (GameData.isCountChanged(GameData.EnemyDead,tempKilledEnemyes))
+        if (GameData.isCountChanged(GameData.EnemyDead, tempKilledEnemyes))
         {
             tempKilledEnemyes = GameData.EnemyDead;
             killedEnemyesTXT.text = GameData.EnemyDead.ToString();
@@ -105,7 +106,7 @@ public class UI_Script : MonoBehaviour
         actualMenuPowers[1] = powersScript.GetRandPowerUp();
         actualMenuPowers[2] = powersScript.GetRandPowerUp();
 
-        for (int i=0; i<actualMenuPowers.Length; i++)
+        for (int i = 0; i < actualMenuPowers.Length; i++)
         {
             // Se il random non ha trovato poteri rimasti -- NON DOVREBBE
             if (actualMenuPowers[i] == null)
@@ -117,11 +118,15 @@ public class UI_Script : MonoBehaviour
             else if (actualMenuPowers[i].Level < actualMenuPowers[i].descLevel.Length)
             {
                 powerUpMenu.txt_PowerUp[i].text = actualMenuPowers[i].descLevel[actualMenuPowers[i].Level];
+
+                powerUpMenu.img_PowerUp[i].GetComponent<SpriteRenderer>().sprite = (actualMenuPowers[i].sprite != null) ?
+                     actualMenuPowers[i].sprite
+                    : null;
             }
             // Bug handle
             else
             {
-               // Debug.LogError("Text not found" + actualMenuPowers[i]);
+                // Debug.LogError("Text not found" + actualMenuPowers[i]);
                 powerUpMenu.txt_PowerUp[i].text = "?";
             }
         }
