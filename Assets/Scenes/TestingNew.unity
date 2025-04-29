@@ -4543,7 +4543,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -37}
+  m_AnchoredPosition: {x: 0, y: -37.00003}
   m_SizeDelta: {x: 365.97, y: -1479.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &991403352
@@ -4901,6 +4901,8 @@ GameObject:
   - component: {fileID: 1159477647}
   - component: {fileID: 1159477648}
   - component: {fileID: 1159477649}
+  - component: {fileID: 1159477651}
+  - component: {fileID: 1159477650}
   m_Layer: 0
   m_Name: _GameMaster
   m_TagString: GameManager
@@ -5155,6 +5157,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   expToUnlock: 300
   expToUnlcokMul: 1.25
+  onPause: {fileID: 11400000, guid: b7719afd2916d80428c4683f5d12e8c7, type: 2}
+  onResume: {fileID: 11400000, guid: 5f4afd898cc69c140a0df35de4e00c9b, type: 2}
 --- !u!114 &1159477646
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5250,6 +5254,62 @@ MonoBehaviour:
   enemySpawnTXT: {fileID: 1296057239}
   animAmmoPow: 1.08
   animAmmoTime: 0.6
+--- !u!114 &1159477650
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1159477640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75371eab1f75b034fba9666445600d88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 5f4afd898cc69c140a0df35de4e00c9b, type: 2}
+  onEventTriggered:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1159477646}
+        m_TargetAssemblyTypeName: Skill, Assembly-CSharp
+        m_MethodName: resumeFlameThrowerAudio
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1159477651
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1159477640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75371eab1f75b034fba9666445600d88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: b7719afd2916d80428c4683f5d12e8c7, type: 2}
+  onEventTriggered:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1159477646}
+        m_TargetAssemblyTypeName: Skill, Assembly-CSharp
+        m_MethodName: pauseFlameThrowerAudio
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1160237111
 GameObject:
   m_ObjectHideFlags: 0

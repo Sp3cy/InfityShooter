@@ -63,6 +63,16 @@ public class Skill : MonoBehaviour
         return shooting;
     }
 
+    public void pauseFlameThrowerAudio()
+    {
+        if (shooting) flameThrowerAudiofx.Pause();
+    }
+
+    public void resumeFlameThrowerAudio()
+    {
+        if (shooting) flameThrowerAudiofx.Play();
+    }
+
 
     // ════════════════════════════════════════
     //            METEOR SHOWER
