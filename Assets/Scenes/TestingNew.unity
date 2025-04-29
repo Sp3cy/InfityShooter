@@ -4917,107 +4917,30 @@ MonoBehaviour:
   - {fileID: 218188528055411267, guid: e914f1f152d264b42a56f0821c9031af, type: 3}
   spawnerDetails:
   - enemyIndex: 0
-    enemyAddAmount: 120
+    enemyAddAmount: 1000
     startTime: 1
-    spawnDelay: 0.66
+    spawnDelay: 0.6
     uiText: GOOD LUCK
     uiTextDuration: 2
     enabled: 1
-  - enemyIndex: 0
-    enemyAddAmount: 120
-    startTime: 1
-    spawnDelay: 0.66
-    uiText: 
-    uiTextDuration: 0
-    enabled: 1
-  - enemyIndex: 0
-    enemyAddAmount: 100
-    startTime: 300
-    spawnDelay: 0.3
-    uiText: 
-    uiTextDuration: 0
-    enabled: 1
   - enemyIndex: 1
-    enemyAddAmount: 5
+    enemyAddAmount: 500
     startTime: 60
-    spawnDelay: 0
-    uiText: 
-    uiTextDuration: 0
-    enabled: 1
-  - enemyIndex: 1
-    enemyAddAmount: 20
-    startTime: 65
-    spawnDelay: 6
-    uiText: 
-    uiTextDuration: 0
-    enabled: 1
-  - enemyIndex: 1
-    enemyAddAmount: 40
-    startTime: 180
-    spawnDelay: 1.5
-    uiText: 
-    uiTextDuration: 0
-    enabled: 1
-  - enemyIndex: 1
-    enemyAddAmount: -10
-    startTime: 240
-    spawnDelay: 0
-    uiText: 
-    uiTextDuration: 0
-    enabled: 1
-  - enemyIndex: 1
-    enemyAddAmount: -10
-    startTime: 240
-    spawnDelay: 0
-    uiText: 
-    uiTextDuration: 0
-    enabled: 1
-  - enemyIndex: 1
-    enemyAddAmount: 50
-    startTime: 240
-    spawnDelay: 7
+    spawnDelay: 2
     uiText: 
     uiTextDuration: 0
     enabled: 1
   - enemyIndex: 2
-    enemyAddAmount: 15
+    enemyAddAmount: 300
     startTime: 120
-    spawnDelay: 4.8
-    uiText: 
-    uiTextDuration: 0
-    enabled: 1
-  - enemyIndex: 2
-    enemyAddAmount: -10
-    startTime: 245
-    spawnDelay: 0
-    uiText: 
-    uiTextDuration: 0
-    enabled: 1
-  - enemyIndex: 2
-    enemyAddAmount: 15
-    startTime: 245
     spawnDelay: 10
     uiText: 
     uiTextDuration: 0
     enabled: 1
   - enemyIndex: 3
-    enemyAddAmount: 10
+    enemyAddAmount: 200
     startTime: 180
-    spawnDelay: 6
-    uiText: 
-    uiTextDuration: 0
-    enabled: 1
-  - enemyIndex: 3
-    enemyAddAmount: -5
-    startTime: 240
-    spawnDelay: 6
-    uiText: 
-    uiTextDuration: 0
-    enabled: 1
-  - enemyIndex: 3
-    enemyAddAmount: 25
-    startTime: 185
-    spawnDelay: 12
+    spawnDelay: 7
     uiText: 
     uiTextDuration: 0
     enabled: 1
