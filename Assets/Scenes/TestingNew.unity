@@ -5035,7 +5035,7 @@ MonoBehaviour:
     - Bubbles lv4
     - Bubbles lv5
     maxLevel: 5
-    sprite: {fileID: 0}
+    sprite: {fileID: 21300000, guid: 47b48524c7df76a4cbe7860fa1a0abf5, type: 3}
     isActive: 1
   grenadeExplosionSound: {fileID: 851860846}
   grenadePrefab: {fileID: 2529332762634400003, guid: 2aa4a1936ca1b244ab3c469f10291433,
