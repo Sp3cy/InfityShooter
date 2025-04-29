@@ -5083,38 +5083,38 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   grenadePowerUp:
     descLevel:
-    - Unlock Grenade
-    - 2 Grenades
-    - 3 Grenades every 3 sec
-    - 4 grenades
-    - 5 grenades every 2 sec
+    - Grenade Lv1
+    - Grenade Lv2
+    - Grenade Lv3
+    - Grenade Lv4
+    - Grenade Lv5
     maxLevel: 5
     isActive: 1
   boltPowerUp:
     descLevel:
-    - Unlock Bolt
-    - 3 bolt every 3 sec
-    - 6 bolt every 2sec
-    - 8 bolt every 1 sec
-    - 10 bolt
+    - Bolt Lv1
+    - Bolt Lv2
+    - Bolt Lv3
+    - Bolt Lv4
+    - Bolt Lv5
     maxLevel: 5
     isActive: 1
   kunaiPowerUp:
     descLevel:
-    - Unlock Kunai
-    - 2 kunai every 3 sec
-    - 3 kunai
-    - 4 kunai every 2 sec
-    - 5 kunai every 1 sec
+    - Kunai Lv1
+    - Kunai Lv2
+    - Kunai Lv3
+    - Kunai Lv4
+    - Kunai Lv5
     maxLevel: 5
     isActive: 1
   crazyCirclePowerUp:
     descLevel:
-    - UNLOCK C.C
-    - 2 cc every 3 seconds
-    - 3 cc every 2 seconds
-    - 4 cc every 1.5 seconds
-    - 5 cc every second
+    - Bubbles lv1
+    - Bubbles lv2
+    - Bubbles lv3
+    - Bubbles lv4
+    - Bubbles lv5
     maxLevel: 5
     isActive: 1
   grenadeExplosionSound: {fileID: 851860846}
