@@ -929,8 +929,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 675605215}
   - {fileID: 784521180}
+  - {fileID: 675605215}
   - {fileID: 1855172741}
   m_Father: {fileID: 898386673}
   m_RootOrder: 3
@@ -1591,8 +1591,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 164}
-  m_SizeDelta: {x: 894.4153, y: 280.07}
+  m_AnchoredPosition: {x: 0, y: 176}
+  m_SizeDelta: {x: 894.42, y: 147.57}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &316276571
 MonoBehaviour:
@@ -2073,9 +2073,9 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1425987950}
-  - {fileID: 1260467839}
   - {fileID: 1793919262}
+  - {fileID: 1260467839}
+  - {fileID: 1425987950}
   m_Father: {fileID: 898386673}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3055,8 +3055,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1100696541}
   - {fileID: 1168686524}
+  - {fileID: 1100696541}
   - {fileID: 1340486678}
   m_Father: {fileID: 898386673}
   m_RootOrder: 2
@@ -3392,7 +3392,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 155845904}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3771,7 +3771,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 155845904}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
@@ -4765,7 +4765,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 540147801}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
@@ -5071,41 +5071,41 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   grenadePowerUp:
     descLevel:
-    - Unlock Grenade
-    - 2 Grenades
-    - 3 Grenades every 3 sec
-    - 4 grenades
-    - 5 grenades every 2 sec
+    - Grenade Lv1
+    - Grenade Lv2
+    - Grenade Lv3
+    - Grenade Lv4
+    - Grenade Lv5
     maxLevel: 5
     sprite: {fileID: 21300000, guid: 2852c7329cc758147999918925ec821b, type: 3}
     isActive: 1
   boltPowerUp:
     descLevel:
-    - Unlock Bolt
-    - 3 bolt every 3 sec
-    - 6 bolt every 2sec
-    - 8 bolt every 1 sec
-    - 10 bolt
+    - Bolt Lv1
+    - Bolt Lv2
+    - Bolt Lv3
+    - Bolt Lv4
+    - Bolt Lv5
     maxLevel: 5
     sprite: {fileID: 21300000, guid: 25d3d9f56ef2a95489b8b9a33aa2a9ee, type: 3}
     isActive: 1
   kunaiPowerUp:
     descLevel:
-    - Unlock Kunai
-    - 2 kunai every 3 sec
-    - 3 kunai
-    - 4 kunai every 2 sec
-    - 5 kunai every 1 sec
+    - Kunai Lv1
+    - Kunai Lv2
+    - Kunai Lv3
+    - Kunai Lv4
+    - Kunai Lv5
     maxLevel: 5
     sprite: {fileID: 21300000, guid: b2e53ac93432ff942b912b74d1fbadd4, type: 3}
     isActive: 1
   crazyCirclePowerUp:
     descLevel:
-    - UNLOCK C.C
-    - 2 cc every 3 seconds
-    - 3 cc every 2 seconds
-    - 4 cc every 1.5 seconds
-    - 5 cc every second
+    - Bubbles lv1
+    - Bubbles lv2
+    - Bubbles lv3
+    - Bubbles lv4
+    - Bubbles lv5
     maxLevel: 5
     sprite: {fileID: 0}
     isActive: 1
@@ -5494,11 +5494,11 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 540147801}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -6.54e-13, y: -86}
+  m_AnchoredPosition: {x: 0, y: -86}
   m_SizeDelta: {x: 285, y: 124}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1168686525
@@ -6009,7 +6009,7 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1024
+  m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
@@ -6032,7 +6032,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -841972387
   m_SortingLayer: 1
-  m_SortingOrder: 29
+  m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 2852c7329cc758147999918925ec821b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -6285,7 +6285,7 @@ Transform:
   m_LocalScale: {x: 41.913353, y: 41.913353, z: 41.913353}
   m_Children: []
   m_Father: {fileID: 411159078}
-  m_RootOrder: 0
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1425987951
 SpriteRenderer:
@@ -6303,7 +6303,7 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1024
+  m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
@@ -6326,7 +6326,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -841972387
   m_SortingLayer: 1
-  m_SortingOrder: 29
+  m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 25d3d9f56ef2a95489b8b9a33aa2a9ee, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -7112,15 +7112,15 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1793919261}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -2.66}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 411159078}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 162.71, y: 47}
+  m_AnchoredPosition: {x: 162.71, y: 46}
   m_SizeDelta: {x: 285, y: 124}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1793919263
@@ -7145,11 +7145,11 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 58a9e937a79857b439bce37cb671a6ed, type: 3}
-    m_FontSize: 0
+    m_FontSize: 52
     m_FontStyle: 0
     m_BestFit: 1
-    m_MinSize: 0
-    m_MaxSize: 50
+    m_MinSize: 5
+    m_MaxSize: 52
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -7563,7 +7563,7 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1024
+  m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
@@ -7586,7 +7586,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -841972387
   m_SortingLayer: 1
-  m_SortingOrder: 29
+  m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: b2e53ac93432ff942b912b74d1fbadd4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
