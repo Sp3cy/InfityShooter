@@ -265,6 +265,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerNonModificare
       objectReference: {fileID: 0}
+    - target: {fileID: 3265866656116440459, guid: 4e509541d2375734e99f302ee0754536,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3265866656116440461, guid: 4e509541d2375734e99f302ee0754536,
         type: 3}
       propertyPath: life
@@ -679,7 +684,7 @@ PrefabInstance:
     - target: {fileID: 5039613517927382460, guid: 21aa69046b2d32e4e89e0b7d4ed3a542,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 6.32
+      value: 5.7
       objectReference: {fileID: 0}
     - target: {fileID: 5039613518161337461, guid: 21aa69046b2d32e4e89e0b7d4ed3a542,
         type: 3}
@@ -4922,7 +4927,7 @@ MonoBehaviour:
   - {fileID: 218188528055411267, guid: e914f1f152d264b42a56f0821c9031af, type: 3}
   spawnerDetails:
   - enemyIndex: 0
-    enemyAddAmount: 1000
+    enemyAddAmount: 1200
     startTime: 1
     spawnDelay: 0.6
     uiText: GOOD LUCK
@@ -4931,19 +4936,19 @@ MonoBehaviour:
   - enemyIndex: 1
     enemyAddAmount: 500
     startTime: 60
-    spawnDelay: 2
+    spawnDelay: 1.2
     uiText: 
     uiTextDuration: 0
     enabled: 1
   - enemyIndex: 2
-    enemyAddAmount: 300
+    enemyAddAmount: 400
     startTime: 120
     spawnDelay: 10
     uiText: 
     uiTextDuration: 0
     enabled: 1
   - enemyIndex: 3
-    enemyAddAmount: 200
+    enemyAddAmount: 250
     startTime: 180
     spawnDelay: 7
     uiText: 
@@ -4953,7 +4958,7 @@ MonoBehaviour:
   minPos: {x: 0, y: 0}
   maxPos: {x: 3, y: 3}
   spawnDelay: 0.01
-  rotationSpeed: 2
+  rotationSpeed: 2.3
 --- !u!4 &1159477642
 Transform:
   m_ObjectHideFlags: 0

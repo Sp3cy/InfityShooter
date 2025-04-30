@@ -104,9 +104,11 @@ public class EnemySpawner : MonoBehaviour
                 StopCoroutine(spawnerCoroutine);
 
                 // Change Values
-                spawnDelay = sp.spawnDelay;
+                spawnDelay = (601f - sp.startTime) /sp.enemyAddAmount;
                 GameData.MaxEnemy[sp.enemyIndex] += sp.enemyAddAmount;
                 sp.enabled = false;
+                Debug.Log(sp.enemyAddAmount);
+                Debug.Log(spawnDelay);
 
                 // Change ui text
                 if (sp.uiText != "") StartCoroutine(ui_Script.ShowEnemyText(sp.uiText, sp.uiTextDuration));
