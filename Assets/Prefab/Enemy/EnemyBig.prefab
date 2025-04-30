@@ -103,7 +103,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   life: 1000
   attack: 80
-  speed: 1
+  speed: 1.5
   knockback: 10
   expDrop: 450
   lerpT: 0.1
