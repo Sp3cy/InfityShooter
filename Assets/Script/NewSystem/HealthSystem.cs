@@ -4,15 +4,21 @@ using UnityEngine;
 
 public class HealthSystem : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [field:SerializeField] public float HpBase { get; private set; }
+    private float HpActual;
+
+    private void Awake()
     {
-        
+        if (!(HpBase > 0))
+        {
+            Debug.LogError("ERROR HEALTH_SYSTEM: " + this.gameObject + " - HpBase is not valid, passing base value of 100!");
+        }
+
+        HpActual = (HpBase > 0) ? HpBase : 100f;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void RemoveHealth(float amount)
     {
-        
+
     }
 }
