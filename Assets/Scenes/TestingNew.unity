@@ -4932,6 +4932,9 @@ MonoBehaviour:
     spawnDelay: 0.6
     uiText: GOOD LUCK
     uiTextDuration: 2
+    multStartTime: 360
+    AtkMultiplier: 2
+    HpMultiplier: 2
     enabled: 1
   - enemyIndex: 1
     enemyAddAmount: 500
@@ -4939,6 +4942,9 @@ MonoBehaviour:
     spawnDelay: 1.2
     uiText: 
     uiTextDuration: 0
+    multStartTime: 360
+    AtkMultiplier: 1.5
+    HpMultiplier: 2
     enabled: 1
   - enemyIndex: 2
     enemyAddAmount: 400
@@ -4946,6 +4952,9 @@ MonoBehaviour:
     spawnDelay: 10
     uiText: 
     uiTextDuration: 0
+    multStartTime: 360
+    AtkMultiplier: 1.5
+    HpMultiplier: 2.5
     enabled: 1
   - enemyIndex: 3
     enemyAddAmount: 250
@@ -4953,6 +4962,9 @@ MonoBehaviour:
     spawnDelay: 7
     uiText: 
     uiTextDuration: 0
+    multStartTime: 360
+    AtkMultiplier: 1.5
+    HpMultiplier: 1.5
     enabled: 1
   enemySpawnerHolder: {fileID: 1150078035}
   minPos: {x: 0, y: 0}

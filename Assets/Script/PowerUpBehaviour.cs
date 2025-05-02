@@ -40,25 +40,25 @@ public class PowerUpBehaviour : Powers
             case 2:
                 grenadeRechargeT = 4;
                 grenadeAmount = 2;
-                grenadeDamage = 35;
+                grenadeDamage = 25;
                 break;
 
             case 3:
                 grenadeRechargeT = 3;
                 grenadeAmount = 3;
-                grenadeDamage = 40;
+                grenadeDamage = 25;
                 break;
 
             case 4:
                 grenadeRechargeT = 3;
                 grenadeAmount = 4;
-                grenadeDamage = 50;
+                grenadeDamage = 205;
                 break;
 
             case 5:
                 grenadeRechargeT = 2;
                 grenadeAmount = 5;
-                grenadeDamage = 60;
+                grenadeDamage = 30;
                 break;
         }
 
@@ -96,19 +96,19 @@ public class PowerUpBehaviour : Powers
             case 3:
                 boltRechargeT = 2;
                 boltAmount = 5;
-                boltDamage = 25;
+                boltDamage = 20;
                 break;
 
             case 4:
                 boltRechargeT = 1;
                 boltAmount = 8;
-                boltDamage = 30;
+                boltDamage = 20;
                 break;
 
             case 5:
                 boltRechargeT = 1;
                 boltAmount = 10;
-                boltDamage = 35;
+                boltDamage = 20;
                 break;
         }
 
@@ -155,24 +155,24 @@ public class PowerUpBehaviour : Powers
 
             case 2:
                 kunayRechargeT = 3;
-                kunaiDamage = 30;
+                kunaiDamage = 20;
                 kunaiAmount = 2;
                 break;
 
             case 3:
                 kunayRechargeT = 3;
-                kunaiDamage = 35;
+                kunaiDamage = 20;
                 kunaiAmount = 3;
                 break;
 
             case 4:
-                kunaiDamage = 35;
+                kunaiDamage = 20;
                 kunayRechargeT = 2;
                 kunaiAmount = 4;
                 break;
 
             case 5:
-                kunaiDamage = 40;
+                kunaiDamage = 30;
                 kunayRechargeT = 1;
                 kunaiAmount = 5;
                 break;
