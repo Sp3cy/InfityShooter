@@ -359,7 +359,7 @@ PrefabInstance:
     - target: {fileID: 4871420741829182986, guid: 4e509541d2375734e99f302ee0754536,
         type: 3}
       propertyPath: m_Radius
-      value: 6.5
+      value: 7.5
       objectReference: {fileID: 0}
     - target: {fileID: 4932127170902249558, guid: 4e509541d2375734e99f302ee0754536,
         type: 3}
@@ -374,7 +374,7 @@ PrefabInstance:
     - target: {fileID: 4932127170902249558, guid: 4e509541d2375734e99f302ee0754536,
         type: 3}
       propertyPath: bulletDmg
-      value: 5
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6525816623678122699, guid: 4e509541d2375734e99f302ee0754536,
         type: 3}
@@ -684,7 +684,7 @@ PrefabInstance:
     - target: {fileID: 5039613517927382460, guid: 21aa69046b2d32e4e89e0b7d4ed3a542,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5.7
+      value: 6.8
       objectReference: {fileID: 0}
     - target: {fileID: 5039613518161337461, guid: 21aa69046b2d32e4e89e0b7d4ed3a542,
         type: 3}
@@ -1109,7 +1109,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 362, y: -670.56}
+  m_AnchoredPosition: {x: 405, y: -670.56}
   m_SizeDelta: {x: 225, y: 225}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &164170873
@@ -4927,7 +4927,7 @@ MonoBehaviour:
   - {fileID: 218188528055411267, guid: e914f1f152d264b42a56f0821c9031af, type: 3}
   spawnerDetails:
   - enemyIndex: 0
-    enemyAddAmount: 1200
+    enemyAddAmount: 675
     startTime: 1
     spawnDelay: 0.6
     uiText: GOOD LUCK
@@ -4937,7 +4937,7 @@ MonoBehaviour:
     HpMultiplier: 2
     enabled: 1
   - enemyIndex: 1
-    enemyAddAmount: 500
+    enemyAddAmount: 200
     startTime: 60
     spawnDelay: 1.2
     uiText: 
@@ -4947,7 +4947,7 @@ MonoBehaviour:
     HpMultiplier: 2
     enabled: 1
   - enemyIndex: 2
-    enemyAddAmount: 400
+    enemyAddAmount: 100
     startTime: 120
     spawnDelay: 10
     uiText: 
@@ -4957,11 +4957,21 @@ MonoBehaviour:
     HpMultiplier: 2.5
     enabled: 1
   - enemyIndex: 3
-    enemyAddAmount: 250
+    enemyAddAmount: 75
     startTime: 180
     spawnDelay: 7
     uiText: 
     uiTextDuration: 0
+    multStartTime: 360
+    AtkMultiplier: 1.5
+    HpMultiplier: 1.5
+    enabled: 1
+  - enemyIndex: 3
+    enemyAddAmount: 2
+    startTime: 360
+    spawnDelay: 1
+    uiText: ENEMYES ARE STRONGER NOW
+    uiTextDuration: 3
     multStartTime: 360
     AtkMultiplier: 1.5
     HpMultiplier: 1.5
@@ -5904,8 +5914,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.000015259, y: 393}
-  m_SizeDelta: {x: 661.07, y: 394.67}
+  m_AnchoredPosition: {x: 0.00055695, y: 393}
+  m_SizeDelta: {x: 1107, y: 394.67}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1340486677
 GameObject:
@@ -7147,7 +7157,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 365.5, y: -895.56}
+  m_AnchoredPosition: {x: 408.5, y: -895.56}
   m_SizeDelta: {x: 225, y: 225}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1805930462

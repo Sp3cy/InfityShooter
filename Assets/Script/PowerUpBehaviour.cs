@@ -52,13 +52,13 @@ public class PowerUpBehaviour : Powers
             case 4:
                 grenadeRechargeT = 3;
                 grenadeAmount = 4;
-                grenadeDamage = 205;
+                grenadeDamage = 30;
                 break;
 
             case 5:
                 grenadeRechargeT = 2;
                 grenadeAmount = 5;
-                grenadeDamage = 30;
+                grenadeDamage = 40;
                 break;
         }
 
@@ -155,24 +155,24 @@ public class PowerUpBehaviour : Powers
 
             case 2:
                 kunayRechargeT = 3;
-                kunaiDamage = 20;
+                kunaiDamage = 30;
                 kunaiAmount = 2;
                 break;
 
             case 3:
                 kunayRechargeT = 3;
-                kunaiDamage = 20;
+                kunaiDamage = 30;
                 kunaiAmount = 3;
                 break;
 
             case 4:
-                kunaiDamage = 20;
+                kunaiDamage = 35;
                 kunayRechargeT = 2;
                 kunaiAmount = 4;
                 break;
 
             case 5:
-                kunaiDamage = 30;
+                kunaiDamage = 50;
                 kunayRechargeT = 1;
                 kunaiAmount = 5;
                 break;
@@ -223,7 +223,7 @@ public class PowerUpBehaviour : Powers
 
             case 5:
                 crazyCircleRechargeT = 1.5f;
-                crazyCircleDamage = 20;
+                crazyCircleDamage = 25;
                 crazyCircleAmount = 4;
                 break;
         }
