@@ -101,9 +101,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39e75ad4fc237b04f97783ca9a0df172, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  life: 850
+  life: 1000
   attack: 80
-  speed: 1.2
+  speed: 1.3
   knockback: 10
   expDrop: 450
   lerpT: 0.1

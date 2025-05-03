@@ -26,6 +26,7 @@ public class Powers : MonoBehaviour
     public PowersStruct boltPowerUp;
     public PowersStruct kunaiPowerUp;
     public PowersStruct crazyCirclePowerUp;
+    public PowersStruct rotatingBladePowerUp;
 
     [System.NonSerialized]
     public List<PowersStruct> powersData = new List<PowersStruct>();
@@ -72,6 +73,19 @@ public class Powers : MonoBehaviour
     protected int crazyCircleAmount = 0;
 
 
+    [Header("- Rotating Blade")]
+    public GameObject rotatingBladePrefab;
+    public float rotatingBladeRechargeT = 1f;
+    public float rotatingBladeOrbitRadius = 1.5f;
+    public float rotatingBladeRotationSpeed = 180f;
+    public float rotatingBladeOrbitSpeed = 90f;
+
+    public static float rotatingBladeDamage = 10f;
+    protected int rotatingBladeAmount = 0;
+
+
+
+
 
     protected GameObject player;
 
@@ -87,6 +101,7 @@ public class Powers : MonoBehaviour
         if (boltPowerUp.isActive) powersData.Add(boltPowerUp);
         if (kunaiPowerUp.isActive) powersData.Add(kunaiPowerUp);
         if (crazyCirclePowerUp.isActive) powersData.Add(crazyCirclePowerUp);
+        if (rotatingBladePowerUp.isActive) powersData.Add(rotatingBladePowerUp);
 
         for (int i = 0; i < powersData.Count; i++) powersData[i].Id = i;
     }
@@ -211,6 +226,38 @@ public class Powers : MonoBehaviour
         Destroy(crazyCircle);
 
         yield return null;
+    }
+
+    public IEnumerator RotatingBlade(int index, int total)
+    {
+        GameObject blade = Instantiate(rotatingBladePrefab, player.transform.position, Quaternion.identity);
+
+        float angleOffset = 360f / total * index;
+        float currentAngle = angleOffset;
+
+        float orbitRadius = rotatingBladeOrbitRadius;
+
+        while (true)
+        {
+            if (player == null || blade == null) yield break;
+
+            // Aggiorna l'angolo orbitale
+            currentAngle += rotatingBladeOrbitSpeed * Time.deltaTime;
+            float rad = currentAngle * Mathf.Deg2Rad;
+
+            // Calcola posizione orbitale attorno al player
+            Vector3 offset = new Vector3(Mathf.Cos(rad), Mathf.Sin(rad), 0f) * orbitRadius;
+            blade.transform.position = player.transform.position + offset;
+
+            // Ruota su sé stessa solo su Z
+            blade.transform.Rotate(0f, 0f, rotatingBladeRotationSpeed * Time.deltaTime);
+
+            // Forza la rotazione globale per evitare inclinazioni su altri assi
+            Vector3 fixedEuler = blade.transform.rotation.eulerAngles;
+            blade.transform.rotation = Quaternion.Euler(0f, 0f, fixedEuler.z);
+
+            yield return null;
+        }
     }
 
 }

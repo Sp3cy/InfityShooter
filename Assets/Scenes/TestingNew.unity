@@ -132,6 +132,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1029577806065710927, guid: 4e509541d2375734e99f302ee0754536,
         type: 3}
+      propertyPath: fireRate
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1029577806065710927, guid: 4e509541d2375734e99f302ee0754536,
+        type: 3}
       propertyPath: bulletDmg
       value: 0
       objectReference: {fileID: 0}
@@ -359,7 +364,7 @@ PrefabInstance:
     - target: {fileID: 4871420741829182986, guid: 4e509541d2375734e99f302ee0754536,
         type: 3}
       propertyPath: m_Radius
-      value: 7.5
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4932127170902249558, guid: 4e509541d2375734e99f302ee0754536,
         type: 3}
@@ -684,7 +689,7 @@ PrefabInstance:
     - target: {fileID: 5039613517927382460, guid: 21aa69046b2d32e4e89e0b7d4ed3a542,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 6.8
+      value: 6.75
       objectReference: {fileID: 0}
     - target: {fileID: 5039613518161337461, guid: 21aa69046b2d32e4e89e0b7d4ed3a542,
         type: 3}
@@ -5064,6 +5069,16 @@ MonoBehaviour:
     maxLevel: 5
     sprite: {fileID: 21300000, guid: 47b48524c7df76a4cbe7860fa1a0abf5, type: 3}
     isActive: 1
+  rotatingBladePowerUp:
+    descLevel:
+    - Blades Lv1
+    - Blades Lv2
+    - Blades Lv3
+    - Blades Lv4
+    - Blades Lv5
+    maxLevel: 5
+    sprite: {fileID: 21300000, guid: 36c205308941c6e4293b1d790c30728e, type: 3}
+    isActive: 1
   grenadeExplosionSound: {fileID: 851860846}
   grenadePrefab: {fileID: 2529332762634400003, guid: 2aa4a1936ca1b244ab3c469f10291433,
     type: 3}
@@ -5090,6 +5105,12 @@ MonoBehaviour:
   crazyCirclePrefab: {fileID: 3455870696399001077, guid: 7451771b7907b8e4d962cfaa45c48860,
     type: 3}
   crazyCircleRechargeT: 3
+  rotatingBladePrefab: {fileID: 8401046175394394173, guid: e7c57395d52ceca44b388f59de2e393f,
+    type: 3}
+  rotatingBladeRechargeT: 1
+  rotatingBladeOrbitRadius: 3.75
+  rotatingBladeRotationSpeed: 1000
+  rotatingBladeOrbitSpeed: 250
 --- !u!114 &1159477645
 MonoBehaviour:
   m_ObjectHideFlags: 0

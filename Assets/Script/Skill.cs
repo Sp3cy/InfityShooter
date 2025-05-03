@@ -78,7 +78,7 @@ public class Skill : MonoBehaviour
     //            METEOR SHOWER
     // ════════════════════════════════════════
 
-    public static float meteorDamage = 500f;
+    public static float meteorDamage = 350f;
     public float meteroRechargeT = 10f;
     public GameObject meteorShowerPrefab;
     public GameObject meteorImpactPrefab;

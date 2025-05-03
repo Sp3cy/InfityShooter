@@ -18,6 +18,7 @@ public class PowerUpBehaviour : Powers
         StartCoroutine(BoltPowerUp());
         StartCoroutine(KunaiPowerUp());
         StartCoroutine(CrazyCirclePowerUp());
+        StartCoroutine(RotatingBladePowerUp());
     }
 
 
@@ -102,13 +103,13 @@ public class PowerUpBehaviour : Powers
             case 4:
                 boltRechargeT = 1;
                 boltAmount = 8;
-                boltDamage = 20;
+                boltDamage = 17;
                 break;
 
             case 5:
                 boltRechargeT = 1;
                 boltAmount = 10;
-                boltDamage = 20;
+                boltDamage = 17;
                 break;
         }
 
@@ -166,13 +167,13 @@ public class PowerUpBehaviour : Powers
                 break;
 
             case 4:
-                kunaiDamage = 35;
+                kunaiDamage = 30;
                 kunayRechargeT = 2;
                 kunaiAmount = 4;
                 break;
 
             case 5:
-                kunaiDamage = 50;
+                kunaiDamage = 30;
                 kunayRechargeT = 1;
                 kunaiAmount = 5;
                 break;
@@ -223,7 +224,7 @@ public class PowerUpBehaviour : Powers
 
             case 5:
                 crazyCircleRechargeT = 1.5f;
-                crazyCircleDamage = 25;
+                crazyCircleDamage = 15;
                 crazyCircleAmount = 4;
                 break;
         }
@@ -237,6 +238,69 @@ public class PowerUpBehaviour : Powers
         yield return CrazyCirclePowerUp();
     }
 
+    public IEnumerator RotatingBladePowerUp()
+    {
+        yield return new WaitUntil(() => rotatingBladePowerUp.Level > 0);
+
+        // Memorizza le vecchie blades
+        List<GameObject> existingBlades = new List<GameObject>(GameObject.FindGameObjectsWithTag("rotatingBlade"));
+
+        // Distruggi tutte le vecchie blades
+        foreach (var blade in existingBlades)
+        {
+            Destroy(blade);
+        }
+
+        // Imposta le nuove quantità e danno in base al livello
+        switch (rotatingBladePowerUp.Level)
+        {
+            default:
+                Debug.LogError("PowerUp fail");
+                break;
+
+            case 1:
+                rotatingBladeAmount = 1;
+                rotatingBladeDamage = 15;
+                break;
+
+            case 2:
+                rotatingBladeAmount = 2;
+                rotatingBladeDamage = 15;
+                break;
+
+            case 3:
+                rotatingBladeAmount = 3;
+                rotatingBladeDamage = 15;
+                break;
+
+            case 4:
+                rotatingBladeAmount = 4;
+                rotatingBladeDamage = 15;
+                break;
+
+            case 5:
+                rotatingBladeAmount = 5;
+                rotatingBladeDamage = 15;
+                break;
+        }
+
+        // Avvia le nuove blades in base al livello
+        for (int i = 0; i < rotatingBladeAmount; i++)
+        {
+            StartCoroutine(RotatingBlade(i, rotatingBladeAmount));
+        }
+
+        // Non serve ricaricarlo se non cambia il livello, quindi lo ripetiamo solo se il livello sale
+        int previousLevel = rotatingBladePowerUp.Level;
+
+        while (true)
+        {
+            yield return new WaitUntil(() => rotatingBladePowerUp.Level > previousLevel);
+            previousLevel = rotatingBladePowerUp.Level;
+            yield return RotatingBladePowerUp();
+            yield break;
+        }
+    }
 
 
 }
