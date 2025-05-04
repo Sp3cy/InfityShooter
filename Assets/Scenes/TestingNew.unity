@@ -4777,7 +4777,7 @@ MonoBehaviour:
   rotatingBladeRechargeT: 1
   rotatingBladeOrbitRadius: 3.75
   rotatingBladeRotationSpeed: 1000
-  rotatingBladeOrbitSpeed: 250
+  rotatingBladeOrbitSpeed: -250
 --- !u!114 &1159477645
 MonoBehaviour:
   m_ObjectHideFlags: 0
