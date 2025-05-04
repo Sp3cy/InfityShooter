@@ -13,7 +13,7 @@ public class MenuUpgrades : MonoBehaviour
 
     private void Awake()
     {
-        //resetAll();
+        resetAll();
         maxHp = PlayerPrefs.GetInt("PlayerMaxHP", 50);
         money = PlayerPrefs.GetInt("PlayerMoney", 100);
         hpUpgradeCost = PlayerPrefs.GetInt("hpUpgradeCost", 50);

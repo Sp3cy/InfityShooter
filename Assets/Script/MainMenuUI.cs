@@ -56,7 +56,9 @@ public class MainMenuUI : MonoBehaviour
 
     public void refreshMaxHpValue()
     {
-        maxHpTxt.text = PlayerPrefs.GetInt("PlayerMaxHP", 50).ToString() + "HP";
+        int maxHp = PlayerPrefs.GetInt("PlayerMaxHP", 50);
+        //maxHpTxt.text = maxHp.ToString();
+        StartCoroutine(AnimateNumber(maxHpTxt, (maxHp-10), maxHp, 1f));
     }
 
     public void refreshMoneyValueForHP()
@@ -75,6 +77,20 @@ public class MainMenuUI : MonoBehaviour
         {
             hpUpgradeButton.interactable = false;
         }
+    }
+
+    // Coroutine per animare il numero crescente
+    IEnumerator AnimateNumber(Text txt, int from, int to, float duration)
+    {
+        float elapsed = 0f;
+        while (elapsed < duration)
+        {
+            int value = Mathf.RoundToInt(Mathf.Lerp(from, to, elapsed / duration));
+            txt.text = value.ToString() + " HP"; // Aggiungi "HP" al valore
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+        txt.text = to.ToString() + " HP"; // Assicurati che il numero finale sia quello giusto
     }
 }
 
