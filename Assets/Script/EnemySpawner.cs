@@ -88,12 +88,10 @@ public class EnemySpawner : MonoBehaviour
             // Instantiate an enemy and set his index for Dead() method
             GameObject newEnemy = Instantiate(enemiesPrefab[enemyIndex], pos, Quaternion.identity);
             newEnemy.GetComponent<Enemy>().SetIndex(enemyIndex);
-            Debug.Log(newEnemy.GetComponent<Enemy>().life);
             if (GameData.CurrentPlayT >= multStartTime)
             {
                 newEnemy.GetComponent<Enemy>().life *= hpMultiplier;
                 newEnemy.GetComponent<Enemy>().attack *= atkMultiplier;
-                Debug.Log(newEnemy.GetComponent<Enemy>().life);
             }
 
             GameData.ActualEnemy[enemyIndex]++;
