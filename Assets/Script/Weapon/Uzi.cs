@@ -77,10 +77,10 @@ public class Uzi : MonoBehaviour, Weapon
         // Se munizioni maggiori di 0
         // Instazia proiettili
 
-        if (GameData.AmmoCount > 0)
-        {
+        //if (GameData.AmmoCount > 0)
+        //{
             // Crea l'oggetto bulletPrefab e gli assegna il damage
-            GameObject bullet = Instantiate(bulletPrefab, firePos.position, firePos.rotation);
+            GameObject bullet = Instantiate(bulletPrefab, firePos.position, firePos.rotation) as GameObject;
             bullet.GetComponent<Bullet>().SetDamage(bulletDmg);
 
             // Aggiunge la forza per far andare avanti il colpo
@@ -88,14 +88,14 @@ public class Uzi : MonoBehaviour, Weapon
             rb.AddForce(firePos.up * bulletForce, ForceMode2D.Impulse);
 
             RowBullets++;
-            GameData.AmmoCount--;
+            //GameData.AmmoCount--;
             fireSound.Play();
 
             yield return new WaitForSeconds(fireRate);
 
-            if (fireRateTarget < fireRate) fireRate = Mathf.Pow(coeffRPS, RowBullets) * keepFireRate;
-            else fireRate = fireRateTarget;
-        }
+            //if (fireRateTarget < fireRate) fireRate = Mathf.Pow(coeffRPS, RowBullets) * keepFireRate;
+            //else fireRate = fireRateTarget;
+        //}
     }
 
     public void Reload()

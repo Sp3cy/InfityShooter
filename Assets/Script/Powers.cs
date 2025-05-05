@@ -9,6 +9,7 @@ public class PowersStruct
 {
     public string[] descLevel;
     public int maxLevel = 3;
+    public Sprite sprite;
     public bool isActive = true;
 
     private int id;
@@ -25,6 +26,7 @@ public class Powers : MonoBehaviour
     public PowersStruct boltPowerUp;
     public PowersStruct kunaiPowerUp;
     public PowersStruct crazyCirclePowerUp;
+    public PowersStruct rotatingBladePowerUp;
 
     [System.NonSerialized]
     public List<PowersStruct> powersData = new List<PowersStruct>();
@@ -71,6 +73,19 @@ public class Powers : MonoBehaviour
     protected int crazyCircleAmount = 0;
 
 
+    [Header("- Rotating Blade")]
+    public GameObject rotatingBladePrefab;
+    public float rotatingBladeRechargeT = 1f;
+    public float rotatingBladeOrbitRadius = 1.5f;
+    public float rotatingBladeRotationSpeed = 180f;
+    public float rotatingBladeOrbitSpeed = 90f;
+
+    public static float rotatingBladeDamage = 10f;
+    protected int rotatingBladeAmount = 0;
+
+
+
+
 
     protected GameObject player;
 
@@ -86,23 +101,30 @@ public class Powers : MonoBehaviour
         if (boltPowerUp.isActive) powersData.Add(boltPowerUp);
         if (kunaiPowerUp.isActive) powersData.Add(kunaiPowerUp);
         if (crazyCirclePowerUp.isActive) powersData.Add(crazyCirclePowerUp);
+        if (rotatingBladePowerUp.isActive) powersData.Add(rotatingBladePowerUp);
 
         for (int i = 0; i < powersData.Count; i++) powersData[i].Id = i;
     }
 
+
+    // Controlla se i poteri utilizzabili hanno raggiunto il livello massimo
+    // If no, li assegna come disponibili
     public void SetupAvaiblePowers()
     {
         avaiblePowerIndexes.Clear();
 
         for (int i=0; i<powersData.Count; i++)
         {
-            avaiblePowerIndexes.Add(i);
+            if (powersData[i].Level < powersData[i].maxLevel)
+            {
+                avaiblePowerIndexes.Add(i);
+            }
         }
     }
 
     public PowersStruct GetRandPowerUp()
     {
-        if (avaiblePowerIndexes.Count == 0) return null;
+        if (avaiblePowerIndexes.Count <= 0) return null;
 
         int index = avaiblePowerIndexes[Random.Range(0, avaiblePowerIndexes.Count)];
 
@@ -120,7 +142,15 @@ public class Powers : MonoBehaviour
 
         grenadeCol.enabled = false;
 
-        grenadeRb.AddForce(new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f)) * grenadeForce, ForceMode2D.Force);
+        // Direzione in avanti rispetto alla rotazione del player
+        Vector2 forwardDir = player.transform.up;
+
+        // Aggiungi una variazione angolare casuale fino a ±30 gradi
+        float angleOffset = Random.Range(-30f, 30f);
+        Vector2 randomizedDir = Quaternion.Euler(0, 0, angleOffset) * forwardDir;
+
+        // Applica la forza
+        grenadeRb.AddForce(randomizedDir.normalized * grenadeForce, ForceMode2D.Force);
 
         // Wait for grenade timer
         yield return new WaitForSeconds(grenadeTimer);
@@ -131,6 +161,7 @@ public class Powers : MonoBehaviour
         // Wait fix for collider function
         yield return new WaitForFixedUpdate();
         grenadeCol.enabled = false;
+
         var grenadeExplodeEffect = Instantiate(grenadeParticleExplosion, grenade.transform.position, Quaternion.identity);
 
         grenadeExplosionSound.pitch = Random.Range(1f, 1.3f);
@@ -143,6 +174,7 @@ public class Powers : MonoBehaviour
 
         yield return null;
     }
+
 
     protected IEnumerator Bolts(Transform enemyPos)
     {
@@ -174,7 +206,8 @@ public class Powers : MonoBehaviour
         var kunai = Instantiate(kunaiPrefab, player.transform.position, player.transform.rotation);
         Rigidbody2D kunaiRb = kunai.GetComponent<Rigidbody2D>();
         Collider2D kunaiCol = kunai.GetComponent<Collider2D>();
-        kunaiRb.AddForce(new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f)) * grenadeForce, ForceMode2D.Force);
+        Vector2 randomDir = Random.insideUnitCircle.normalized;
+        kunaiRb.AddForce(randomDir * grenadeForce, ForceMode2D.Force);
 
         //wait destroy time
         yield return new WaitForSeconds(kunayDestroyTime);
@@ -193,6 +226,38 @@ public class Powers : MonoBehaviour
         Destroy(crazyCircle);
 
         yield return null;
+    }
+
+    public IEnumerator RotatingBlade(int index, int total)
+    {
+        GameObject blade = Instantiate(rotatingBladePrefab, player.transform.position, Quaternion.identity);
+
+        float angleOffset = 360f / total * index;
+        float currentAngle = angleOffset;
+
+        float orbitRadius = rotatingBladeOrbitRadius;
+
+        while (true)
+        {
+            if (player == null || blade == null) yield break;
+
+            // Aggiorna l'angolo orbitale
+            currentAngle += rotatingBladeOrbitSpeed * Time.deltaTime;
+            float rad = currentAngle * Mathf.Deg2Rad;
+
+            // Calcola posizione orbitale attorno al player
+            Vector3 offset = new Vector3(Mathf.Cos(rad), Mathf.Sin(rad), 0f) * orbitRadius;
+            blade.transform.position = player.transform.position + offset;
+
+            // Ruota su sé stessa solo su Z
+            blade.transform.Rotate(0f, 0f, rotatingBladeRotationSpeed * Time.deltaTime);
+
+            // Forza la rotazione globale per evitare inclinazioni su altri assi
+            Vector3 fixedEuler = blade.transform.rotation.eulerAngles;
+            blade.transform.rotation = Quaternion.Euler(0f, 0f, fixedEuler.z);
+
+            yield return null;
+        }
     }
 
 }

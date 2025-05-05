@@ -9,9 +9,8 @@ public class Bullet : MonoBehaviour
     public float speed = 10f;
 
     private float damage = 0f;
-    private float BulletAnimDurata;
 
-    private int _layerHittable = 3;
+    //private int _layerHittable = 3;
 
     private bool destroyed = false;
 
@@ -20,13 +19,12 @@ public class Bullet : MonoBehaviour
     private Collider2D bulletCollider;
 
 
-    private void Start()
+    private void Awake()
     {
         animator = gameObject.GetComponent<Animator>();
         rb = gameObject.GetComponent<Rigidbody2D>();
         bulletCollider = gameObject.GetComponent<Collider2D>();
 
-        SetAnimationTime();
         StartCoroutine(DestroyAfterSec(bulletDuration));
     }
 
@@ -39,15 +37,19 @@ public class Bullet : MonoBehaviour
     {
         if (damage == 0f) Debug.LogError("- Damage not setted");
 
+        // BUG HANDLER: read at AnimazioneBulletEsplode
+        //if (rb == null) { Debug.LogError(collision.gameObject.tag); return; }
+
         // if enemy is been hitted
-        if (collision.gameObject.tag == "Enemy")
+        if (collision.gameObject.tag == "Enemy" && !destroyed)
         {
+            destroyed = true;
             collision.gameObject.GetComponent<Enemy>().Hitted(damage);
+
+            AnimazioneBulletEsplode();
         }
 
-        if (collision.gameObject.layer != _layerHittable) return;
-
-        StartCoroutine(AnimazioneBulletEsplode(BulletAnimDurata));
+        
     }
 
     // Disrugge il gameobject dopo tot secondi
@@ -56,46 +58,25 @@ public class Bullet : MonoBehaviour
         yield return new WaitForSeconds(seconds);
 
         // Handle bug
-        if (!destroyed) Destroy(gameObject);
+        if (rb != null) Destroy(gameObject);
     }
 
-    // Animazione Bullet Contatto
-
-    private IEnumerator AnimazioneBulletEsplode(float seconds)
+    // Animazione Bullet al Contatto
+    private void AnimazioneBulletEsplode()
     {
-        // Se ha colpito qualcosa è come se fosse stato distrutto
-        destroyed = true;
-
-        rb.constraints = RigidbodyConstraints2D.FreezeAll;
-
-        bulletCollider.isTrigger = true;
-
-        animator.SetBool("Hit", true);
-        yield return new WaitForSeconds(seconds);
-        animator.SetBool("Hit", false);
-
-        
-        Destroy(gameObject);
-
-    }
-
-    private void SetAnimationTime()
-    {
-        // Get Animation duration
-        AnimationClip[] clips = animator.runtimeAnimatorController.animationClips;
-
-        foreach (AnimationClip clip in clips)
+        try
         {
-            switch (clip.name)
-            {
-                case "BulletHit":
-                    BulletAnimDurata = clip.length;
-                    break;
+            // Disabilita collider, ferma bullet nello spazio
+            bulletCollider.enabled = false;
+            rb.constraints = RigidbodyConstraints2D.FreezeAll;
 
-                case null:
-                    break;
-            }
+            // Start anim; bullet get destroyed in animator code
+            animator.SetBool("Hit", true);
         }
+        catch {
+            Debug.LogWarning("AVVISO:  Il bullet ha avuto un problema diverso da quello conosciuto! (at Bullet.cs:AnimazioneBulletEsplode)");
+        }
+        
     }
 }
 

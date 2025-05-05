@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 public class PlayerBehaviour : MonoBehaviour
 {
     [Header("- Player Stats")]
-    public float life = 100f;
+    private float life;
 
     [Space(1)]
     [Header("- Rotation Time")]
@@ -30,11 +30,14 @@ public class PlayerBehaviour : MonoBehaviour
     private GameObject gameManager;
     private WeaponManager weaponManager;
     private Skill skillScript;
+    private bool isPlayerDead; // Serve per non far andare in loop la funzione che sta nell'update
 
     private void Awake()
     {
+        life = PlayerPrefs.GetInt("PlayerMaxHP", 50);
         GameData.PlayerLife = life;
-    }
+        isPlayerDead = false;
+}
 
     // Start is called before the first frame update
     void Start()
@@ -53,9 +56,11 @@ public class PlayerBehaviour : MonoBehaviour
     private void Update()
     {
         // Se il player muore
-        if (GameData.PlayerLife <= 0)
+        if (GameData.PlayerLife <= 0 && isPlayerDead == false)
         {
             Dead();
+            isPlayerDead=true;
+            setMoney();
         }
     }
 
@@ -65,16 +70,11 @@ public class PlayerBehaviour : MonoBehaviour
         Vector2 lookDir = new Vector2(0,0);
         GameData.TargetEnemy = GameMethods.GetClosestEnemyByLife(maxEnemyDistance, maxEnemy);
 
-        
 
         // If weapon isShooting or skill isShooting
         if ((weaponManager.IsWeaponShooting() || skillScript.IsSkillShooting()) && GameData.TargetEnemy != null)
         {
-            // Enemy too close bug handler
-            if (GameData.TargetEnemy != null && (Vector2.Distance(player.transform.position, GameData.TargetEnemy.transform.position) < enemyTooClose))
-                lookDir = GameData.TargetEnemy.transform.position - player.transform.position;
-            else
-                lookDir = GameData.TargetEnemy.transform.position - weaponManager.CurrentWeaponObject.transform.position;
+            lookDir = GameData.TargetEnemy.transform.position - weaponManager.CurrentWeaponObject.transform.position;
         }
         else lookDir = new Vector2(joystick.Horizontal, joystick.Vertical);
 
@@ -116,6 +116,15 @@ public class PlayerBehaviour : MonoBehaviour
         // fare la cosa col tempo
 
         GameData.PlayerLife += amount;
+    }
+
+    public void setMoney()
+    {
+        int moneyEarned = ((int)GameData.EnemyDead / 5) + ((int)GameData.CurrentPlayT / 10);
+        Debug.Log(moneyEarned);
+        int money = PlayerPrefs.GetInt("PlayerMoney", 100);
+        PlayerPrefs.SetInt("PlayerMoney", money + moneyEarned);
+        PlayerPrefs.Save();
     }
 
 }

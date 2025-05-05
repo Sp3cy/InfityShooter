@@ -8,6 +8,7 @@ public class PowerUpMenu
 {
     public GameObject obj_PwMenu;
     public Text[] txt_PowerUp;
+    public GameObject[] img_PowerUp;
 }
 
 public class UI_Script : MonoBehaviour
@@ -24,6 +25,12 @@ public class UI_Script : MonoBehaviour
     public Text gameSessionCurrentTimeTXT;
     public Text playerLevelTXT;
     public Text enemySpawnTXT;
+
+    [Space(5)]
+    [Header("- Game over Panel")]
+    public Text killTXT;
+    public Text timeTXT;
+    public Text moneyTXT;
 
     [Space(5)]
     [Header("- Animation")]
@@ -62,12 +69,12 @@ public class UI_Script : MonoBehaviour
         hpBar.minValue = 0;
 
         // AmmoBar Setup
-        ammoBar = GameObject.FindGameObjectWithTag("PlayerAmmoBar").GetComponent<Slider>();
-        ammoBar.maxValue = GameData.AmmoCount;
-        ammoBar.minValue = 0;
+        // ammoBar = GameObject.FindGameObjectWithTag("PlayerAmmoBar").GetComponent<Slider>();
+        //ammoBar.maxValue = GameData.AmmoCount;
+        //ammoBar.minValue = 0;
 
         // AmmoCount setup
-        tempAmmoCount = GameData.AmmoCount;
+        //tempAmmoCount = GameData.AmmoCount;
 
         // ExpBar Setup
         expSlider.maxValue = GameData.ExpToLevelUp;
@@ -80,7 +87,7 @@ public class UI_Script : MonoBehaviour
     void FixedUpdate()
     {
         // Praticamente inutile, da cambiare
-        if (GameData.isCountChanged(GameData.EnemyDead,tempKilledEnemyes))
+        if (GameData.isCountChanged(GameData.EnemyDead, tempKilledEnemyes))
         {
             tempKilledEnemyes = GameData.EnemyDead;
             killedEnemyesTXT.text = GameData.EnemyDead.ToString();
@@ -89,7 +96,7 @@ public class UI_Script : MonoBehaviour
         // Change sliders value every fixedupdate
         hpBar.value = GameData.PlayerLife;
         expSlider.value = GameData.ActualExp;
-        ammoBar.value = GameData.AmmoCount;
+        //ammoBar.value = GameData.AmmoCount;
     }
     private void Update()
     {
@@ -105,7 +112,7 @@ public class UI_Script : MonoBehaviour
         actualMenuPowers[1] = powersScript.GetRandPowerUp();
         actualMenuPowers[2] = powersScript.GetRandPowerUp();
 
-        for (int i=0; i<actualMenuPowers.Length; i++)
+        for (int i = 0; i < actualMenuPowers.Length; i++)
         {
             // Se il random non ha trovato poteri rimasti -- NON DOVREBBE
             if (actualMenuPowers[i] == null)
@@ -117,11 +124,15 @@ public class UI_Script : MonoBehaviour
             else if (actualMenuPowers[i].Level < actualMenuPowers[i].descLevel.Length)
             {
                 powerUpMenu.txt_PowerUp[i].text = actualMenuPowers[i].descLevel[actualMenuPowers[i].Level];
+
+                powerUpMenu.img_PowerUp[i].GetComponent<SpriteRenderer>().sprite = (actualMenuPowers[i].sprite != null) ?
+                     actualMenuPowers[i].sprite
+                    : null;
             }
             // Bug handle
             else
             {
-                Debug.LogError("Text not found");
+                // Debug.LogError("Text not found" + actualMenuPowers[i]);
                 powerUpMenu.txt_PowerUp[i].text = "?";
             }
         }
@@ -167,7 +178,12 @@ public class UI_Script : MonoBehaviour
 
     public void ShowEndGame()
     {
+        int moneyEarned = ((int)GameData.EnemyDead / 5) + ((int)GameData.CurrentPlayT / 10);
         gameOverPanel.SetActive(true);
+        // Avvia animazioni per ciascun valore
+        StartCoroutine(AnimateNumber(killTXT, 0, (int)GameData.EnemyDead, 1f));
+        StartCoroutine(AnimateNumber(timeTXT, 0, (int)GameData.CurrentPlayT, 1f));
+        StartCoroutine(AnimateNumber(moneyTXT, 0, moneyEarned, 1f));
     }
 
     // Show the text of important enemy or bosses - In the upper ui
@@ -178,6 +194,19 @@ public class UI_Script : MonoBehaviour
         yield return new WaitForSeconds(duration);
 
         enemySpawnTXT.text = "";
+    }
+
+    IEnumerator AnimateNumber(Text txt, int from, int to, float duration)
+    {
+        float elapsed = 0f;
+        while (elapsed < duration)
+        {
+            int value = Mathf.RoundToInt(Mathf.Lerp(from, to, elapsed / duration));
+            txt.text = value.ToString();
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+        txt.text = to.ToString(); // Imposta il valore finale con precisione
     }
 }
 

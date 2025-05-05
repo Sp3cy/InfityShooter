@@ -20,6 +20,10 @@ public class EnemySpawner : MonoBehaviour
     public float spawnDelay = 2f;
     public float rotationSpeed = 2f;
 
+    private float hpMultiplier;
+    private float atkMultiplier;
+    private int multStartTime;
+
     private GameObject player;
     private GameObject gameManager;
     private GameObject enemySpawnObject;
@@ -84,6 +88,11 @@ public class EnemySpawner : MonoBehaviour
             // Instantiate an enemy and set his index for Dead() method
             GameObject newEnemy = Instantiate(enemiesPrefab[enemyIndex], pos, Quaternion.identity);
             newEnemy.GetComponent<Enemy>().SetIndex(enemyIndex);
+            if (GameData.CurrentPlayT >= multStartTime)
+            {
+                newEnemy.GetComponent<Enemy>().life *= hpMultiplier;
+                newEnemy.GetComponent<Enemy>().attack *= atkMultiplier;
+            }
 
             GameData.ActualEnemy[enemyIndex]++;
 
@@ -104,9 +113,12 @@ public class EnemySpawner : MonoBehaviour
                 StopCoroutine(spawnerCoroutine);
 
                 // Change Values
-                spawnDelay = sp.spawnDelay;
+                spawnDelay = (601f - sp.startTime) /sp.enemyAddAmount;
                 GameData.MaxEnemy[sp.enemyIndex] += sp.enemyAddAmount;
                 sp.enabled = false;
+                atkMultiplier = sp.AtkMultiplier;
+                hpMultiplier = sp.HpMultiplier;
+                multStartTime = sp.multStartTime;
 
                 // Change ui text
                 if (sp.uiText != "") StartCoroutine(ui_Script.ShowEnemyText(sp.uiText, sp.uiTextDuration));
@@ -134,6 +146,9 @@ public class SpawnerDetails
     public string uiText;
     // Momentaneo?
     public float uiTextDuration;
+    public int multStartTime = 1;
+    public float AtkMultiplier = 1f;
+    public float HpMultiplier = 1f;
 
     public bool enabled;
 }

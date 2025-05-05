@@ -7,6 +7,9 @@ public class GameSessionManager : MonoBehaviour
     public float expToUnlock = 10f;
     public float expToUnlcokMul = 1.1f;
 
+    public GameEvent onPause;
+    public GameEvent onResume;
+
     private GameObject gameManager;
 
     private UI_Script ui_Script;
@@ -62,9 +65,13 @@ public class GameSessionManager : MonoBehaviour
         gameManager.GetComponent<UI_Script>().ShowEndGame();
     }
 
+
+    private GameObject audioToResume;
+
     // Stop everything that works with Time -- EVEN COROUTINE BUT NOT THE EMEMY SPAWNER SCRIPT
     public void Pause()
     {
+        onPause.TriggerEvent();
         Time.timeScale = 0f;
     }
 
@@ -72,8 +79,6 @@ public class GameSessionManager : MonoBehaviour
     public void Resume()
     {
         Time.timeScale = 1f;
+        onResume.TriggerEvent();
     }
-
-
-
 }

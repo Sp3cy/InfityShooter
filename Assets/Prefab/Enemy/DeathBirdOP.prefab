@@ -78,7 +78,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 11
   m_Sprite: {fileID: 21300000, guid: 0df786d9c6883ac4abe0ae03ecba0dfb, type: 3}
-  m_Color: {r: 1, g: 0.58208066, b: 0, a: 1}
+  m_Color: {r: 0.85882354, g: 0.6392157, b: 0.48235294, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -166,8 +166,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39e75ad4fc237b04f97783ca9a0df172, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  life: 100
-  attack: 25
+  life: 150
+  attack: 30
   speed: 3.2
   knockback: 20
   expDrop: 50
