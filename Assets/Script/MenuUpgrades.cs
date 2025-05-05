@@ -24,7 +24,6 @@ public class MenuUpgrades : MonoBehaviour
         PlayerPrefs.SetInt("PlayerMaxHP", maxHp + hpUpgradeValue);
         PlayerPrefs.Save();
         maxHp += hpUpgradeValue;
-        Debug.Log(PlayerPrefs.GetInt("PlayerMaxHP", 50));
     }
 
     public void upgradeMoney()

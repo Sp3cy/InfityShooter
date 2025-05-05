@@ -58,7 +58,7 @@ public class MainMenuUI : MonoBehaviour
     {
         int maxHp = PlayerPrefs.GetInt("PlayerMaxHP", 50);
         //maxHpTxt.text = maxHp.ToString();
-        StartCoroutine(AnimateNumber(maxHpTxt, (maxHp-10), maxHp, 1f));
+        StartCoroutine(AnimateNumber(maxHpTxt, (maxHp-10), maxHp, 0.5f));
     }
 
     public void refreshMoneyValueForHP()

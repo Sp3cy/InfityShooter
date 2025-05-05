@@ -27,6 +27,12 @@ public class UI_Script : MonoBehaviour
     public Text enemySpawnTXT;
 
     [Space(5)]
+    [Header("- Game over Panel")]
+    public Text killTXT;
+    public Text timeTXT;
+    public Text moneyTXT;
+
+    [Space(5)]
     [Header("- Animation")]
     public float animAmmoPow = 1.6f;
     public float animAmmoTime = 1;
@@ -172,7 +178,12 @@ public class UI_Script : MonoBehaviour
 
     public void ShowEndGame()
     {
+        int moneyEarned = ((int)GameData.EnemyDead / 5) + ((int)GameData.CurrentPlayT / 10);
         gameOverPanel.SetActive(true);
+        // Avvia animazioni per ciascun valore
+        StartCoroutine(AnimateNumber(killTXT, 0, (int)GameData.EnemyDead, 1f));
+        StartCoroutine(AnimateNumber(timeTXT, 0, (int)GameData.CurrentPlayT, 1f));
+        StartCoroutine(AnimateNumber(moneyTXT, 0, moneyEarned, 1f));
     }
 
     // Show the text of important enemy or bosses - In the upper ui
@@ -183,6 +194,19 @@ public class UI_Script : MonoBehaviour
         yield return new WaitForSeconds(duration);
 
         enemySpawnTXT.text = "";
+    }
+
+    IEnumerator AnimateNumber(Text txt, int from, int to, float duration)
+    {
+        float elapsed = 0f;
+        while (elapsed < duration)
+        {
+            int value = Mathf.RoundToInt(Mathf.Lerp(from, to, elapsed / duration));
+            txt.text = value.ToString();
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+        txt.text = to.ToString(); // Imposta il valore finale con precisione
     }
 }
 
